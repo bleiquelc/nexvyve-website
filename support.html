@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Soporte — NEXVYVE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root{
+      --lime:#AAFF00; --dark:#0a0a0a; --dark2:#111; --dark3:#1a1a1a;
+      --gray1:#888; --gray2:#2a2a2a; --white:#f0f0f0; --teal:#00C9A7;
+      --font-d:'Bebas Neue',sans-serif; --font-b:'DM Sans',sans-serif;
+    }
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{background:var(--dark);color:var(--white);font-family:var(--font-b);-webkit-font-smoothing:antialiased;}
+
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;
+      display:flex;align-items:center;justify-content:space-between;
+      padding:18px 48px;background:rgba(10,10,10,0.96);
+      backdrop-filter:blur(12px);border-bottom:1px solid var(--gray2);}
+    .nav-logo{font-family:var(--font-d);font-size:26px;color:var(--lime);letter-spacing:3px;text-decoration:none;}
+    .nav-right{display:flex;align-items:center;gap:14px;}
+    .lang-sw{display:flex;align-items:center;gap:2px;background:var(--dark2);border:1px solid var(--gray2);border-radius:20px;padding:3px;}
+    .lang-btn{font-size:10px;font-weight:600;letter-spacing:1px;color:var(--gray1);background:none;border:none;padding:4px 10px;border-radius:16px;cursor:pointer;transition:all .2s;}
+    .lang-btn.active{background:var(--lime);color:var(--dark);}
+    .nav-back{font-size:13px;color:var(--gray1);text-decoration:none;transition:color .2s;}
+    .nav-back:hover{color:var(--lime);}
+
+    .hero{padding:130px 48px 70px;border-bottom:1px solid var(--gray2);}
+    .tag{font-size:10px;color:var(--lime);letter-spacing:4px;text-transform:uppercase;margin-bottom:14px;opacity:.8;}
+    h1{font-family:var(--font-d);font-size:clamp(56px,7vw,90px);line-height:.92;letter-spacing:2px;margin-bottom:18px;}
+    h1 span{color:var(--lime);}
+    .hero-desc{font-size:16px;font-weight:300;color:var(--gray1);max-width:480px;line-height:1.75;}
+
+    .content{padding:70px 48px;max-width:1100px;margin:0 auto;}
+
+    .section-label{font-size:10px;color:var(--gray1);letter-spacing:4px;text-transform:uppercase;margin-bottom:24px;}
+    .contact-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:70px;}
+    .contact-card{background:var(--dark2);border:1px solid var(--gray2);border-radius:12px;padding:32px 28px;transition:border-color .25s,transform .25s;}
+    .contact-card:hover{border-color:var(--lime);transform:translateY(-3px);}
+    .c-icon{font-size:32px;margin-bottom:16px;display:block;}
+    .c-title{font-family:var(--font-d);font-size:20px;letter-spacing:1px;color:var(--white);margin-bottom:10px;}
+    .c-desc{font-size:14px;color:var(--gray1);line-height:1.65;margin-bottom:20px;}
+    .c-link{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:var(--lime);text-decoration:none;border-bottom:1px solid transparent;transition:border-color .2s;}
+    .c-link:hover{border-color:var(--lime);}
+
+    .divider{height:1px;background:var(--gray2);margin:60px 0;}
+
+    .faq-title{font-family:var(--font-d);font-size:clamp(40px,5vw,62px);letter-spacing:2px;margin-bottom:40px;}
+    .faq-title span{color:var(--lime);}
+    .faq-list{display:flex;flex-direction:column;gap:3px;}
+    .faq-item{background:var(--dark2);border:1px solid var(--gray2);border-radius:8px;overflow:hidden;cursor:pointer;transition:border-color .2s;}
+    .faq-item:hover,.faq-item.open{border-color:var(--lime);}
+    .faq-q{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:20px 24px;font-size:14px;font-weight:500;color:var(--white);line-height:1.4;}
+    .faq-toggle{color:var(--lime);font-size:22px;flex-shrink:0;transition:transform .3s;line-height:1;}
+    .faq-item.open .faq-toggle{transform:rotate(45deg);}
+    .faq-a{font-size:14px;color:var(--gray1);line-height:1.7;max-height:0;overflow:hidden;transition:max-height .4s ease,padding .3s;}
+    .faq-item.open .faq-a{max-height:300px;padding:0 24px 20px;}
+
+    .cta{text-align:center;padding:60px 0;}
+    .cta-title{font-family:var(--font-d);font-size:clamp(40px,5vw,64px);letter-spacing:2px;margin-bottom:16px;}
+    .cta-title span{color:var(--lime);}
+    .cta-desc{font-size:15px;font-weight:300;color:var(--gray1);max-width:420px;margin:0 auto 32px;line-height:1.7;}
+    .cta-btn{display:inline-block;background:var(--lime);color:var(--dark);font-family:var(--font-d);font-size:18px;letter-spacing:2px;padding:14px 40px;border-radius:8px;text-decoration:none;transition:transform .2s,opacity .2s;}
+    .cta-btn:hover{transform:translateY(-2px);opacity:.9;}
+
+    footer{background:var(--dark2);padding:36px 48px;border-top:1px solid var(--gray2);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;}
+    .footer-logo{font-family:var(--font-d);font-size:20px;color:var(--lime);letter-spacing:3px;}
+    .footer-copy{font-size:11px;color:var(--gray1);}
+    .footer-links{display:flex;gap:20px;}
+    .footer-links a{font-size:11px;color:var(--gray1);text-decoration:none;transition:color .2s;}
+    .footer-links a:hover{color:var(--lime);}
+
+    @media(max-width:900px){
+      nav{padding:16px 24px;}
+      .hero{padding:110px 24px 56px;}
+      .content{padding:50px 24px;}
+      footer{padding:28px 24px;}
+    }
+    @media(max-width:640px){
+      nav{padding:14px 16px;}
+      .hero{padding:100px 16px 48px;}
+      h1{font-size:clamp(48px,12vw,72px);}
+      .content{padding:44px 16px;}
+      .contact-grid{grid-template-columns:1fr;}
+      .faq-title{font-size:clamp(36px,9vw,52px);}
+      footer{padding:24px 16px;flex-direction:column;align-items:flex-start;}
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">NEXVYVE</a>
+  <div class="nav-right">
+    <div class="lang-sw">
+      <button class="lang-btn active" id="btn-es" onclick="setLang('es')">ES</button>
+      <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+    </div>
+    <a href="index.html" class="nav-back">← <span data-es="Inicio" data-en="Home">Inicio</span></a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="tag" data-es="Ayuda · Soporte" data-en="Help · Support">Ayuda · Soporte</div>
+  <h1 data-es="CENTRO DE<br/><span>SOPORTE</span>" data-en="SUPPORT<br/><span>CENTER</span>">CENTRO DE<br/><span>SOPORTE</span></h1>
+  <p class="hero-desc" data-es="Estamos aquí para ayudarte en cada paso de tu transformación. Respuesta garantizada en menos de 48 horas." data-en="We are here to help you at every step of your transformation. Reply guaranteed within 48 hours.">Estamos aquí para ayudarte en cada paso de tu transformación. Respuesta garantizada en menos de 48 horas.</p>
+</div>
+
+<div class="content">
+
+  <div class="section-label" data-es="CANALES DE CONTACTO" data-en="CONTACT CHANNELS">CANALES DE CONTACTO</div>
+  <div class="contact-grid">
+    <div class="contact-card">
+      <span class="c-icon">📧</span>
+      <div class="c-title" data-es="EMAIL SOPORTE" data-en="SUPPORT EMAIL">EMAIL SOPORTE</div>
+      <p class="c-desc" data-es="Para consultas sobre tu cuenta, suscripción o problemas técnicos. Te respondemos en menos de 48 horas." data-en="For questions about your account, subscription or technical issues. We reply within 48 hours.">Para consultas sobre tu cuenta, suscripción o problemas técnicos. Te respondemos en menos de 48 horas.</p>
+      <a href="mailto:support@nexvyve.app" class="c-link">support@nexvyve.app →</a>
+    </div>
+    <div class="contact-card">
+      <span class="c-icon">🔒</span>
+      <div class="c-title" data-es="PRIVACIDAD" data-en="PRIVACY">PRIVACIDAD</div>
+      <p class="c-desc" data-es="Solicitudes de eliminación de datos, exportación de información personal o cualquier consulta de privacidad." data-en="Data deletion requests, personal information export or any privacy inquiry.">Solicitudes de eliminación de datos, exportación de información personal o cualquier consulta de privacidad.</p>
+      <a href="mailto:privacy@nexvyve.app" class="c-link">privacy@nexvyve.app →</a>
+    </div>
+    <div class="contact-card">
+      <span class="c-icon">📱</span>
+      <div class="c-title">INSTAGRAM</div>
+      <p class="c-desc" data-es="Síguenos para tips diarios de fitness, motivación y actualizaciones de la app." data-en="Follow us for daily fitness tips, motivation and app updates.">Síguenos para tips diarios de fitness, motivación y actualizaciones de la app.</p>
+      <a href="https://instagram.com/nexvyve" target="_blank" class="c-link">@nexvyve →</a>
+    </div>
+    <div class="contact-card">
+      <span class="c-icon">🐛</span>
+      <div class="c-title" data-es="REPORTAR BUG" data-en="REPORT A BUG">REPORTAR BUG</div>
+      <p class="c-desc" data-es="¿Encontraste un bug? Descríbelo y lo resolvemos en la próxima actualización." data-en="Found a bug? Describe it and we will fix it in the next update.">¿Encontraste un bug? Descríbelo y lo resolvemos en la próxima actualización.</p>
+      <a href="mailto:bugs@nexvyve.app" class="c-link" data-es="Reportar →" data-en="Report →">Reportar →</a>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <h2 class="faq-title" data-es="PREGUNTAS<br/><span>FRECUENTES</span>" data-en="FREQUENTLY<br/><span>ASKED QUESTIONS</span>">PREGUNTAS<br/><span>FRECUENTES</span></h2>
+
+  <div class="faq-list">
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <div class="faq-q"><span data-es="¿Cómo empiezo mi prueba gratis?" data-en="How do I start my free trial?">¿Cómo empiezo mi prueba gratis?</span><span class="faq-toggle">+</span></div>
+      <div class="faq-a" data-es="Descarga la app desde el App Store, crea tu cuenta con tu email y tendrás 21 días completos de acceso premium. Sin tarjeta de crédito necesaria." data-en="Download the app from the App Store, create your account with your email and you'll have 21 full days of premium access. No credit card required.">Descarga la app desde el App Store, crea tu cuenta con tu email y tendrás 21 días completos de acceso premium. Sin tarjeta de crédito necesaria.</div>
+    </div>
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <div class="faq-q"><span data-es="¿Cuánto cuesta después del trial?" data-en="How much does it cost after the trial?">¿Cuánto cuesta después del trial?</span><span class="faq-toggle">+</span></div>
+      <div class="faq-a" data-es="Premium: $9.99/mes | Annual: $79.99/año (ahorra 33% = $6.67/mes) | Elite: $24.99/mes (acceso ilimitado total). Todos los planes renuevan automáticamente, pero puedes cancelar cuando quieras." data-en="Premium: $9.99/month | Annual: $79.99/year (save 33% = $6.67/month) | Elite: $24.99/month (total unlimited access). All plans auto-renew but you can cancel anytime.">Premium: $9.99/mes | Annual: $79.99/año (ahorra 33% = $6.67/mes) | Elite: $24.99/mes (acceso ilimitado total). Todos los planes renuevan automáticamente, pero puedes cancelar cuando quieras.</div>
+    </div>
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <div class="faq-q"><span data-es="¿Puedo cancelar en cualquier momento?" data-en="Can I cancel anytime?">¿Puedo cancelar en cualquier momento?</span><span class="faq-toggle">+</span></div>
+      <div class="faq-a" data-es="Sí, cancela desde los ajustes de tu App Store en cualquier momento. La cancelación es efectiva al final del período ya pagado. Sin penalización, sin excusas." data-en="Yes, cancel from your App Store settings anytime. Cancellation takes effect at the end of your current billing period. No penalties, no excuses.">Sí, cancela desde los ajustes de tu App Store en cualquier momento. La cancelación es efectiva al final del período ya pagado. Sin penalización, sin excusas.</div>
+    </div>
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <div class="faq-q"><span data-es="¿Qué son los V-Coins?" data-en="What are V-Coins?">¿Qué son los V-Coins?</span><span class="faq-toggle">+</span></div>
+      <div class="faq-a" data-es="Moneda virtual que ganas entrenando, refiriendo amigos y completando retos. Canjéalos en la tienda por premios reales: membresías, suplementos, gift cards, experiencias exclusivas. Ganas hasta 150 V-Coins/mes en Elite." data-en="Virtual currency you earn by training, referring friends and completing challenges. Redeem them in the store for real prizes: memberships, supplements, gift cards, exclusive experiences. Earn up to 150 V-Coins/month on Elite.">Moneda virtual que ganas entrenando, refiriendo amigos y completando retos. Canjéalos en la tienda por premios reales: membresías, suplementos, gift cards, experiencias exclusivas. Ganas hasta 150 V-Coins/mes en Elite.</div>
+    </div>
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <div class="faq-q"><span data-es="¿Cómo funciona el Coach IA?" data-en="How does the AI Coach work?">¿Cómo funciona el Coach IA?</span><span class="faq-toggle">+</span></div>
+      <div class="faq-a" data-es="KAEL (Coach IA) usa inteligencia artificial avanzada (Anthropic Claude) para personalizar tus rutinas de ejercicio y planes nutricionales basándose en tu perfil, objetivo y progreso. Puedes hablar con KAEL en texto, compartir fotos de comidas y recibir análisis al instante. Premium: 500 msgs/mes | Annual: 750 msgs/mes | Elite: 1,500 msgs/mes." data-en="KAEL (AI Coach) uses advanced artificial intelligence (Anthropic Claude) to personalize your workout routines and nutrition plans based on your profile, goals and progress. Talk to KAEL in text, share meal photos and get instant analysis. Premium: 500 msgs/month | Annual: 750 msgs/month | Elite: 1,500 msgs/month.">KAEL (Coach IA) usa inteligencia artificial avanzada (Anthropic Claude) para personalizar tus rutinas de ejercicio y planes nutricionales basándose en tu perfil, objetivo y progreso. Puedes hablar con KAEL en texto, compartir fotos de comidas y recibir análisis al instante. Premium: 500 msgs/mes | Annual: 750 msgs/mes | Elite: 1,500 msgs/mes.</div>
+    </div>
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <div class="faq-q"><span data-es="¿En qué idiomas está disponible?" data-en="What languages is it available in?">¿En qué idiomas está disponible?</span><span class="faq-toggle">+</span></div>
+      <div class="faq-a" data-es="NEXVYVE está disponible en Español, English y Deutsch. Puedes cambiar el idioma en cualquier momento desde los ajustes de la app. El Coach IA también habla estos idiomas." data-en="NEXVYVE is available in Spanish, English and German. You can change the language anytime from the app settings. The AI Coach also speaks these languages.">NEXVYVE está disponible en Español, English y Deutsch. Puedes cambiar el idioma en cualquier momento desde los ajustes de la app. El Coach IA también habla estos idiomas.</div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="cta">
+    <h2 class="cta-title" data-es="¿NO ENCONTRASTE<br/>LO QUE <span>BUSCABAS?</span>" data-en="CAN'T FIND<br/>WHAT YOU'RE <span>LOOKING FOR?</span>">¿NO ENCONTRASTE<br/>LO QUE <span>BUSCABAS?</span></h2>
+    <p class="cta-desc" data-es="Escríbenos directamente. Nuestro equipo te responde en menos de 48 horas con la solución." data-en="Write to us directly. Our team replies within 48 hours with the solution.">Escríbenos directamente. Nuestro equipo te responde en menos de 48 horas con la solución.</p>
+    <a href="mailto:support@nexvyve.app" class="cta-btn" data-es="CONTACTAR SOPORTE →" data-en="CONTACT SUPPORT →">CONTACTAR SOPORTE →</a>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-logo">NEXVYVE</div>
+  <div class="footer-copy" data-es="© 2026 NEXVYVE. Todos los derechos reservados." data-en="© 2026 NEXVYVE. All rights reserved.">© 2026 NEXVYVE. Todos los derechos reservados.</div>
+  <div class="footer-links">
+    <a href="privacy.html" data-es="Privacidad" data-en="Privacy">Privacidad</a>
+    <a href="support.html" data-es="Soporte" data-en="Support">Soporte</a>
+  </div>
+</footer>
+
+<script>
+function setLang(lang){
+  document.getElementById('btn-es').classList.toggle('active',lang==='es');
+  document.getElementById('btn-en').classList.toggle('active',lang==='en');
+  document.querySelectorAll('[data-es]').forEach(function(el){
+    var t=el.getAttribute('data-'+lang);
+    if(t) el.innerHTML=t;
+  });
+  try{localStorage.setItem('nv-lang',lang);}catch(e){}
+}
+window.addEventListener('DOMContentLoaded',function(){
+  var lang='es';
+  try{var s=localStorage.getItem('nv-lang');if(s&&s!=='null')lang=s;}catch(e){}
+  if(lang==='en') setLang('en');
+});
+</script>
+</body>
+</html>

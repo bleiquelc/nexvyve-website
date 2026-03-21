@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NEXVYVE — Comunidad Fitness · IA</title>
+  <meta name="description" content="Comunidad fitness con IA. Transforma tu cuerpo, gana recompensas reales."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root{
+      --lime:#AAFF00; --dark:#0a0a0a; --dark2:#111; --dark3:#1a1a1a;
+      --gray1:#888; --gray2:#2a2a2a; --white:#f0f0f0; --teal:#00C9A7;
+      --font-d:'Bebas Neue',sans-serif; --font-b:'DM Sans',sans-serif;
+    }
+    *{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{background:var(--dark);color:var(--white);font-family:var(--font-b);-webkit-font-smoothing:antialiased;}
+
+    /* NAV */
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;
+      display:flex;align-items:center;justify-content:space-between;
+      padding:18px 48px;background:rgba(10,10,10,0.95);
+      backdrop-filter:blur(12px);border-bottom:1px solid var(--gray2);}
+    .nav-logo{font-family:var(--font-d);font-size:26px;color:var(--lime);
+      letter-spacing:3px;text-decoration:none;}
+    .nav-links{display:flex;list-style:none;gap:32px;align-items:center;}
+    .nav-links a{font-size:12px;color:var(--gray1);text-decoration:none;
+      letter-spacing:2px;text-transform:uppercase;transition:color .2s;}
+    .nav-links a:hover{color:var(--white);}
+    .nav-right{display:flex;align-items:center;gap:14px;}
+    .lang-sw{display:flex;align-items:center;gap:2px;
+      background:var(--dark2);border:1px solid var(--gray2);
+      border-radius:20px;padding:3px;}
+    .lang-btn{font-size:10px;font-weight:600;letter-spacing:1px;
+      color:var(--gray1);background:none;border:none;padding:4px 10px;
+      border-radius:16px;cursor:pointer;transition:all .2s;}
+    .lang-btn.active{background:var(--lime);color:var(--dark);}
+    .nav-cta{background:var(--lime);color:var(--dark);font-family:var(--font-d);
+      font-size:15px;letter-spacing:2px;padding:10px 24px;
+      text-decoration:none;transition:opacity .2s;}
+    .nav-cta:hover{opacity:.85;}
+
+    /* HERO */
+    .hero{min-height:100vh;display:flex;align-items:center;
+      padding:120px 48px 80px;border-bottom:1px solid var(--gray2);
+      position:relative;overflow:hidden;}
+    .hero::before{content:'';position:absolute;top:-200px;right:-200px;
+      width:600px;height:600px;border-radius:50%;
+      background:radial-gradient(circle,rgba(170,255,0,0.06) 0%,transparent 70%);}
+    .hero-inner{max-width:700px;position:relative;}
+    .hero-tag{font-size:11px;color:var(--lime);letter-spacing:4px;
+      text-transform:uppercase;margin-bottom:20px;opacity:.8;}
+    .hero h1{font-family:var(--font-d);font-size:clamp(64px,8vw,110px);
+      line-height:.92;letter-spacing:2px;margin-bottom:24px;}
+    .hero h1 span{color:var(--lime);}
+    .hero-desc{font-size:17px;font-weight:300;color:var(--gray1);
+      max-width:480px;line-height:1.75;margin-bottom:36px;}
+    .hero-btns{display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin-bottom:48px;}
+    .btn-primary{background:var(--lime);color:var(--dark);font-family:var(--font-d);
+      font-size:18px;letter-spacing:2px;padding:14px 36px;text-decoration:none;
+      transition:transform .2s,opacity .2s;}
+    .btn-primary:hover{transform:translateY(-2px);opacity:.9;}
+    .btn-secondary{font-size:13px;color:var(--gray1);text-decoration:none;
+      border-bottom:1px solid var(--gray2);padding-bottom:2px;transition:color .2s,border-color .2s;}
+    .btn-secondary:hover{color:var(--lime);border-color:var(--lime);}
+    .hero-stats{display:flex;gap:40px;flex-wrap:wrap;}
+    .stat-num{font-family:var(--font-d);font-size:36px;color:var(--lime);}
+    .stat-label{font-size:11px;color:var(--gray1);letter-spacing:2px;text-transform:uppercase;margin-top:2px;}
+
+    /* SECTIONS */
+    section{padding:100px 48px;}
+    .sec-tag{font-size:10px;color:var(--lime);letter-spacing:4px;
+      text-transform:uppercase;margin-bottom:14px;opacity:.8;}
+    .sec-title{font-family:var(--font-d);font-size:clamp(44px,5vw,72px);
+      letter-spacing:2px;line-height:.95;margin-bottom:16px;}
+    .sec-title span{color:var(--lime);}
+    .sec-desc{font-size:15px;font-weight:300;color:var(--gray1);
+      max-width:500px;line-height:1.75;}
+    .sec-divider{height:1px;background:var(--gray2);}
+
+    /* FEATURES */
+    .features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:56px;}
+    .feat-card{background:var(--dark2);padding:36px 28px;
+      border-top:2px solid transparent;transition:border-color .3s,background .3s;}
+    .feat-card:hover{border-color:var(--lime);background:var(--dark3);}
+    .feat-icon{font-size:36px;margin-bottom:18px;}
+    .feat-title{font-family:var(--font-d);font-size:22px;letter-spacing:1px;margin-bottom:10px;}
+    .feat-desc{font-size:14px;color:var(--gray1);line-height:1.65;}
+
+    /* HOW IT WORKS */
+    .steps-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-top:56px;}
+    .step{background:var(--dark2);padding:32px 24px;}
+    .step-num{font-family:var(--font-d);font-size:64px;color:var(--lime);opacity:.3;line-height:1;}
+    .step-title{font-family:var(--font-d);font-size:20px;letter-spacing:1px;margin:12px 0 8px;}
+    .step-desc{font-size:13px;color:var(--gray1);line-height:1.6;}
+
+    /* PRICING */
+    .pricing-intro{text-align:center;margin-bottom:56px;}
+    .pricing-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;}
+    .price-card{background:var(--dark2);border:1px solid var(--gray2);
+      border-radius:12px;padding:36px 28px;position:relative;transition:border-color .3s;}
+    .price-card:hover{border-color:var(--gray1);}
+    .price-card.featured{border-color:var(--lime);}
+    .price-badge{display:inline-block;font-size:10px;font-weight:700;
+      letter-spacing:2px;background:var(--lime);color:var(--dark);
+      padding:4px 12px;border-radius:20px;margin-bottom:16px;}
+    .price-badge.teal{background:var(--teal);color:#000;}
+    .price-plan{font-size:12px;color:var(--gray1);letter-spacing:2px;
+      text-transform:uppercase;margin-bottom:12px;}
+    .price-amount{font-family:var(--font-d);font-size:80px;line-height:1;
+      margin-bottom:4px;}
+    .price-amount.lime{color:var(--lime);}
+    .price-amount.teal{color:var(--teal);}
+    .price-per{font-size:13px;color:var(--gray1);margin-bottom:6px;}
+    .price-note{font-size:12px;color:var(--teal);margin-bottom:24px;}
+    .price-note.gray{color:var(--gray1);}
+    .price-list{list-style:none;padding:0;margin:0 0 28px;border-top:1px solid var(--gray2);padding-top:20px;}
+    .price-list li{font-size:13px;color:var(--gray1);padding:7px 0;
+      padding-left:18px;position:relative;border-bottom:1px solid var(--gray2);}
+    .price-list li:last-child{border-bottom:none;}
+    .price-list li::before{content:'→';position:absolute;left:0;color:var(--lime);font-size:11px;}
+    .price-list li strong{color:var(--white);}
+    .price-btn{display:block;text-align:center;padding:13px;
+      font-family:var(--font-d);font-size:18px;letter-spacing:2px;
+      text-decoration:none;transition:all .2s;border-radius:6px;}
+    .price-btn.outline{border:1px solid var(--gray2);color:var(--white);}
+    .price-btn.outline:hover{border-color:var(--lime);color:var(--lime);}
+    .price-btn.solid{background:var(--lime);color:var(--dark);}
+    .price-btn.solid:hover{opacity:.9;transform:translateY(-1px);}
+
+    /* DOWNLOAD */
+    .download-sec{text-align:center;padding:120px 48px;border-top:1px solid var(--gray2);}
+    .dl-title{font-family:var(--font-d);font-size:clamp(56px,7vw,96px);
+      line-height:.92;letter-spacing:2px;margin-bottom:20px;}
+    .dl-title span{color:var(--lime);}
+    .dl-desc{font-size:16px;font-weight:300;color:var(--gray1);
+      max-width:440px;margin:0 auto 36px;line-height:1.75;}
+    .dl-btn{display:inline-flex;align-items:center;gap:14px;
+      background:var(--white);color:var(--dark);padding:16px 32px;
+      border-radius:12px;text-decoration:none;transition:transform .2s;}
+    .dl-btn:hover{transform:translateY(-2px);}
+    .dl-btn-icon{font-size:28px;}
+    .dl-btn-sub{font-size:11px;color:#666;display:block;}
+    .dl-btn-name{font-family:var(--font-d);font-size:22px;letter-spacing:1px;display:block;}
+    .dl-trial{margin-top:20px;font-size:13px;color:var(--gray1);letter-spacing:1px;}
+
+    /* FOOTER */
+    footer{background:var(--dark2);padding:60px 48px 32px;border-top:1px solid var(--gray2);}
+    .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px;}
+    .footer-logo{font-family:var(--font-d);font-size:28px;color:var(--lime);letter-spacing:3px;margin-bottom:12px;}
+    .footer-brand-desc{font-size:13px;color:var(--gray1);line-height:1.7;max-width:240px;}
+    .footer-col h4{font-size:10px;color:var(--gray1);letter-spacing:3px;
+      text-transform:uppercase;margin-bottom:16px;}
+    .footer-col ul{list-style:none;padding:0;}
+    .footer-col ul li{margin-bottom:10px;}
+    .footer-col ul li a{font-size:13px;color:var(--gray1);text-decoration:none;transition:color .2s;}
+    .footer-col ul li a:hover{color:var(--lime);}
+    .footer-bottom{border-top:1px solid var(--gray2);padding-top:24px;
+      display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
+    .footer-copy{font-size:11px;color:var(--gray1);}
+    .footer-legal{display:flex;gap:20px;}
+    .footer-legal a{font-size:11px;color:var(--gray1);text-decoration:none;transition:color .2s;}
+    .footer-legal a:hover{color:var(--lime);}
+
+    /* REVEAL */
+    .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s,transform .6s;}
+    .reveal.visible{opacity:1;transform:none;}
+    .reveal-delay-1{transition-delay:.1s;}
+    .reveal-delay-2{transition-delay:.2s;}
+
+    /* RESPONSIVE */
+    @media(max-width:900px){
+      nav{padding:16px 24px;}
+      .nav-links{display:none;}
+      .hero{padding:110px 24px 70px;}
+      section{padding:72px 24px;}
+      .features-grid{grid-template-columns:1fr;}
+      .steps-grid{grid-template-columns:1fr 1fr;}
+      .pricing-grid{grid-template-columns:repeat(2,1fr);max-width:480px;margin:0 auto;}
+      @media(max-width:640px){.pricing-grid{grid-template-columns:1fr;}}
+      .footer-grid{grid-template-columns:1fr 1fr;gap:32px;}
+      .download-sec{padding:80px 24px;}
+      footer{padding:48px 24px 24px;}
+    }
+    @media(max-width:480px){
+      nav{padding:14px 16px;}
+      .hero{padding:90px 16px 56px;}
+      .hero h1{font-size:clamp(52px,14vw,80px);}
+      .hero-btns{flex-direction:column;align-items:flex-start;}
+      .btn-primary{width:100%;text-align:center;}
+      section{padding:56px 16px;}
+      .steps-grid{grid-template-columns:1fr;}
+      .footer-grid{grid-template-columns:1fr;gap:24px;}
+      .footer-bottom{flex-direction:column;align-items:flex-start;}
+      footer{padding:40px 16px 24px;}
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">NEXVYVE</a>
+  <ul class="nav-links">
+    <li><a href="#funciones" data-es="Funciones" data-en="Features">Funciones</a></li>
+    <li><a href="#como-funciona" data-es="Cómo funciona" data-en="How it works">Cómo funciona</a></li>
+    <li><a href="#precios" data-es="Precios" data-en="Pricing">Precios</a></li>
+  </ul>
+  <div class="nav-right">
+    <div class="lang-sw">
+      <button class="lang-btn active" id="btn-es" onclick="setLang('es')">ES</button>
+      <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+    </div>
+    <a href="#descarga" class="nav-cta" data-es="Descargar" data-en="Download">Descargar</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-tag" data-es="Comunidad Fitness · IA" data-en="Fitness Community · AI">Comunidad Fitness · IA</div>
+    <h1 data-es="TRANSFORMA<br/>TU <span>CUERPO.</span><br/>GANA REAL." data-en="TRANSFORM<br/>YOUR <span>BODY.</span><br/>EARN REAL.">
+      TRANSFORMA<br/>TU <span>CUERPO.</span><br/>GANA REAL.
+    </h1>
+    <p class="hero-desc" data-es="Más que una app de fitness. Una comunidad que te transforma con IA, retos verificados y recompensas reales por cada logro." data-en="More than a fitness app. A community that transforms you with AI, verified challenges and real rewards for every achievement.">
+      Más que una app de fitness. Una comunidad que te transforma con IA, retos verificados y recompensas reales por cada logro.
+    </p>
+    <div class="hero-btns">
+      <a href="#descarga" class="btn-primary" data-es="Empezar Gratis — 21 días" data-en="Start Free — 21 days">Empezar Gratis — 21 días</a>
+      <a href="#funciones" class="btn-secondary" data-es="Ver funciones →" data-en="See features →">Ver funciones →</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">21</div>
+        <div class="stat-label" data-es="Días gratis" data-en="Free days">Días gratis</div>
+      </div>
+      <div>
+        <div class="stat-num">$0</div>
+        <div class="stat-label" data-es="Para empezar" data-en="To start">Para empezar</div>
+      </div>
+      <div>
+        <div class="stat-num">IA</div>
+        <div class="stat-label" data-es="Coach personalizado" data-en="Personal coach">Coach personalizado</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="sec-divider"></div>
+
+<!-- FUNCIONES -->
+<section id="funciones">
+  <div class="reveal">
+    <div class="sec-tag" data-es="Funciones" data-en="Features">Funciones</div>
+    <h2 class="sec-title" data-es="TODO LO QUE<br/><span>NECESITAS</span>" data-en="EVERYTHING YOU<br/><span>NEED</span>">TODO LO QUE<br/><span>NECESITAS</span></h2>
+    <p class="sec-desc" data-es="Seis pilares diseñados para transformarte de verdad, no solo para motivarte." data-en="Six pillars designed to truly transform you, not just motivate you.">Seis pilares diseñados para transformarte de verdad, no solo para motivarte.</p>
+  </div>
+  <div class="features-grid">
+    <div class="feat-card reveal">
+      <div class="feat-icon">🤖</div>
+      <div class="feat-title" data-es="COACH IA KAEL" data-en="COACH IA KAEL">COACH IA KAEL</div>
+      <p class="feat-desc" data-es="Tu entrenador personal con IA avanzada. Habla con KAEL, analiza comidas con foto, y recibe planes 100% adaptados a tu cuerpo y objetivos." data-en="Your personal AI trainer. Talk to KAEL, analyze meals with photos, and get plans 100% adapted to your body and goals.">Tu entrenador personal con IA avanzada. Habla con KAEL, analiza comidas con foto, y recibe planes 100% adaptados a tu cuerpo y objetivos.</p>
+    </div>
+    <div class="feat-card reveal reveal-delay-1">
+      <div class="feat-icon">🏋️</div>
+      <div class="feat-title" data-es="RUTINAS PERSONALIZADAS" data-en="CUSTOM ROUTINES">RUTINAS PERSONALIZADAS</div>
+      <p class="feat-desc" data-es="Programas de ejercicio creados por IA según tu nivel, lesiones, equipo disponible y objetivos. Se adaptan cada 21 días." data-en="AI-created workout programs based on your level, injuries, equipment and goals. Adapts every 21 days.">Programas de ejercicio creados por IA según tu nivel, lesiones, equipo disponible y objetivos. Se adaptan cada 21 días.</p>
+    </div>
+    <div class="feat-card reveal reveal-delay-2">
+      <div class="feat-icon">🥗</div>
+      <div class="feat-title" data-es="NUTRICIÓN INTELIGENTE" data-en="SMART NUTRITION">NUTRICIÓN INTELIGENTE</div>
+      <p class="feat-desc" data-es="Planes de comida con calorías y macros personalizados. Fotografía tu plato y KAEL analiza calorías al instante." data-en="Meal plans with personalized calories and macros. Photograph your plate and KAEL instantly analyzes calories.">Planes de comida con calorías y macros personalizados. Fotografía tu plato y KAEL analiza calorías al instante.</p>
+    </div>
+    <div class="feat-card reveal">
+      <div class="feat-icon">📸</div>
+      <div class="feat-title" data-es="ANÁLISIS CORPORAL IA" data-en="AI BODY ANALYSIS">ANÁLISIS CORPORAL IA</div>
+      <p class="feat-desc" data-es="Toma una foto y la IA evalúa tu composición corporal, IMC, tipo de cuerpo y áreas de mejora con un score personalizado." data-en="Take a photo and AI evaluates your body composition, BMI, body type and improvement areas with a personalized score.">Toma una foto y la IA evalúa tu composición corporal, IMC, tipo de cuerpo y áreas de mejora con un score personalizado.</p>
+    </div>
+    <div class="feat-card reveal reveal-delay-1">
+      <div class="feat-icon">🏆</div>
+      <div class="feat-title" data-es="RETOS Y PREMIOS REALES" data-en="CHALLENGES & REAL PRIZES">RETOS Y PREMIOS REALES</div>
+      <p class="feat-desc" data-es="Compite en retos con amigos y la comunidad. Fotos selladas con timestamp. Gana premios reales: membresías, suplementos, gym pass." data-en="Compete in challenges with friends and community. Timestamp-sealed photos. Win real prizes: memberships, supplements, gym pass.">Compite en retos con amigos y la comunidad. Fotos selladas con timestamp. Gana premios reales: membresías, suplementos, gym pass.</p>
+    </div>
+    <div class="feat-card reveal reveal-delay-2">
+      <div class="feat-icon">🪙</div>
+      <div class="feat-title" data-es="V-COINS Y TIENDA" data-en="V-COINS & STORE">V-COINS Y TIENDA</div>
+      <p class="feat-desc" data-es="Gana V-Coins por entrenar, referir amigos y completar retos. Canjea por membresías, gift cards y experiencias exclusivas." data-en="Earn V-Coins for training, referring friends and completing challenges. Redeem for memberships, gift cards and exclusive experiences.">Gana V-Coins por entrenar, referir amigos y completar retos. Canjea por membresías, gift cards y experiencias exclusivas.</p>
+    </div>
+  </div>
+</section>
+
+<div class="sec-divider"></div>
+
+<!-- CÓMO FUNCIONA -->
+<section id="como-funciona">
+  <div class="reveal">
+    <div class="sec-tag" data-es="Proceso" data-en="Process">Proceso</div>
+    <h2 class="sec-title" data-es="CÓMO<br/><span>FUNCIONA</span>" data-en="HOW IT<br/><span>WORKS</span>">CÓMO<br/><span>FUNCIONA</span></h2>
+  </div>
+  <div class="steps-grid">
+    <div class="step reveal">
+      <div class="step-num">01</div>
+      <div class="step-title" data-es="CREA TU PERFIL" data-en="CREATE PROFILE">CREA TU PERFIL</div>
+      <p class="step-desc" data-es="Cuéntanos tu objetivo, nivel y preferencias. La IA crea tu plan personalizado en segundos." data-en="Tell us your goal, level and preferences. AI creates your personalized plan in seconds.">Cuéntanos tu objetivo, nivel y preferencias. La IA crea tu plan personalizado en segundos.</p>
+    </div>
+    <div class="step reveal reveal-delay-1">
+      <div class="step-num">02</div>
+      <div class="step-title" data-es="ENTRENA Y REGISTRA" data-en="TRAIN AND LOG">ENTRENA Y REGISTRA</div>
+      <p class="step-desc" data-es="Sigue tu programa, registra pesos, fotografía comidas y habla con tu Coach IA cuando quieras." data-en="Follow your program, log weights, photograph meals and talk to your AI Coach whenever you want.">Sigue tu programa, registra pesos, fotografía comidas y habla con tu Coach IA cuando quieras.</p>
+    </div>
+    <div class="step reveal reveal-delay-2">
+      <div class="step-num">03</div>
+      <div class="step-title" data-es="COMPITE Y GANA" data-en="COMPETE AND WIN">COMPITE Y GANA</div>
+      <p class="step-desc" data-es="Únete a retos con amigos, demuestra tu progreso con fotos selladas y gana V-Coins por cada logro." data-en="Join challenges with friends, prove your progress with sealed photos and earn V-Coins for every achievement.">Únete a retos con amigos, demuestra tu progreso con fotos selladas y gana V-Coins por cada logro.</p>
+    </div>
+    <div class="step reveal reveal-delay-2">
+      <div class="step-num">04</div>
+      <div class="step-title" data-es="CANJEA PREMIOS" data-en="REDEEM REWARDS">CANJEA PREMIOS</div>
+      <p class="step-desc" data-es="Usa tus V-Coins para conseguir productos, descuentos y beneficios exclusivos en la tienda NEXVYVE." data-en="Use your V-Coins to get exclusive products, discounts and benefits in the NEXVYVE store.">Usa tus V-Coins para conseguir productos, descuentos y beneficios exclusivos en la tienda NEXVYVE.</p>
+    </div>
+  </div>
+</section>
+
+<div class="sec-divider"></div>
+
+<!-- PRECIOS -->
+<section id="precios">
+  <div class="pricing-intro reveal">
+    <div class="sec-tag" data-es="Planes" data-en="Plans">Planes</div>
+    <h2 class="sec-title" data-es="SIMPLE Y<br/><span>TRANSPARENTE</span>" data-en="SIMPLE AND<br/><span>TRANSPARENT</span>">SIMPLE Y<br/><span>TRANSPARENTE</span></h2>
+    <p class="sec-desc" style="margin:0 auto;" data-es="Empieza gratis 21 días. Sin tarjeta. Sin compromisos. Cancela cuando quieras." data-en="Start free for 21 days. No card. No commitments. Cancel anytime.">Empieza gratis 21 días. Sin tarjeta. Sin compromisos. Cancela cuando quieras.</p>
+  </div>
+
+  <div class="pricing-grid">
+
+    <!-- FREE -->
+    <div class="price-card reveal">
+      <div class="price-plan" data-es="PRUEBA GRATIS" data-en="FREE TRIAL">PRUEBA GRATIS</div>
+      <div class="price-amount">$0</div>
+      <div class="price-per" data-es="/mes" data-en="/month">/mes</div>
+      <div class="price-note gray" data-es="21 días · Sin tarjeta de crédito" data-en="21 days · No credit card">21 días · Sin tarjeta de crédito</div>
+      <ul class="price-list">
+        <li data-es="21 días completos" data-en="21 full days">21 días completos</li>
+        <li data-es="50 mensajes con Coach IA KAEL" data-en="50 messages with Coach AI KAEL">50 mensajes con Coach IA KAEL</li>
+        <li data-es="Programa de entrenamiento personalizado" data-en="Personalized training program">Programa de entrenamiento personalizado</li>
+        <li data-es="Plan de nutrición con macros" data-en="Nutrition plan with macros">Plan de nutrición con macros</li>
+        <li data-es="Análisis corporal inicial" data-en="Initial body analysis">Análisis corporal inicial</li>
+        <li data-es="Acceso a retos y comunidad" data-en="Access to challenges and community">Acceso a retos y comunidad</li>
+        <li data-es="V-Coins y sistema de recompensas" data-en="V-Coins reward system">V-Coins y sistema de recompensas</li>
+      </ul>
+      <a href="#descarga" class="price-btn outline" data-es="Empezar Gratis" data-en="Start Free">Empezar Gratis</a>
+    </div>
+
+    <!-- PREMIUM MONTHLY -->
+    <div class="price-card featured reveal reveal-delay-1">
+      <div class="price-badge" data-es="MÁS POPULAR" data-en="MOST POPULAR">MÁS POPULAR</div>
+      <div class="price-plan" data-es="PREMIUM" data-en="PREMIUM">PREMIUM</div>
+      <div class="price-amount lime">$9.99</div>
+      <div class="price-per" data-es="/mes" data-en="/month">/mes</div>
+      <div class="price-note gray" data-es="Tras los 21 días de prueba" data-en="After the 21-day trial">Tras los 21 días de prueba</div>
+      <ul class="price-list">
+        <li data-es="Todo lo del plan gratuito" data-en="Everything in free plan">Todo lo del plan gratuito</li>
+        <li><strong data-es="500 mensajes IA/mes con KAEL" data-en="500 AI messages/month with KAEL">500 mensajes IA/mes con KAEL</strong></li>
+        <li data-es="2 análisis corporales/mes" data-en="2 body analysis/month">2 análisis corporales/mes</li>
+        <li data-es="+50 V-Coins mensuales" data-en="+50 monthly V-Coins">+50 V-Coins mensuales</li>
+        <li data-es="Escaneo de comidas con foto" data-en="Meal photo scanning">Escaneo de comidas con foto</li>
+        <li data-es="Retos con premios reales" data-en="Challenges with real prizes">Retos con premios reales</li>
+      </ul>
+      <a href="#descarga" class="price-btn solid" data-es="Empezar Ahora" data-en="Get Started">Empezar Ahora</a>
+    </div>
+
+    <!-- ANNUAL -->
+    <div class="price-card reveal reveal-delay-2">
+      <div class="price-badge teal" data-es="AHORRA 33%" data-en="SAVE 33%">AHORRA 33%</div>
+      <div class="price-plan" data-es="ANNUAL" data-en="ANNUAL">ANNUAL</div>
+      <div class="price-amount teal">$79.99</div>
+      <div class="price-per" data-es="/año" data-en="/year">/año</div>
+      <div class="price-note" data-es="Solo $6.67/mes · Ahorras $39.89" data-en="Just $6.67/month · Save $39.89">Solo $6.67/mes · Ahorras $39.89</div>
+      <ul class="price-list">
+        <li data-es="Todo lo de Premium" data-en="Everything in Premium">Todo lo de Premium</li>
+        <li data-es="750 mensajes IA/mes" data-en="750 AI messages/month">750 mensajes IA/mes</li>
+        <li data-es="3 análisis corporales/mes" data-en="3 body analysis/month">3 análisis corporales/mes</li>
+        <li data-es="+75 V-Coins mensuales" data-en="+75 monthly V-Coins">+75 V-Coins mensuales</li>
+        <li data-es="Badge exclusivo anual" data-en="Exclusive annual badge">Badge exclusivo anual</li>
+        <li data-es="Soporte prioritario" data-en="Priority support">Soporte prioritario</li>
+      </ul>
+      <a href="#descarga" class="price-btn outline" data-es="Mejor Oferta" data-en="Best Value">Mejor Oferta</a>
+    </div>
+
+    <!-- ELITE -->
+    <div class="price-card reveal reveal-delay-2">
+      <div class="price-badge" data-es="MÁXIMO PODER" data-en="MAX POWER">MÁXIMO PODER</div>
+      <div class="price-plan" data-es="ELITE" data-en="ELITE">ELITE</div>
+      <div class="price-amount lime">$24.99</div>
+      <div class="price-per" data-es="/mes" data-en="/month">/mes</div>
+      <div class="price-note gray" data-es="Acceso ilimitado total" data-en="Total unlimited access">Acceso ilimitado total</div>
+      <ul class="price-list">
+        <li data-es="Todo lo de Annual" data-en="Everything in Annual">Todo lo de Annual</li>
+        <li><strong data-es="1,500 mensajes IA/mes" data-en="1,500 AI messages/month">1,500 mensajes IA/mes</strong></li>
+        <li data-es="Análisis corporales ilimitados" data-en="Unlimited body analysis">Análisis corporales ilimitados</li>
+        <li data-es="+150 V-Coins mensuales" data-en="+150 monthly V-Coins">+150 V-Coins mensuales</li>
+        <li data-es="Prioridad máxima de soporte" data-en="Maximum support priority">Prioridad máxima de soporte</li>
+        <li data-es="Badge: MÁXIMO PODER" data-en="Badge: MAX POWER">Badge: MÁXIMO PODER</li>
+      </ul>
+      <a href="#descarga" class="price-btn solid" data-es="Activar ELITE" data-en="Get ELITE">Activar ELITE</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- DESCARGA -->
+<div class="download-sec" id="descarga">
+  <div class="reveal">
+    <div class="sec-tag" style="display:inline-block;" data-es="Disponible ahora" data-en="Available now">Disponible ahora</div>
+    <h2 class="dl-title" data-es="TU<br/><span>TRANSFORMACIÓN</span><br/>EMPIEZA HOY." data-en="YOUR<br/><span>TRANSFORMATION</span><br/>STARTS TODAY.">TU<br/><span>TRANSFORMACIÓN</span><br/>EMPIEZA HOY.</h2>
+    <p class="dl-desc" data-es="21 días para descubrir lo que NEXVYVE puede hacer por ti. Sin excusas. Solo resultados." data-en="21 days to discover what NEXVYVE can do for you. No excuses. Just results.">21 días para descubrir lo que NEXVYVE puede hacer por ti. Sin excusas. Solo resultados.</p>
+    <a href="#" class="dl-btn">
+      <span class="dl-btn-icon">🍎</span>
+      <div>
+        <span class="dl-btn-sub" data-es="Disponible en el" data-en="Available on the">Disponible en el</span>
+        <span class="dl-btn-name">App Store</span>
+      </div>
+    </a>
+    <p class="dl-trial" data-es="21 días gratis · Sin tarjeta de crédito · Cancela cuando quieras" data-en="21 days free · No credit card · Cancel anytime">21 días gratis · Sin tarjeta de crédito · Cancela cuando quieras</p>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-logo">NEXVYVE</div>
+      <p class="footer-brand-desc" data-es="Comunidad fitness potenciada por IA. Transforma tu cuerpo, conecta con personas que comparten tu proceso y gana recompensas reales." data-en="AI-powered fitness community. Transform your body, connect with people who share your journey and earn real rewards.">Comunidad fitness potenciada por IA. Transforma tu cuerpo y gana recompensas reales.</p>
+    </div>
+    <div class="footer-col">
+      <h4 data-es="Producto" data-en="Product">Producto</h4>
+      <ul>
+        <li><a href="#funciones" data-es="Funciones" data-en="Features">Funciones</a></li>
+        <li><a href="#como-funciona" data-es="Cómo funciona" data-en="How it works">Cómo funciona</a></li>
+        <li><a href="#precios" data-es="Precios" data-en="Pricing">Precios</a></li>
+        <li><a href="#descarga" data-es="Descargar" data-en="Download">Descargar</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4 data-es="Legal" data-en="Legal">Legal</h4>
+      <ul>
+        <li><a href="privacy.html" data-es="Privacidad" data-en="Privacy Policy">Privacidad</a></li>
+        <li><a href="support.html" data-es="Soporte" data-en="Support">Soporte</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4 data-es="Contacto" data-en="Contact">Contacto</h4>
+      <ul>
+        <li><a href="https://instagram.com/nexvyve" target="_blank">Instagram</a></li>
+        <li><a href="mailto:admin@nexvyve.app">admin@nexvyve.app</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy" data-es="© 2026 NEXVYVE. Todos los derechos reservados." data-en="© 2026 NEXVYVE. All rights reserved.">© 2026 NEXVYVE. Todos los derechos reservados.</span>
+    <div class="footer-legal">
+      <a href="privacy.html" data-es="Privacidad" data-en="Privacy">Privacidad</a>
+      <a href="support.html" data-es="Soporte" data-en="Support">Soporte</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+function setLang(lang){
+  document.getElementById('btn-es').classList.toggle('active',lang==='es');
+  document.getElementById('btn-en').classList.toggle('active',lang==='en');
+  document.querySelectorAll('[data-es]').forEach(function(el){
+    var t=el.getAttribute('data-'+lang);
+    if(t) el.innerHTML=t;
+  });
+  try{localStorage.setItem('nv-lang',lang);}catch(e){}
+}
+window.addEventListener('DOMContentLoaded',function(){
+  var lang='es';
+  try{var s=localStorage.getItem('nv-lang');if(s&&s!=='null')lang=s;}catch(e){}
+  if(lang==='en') setLang('en');
+});
+document.querySelectorAll('.reveal').forEach(function(r){
+  new IntersectionObserver(function(entries){
+    entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('visible');});
+  },{threshold:0.1}).observe(r);
+});
+</script>
+</body>
+</html>
