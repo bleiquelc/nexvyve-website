@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tu Rutina Diaria — NEXVYVE</title>
+<meta name="description" content="Cómo sacarle el máximo a NEXVYVE cada día: registrar comidas, suplementos, agua, peso, ver tu progreso y subir en el ranking. Tu rutina diaria, paso a paso.">
+<meta property="og:title" content="Tu Rutina Diaria — NEXVYVE">
+<meta property="og:description" content="Sácale el máximo a NEXVYVE cada día. La guía completa de tu rutina diaria.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://nexvyve.com/guia.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#080810;--bg2:#0d0d1a;--card:#111122;--card2:#161630;
+  --lime:#A8E600;--lime2:#7AB300;--lime-glow:rgba(168,230,0,.15);
+  --white:#fff;--gray1:#aaa;--gray2:#666;--gray3:#333;
+  --cyan:#3DD9FF;--purple:#A66BFF;--orange:#ff8800;
+  --font:'Inter',-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
+  --radius:16px;--radius-lg:24px;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--font);background:var(--bg);color:var(--white);line-height:1.6;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:16px 24px;display:flex;align-items:center;justify-content:space-between;background:rgba(8,8,16,.85);backdrop-filter:blur(20px);border-bottom:1px solid rgba(168,230,0,.08)}
+.nav-logo{display:inline-flex;align-items:center;color:var(--lime)}
+.nav-logo svg{height:24px;width:auto;display:block}
+.nav-links{display:flex;gap:24px;align-items:center}
+.nav-links a{font-size:14px;font-weight:500;color:var(--gray1);transition:.2s}
+.nav-links a:hover,.nav-links a.active{color:var(--lime)}
+.nav-cta{background:var(--lime);color:var(--bg);padding:10px 22px;border-radius:30px;font-weight:700;font-size:13px;letter-spacing:1px;transition:.3s}
+.nav-cta:hover{background:var(--lime2);transform:translateY(-1px)}
+.lang-toggle{display:flex;gap:4px}
+.lang-btn{padding:4px 10px;border-radius:8px;font-size:12px;font-weight:600;cursor:pointer;border:1px solid var(--gray3);background:transparent;color:var(--gray2);transition:.2s}
+.lang-btn.active{background:var(--lime);color:var(--bg);border-color:var(--lime)}
+
+/* HERO GUÍA */
+.guide-hero{padding:150px 6% 50px;text-align:center;position:relative;overflow:hidden}
+.guide-hero::before{content:'';position:absolute;top:-10%;left:50%;transform:translateX(-50%);width:680px;height:680px;background:radial-gradient(circle,var(--lime-glow),transparent 70%);pointer-events:none}
+.guide-eyebrow{display:inline-flex;align-items:center;gap:8px;padding:8px 18px;border-radius:30px;border:1px solid rgba(168,230,0,.25);background:rgba(168,230,0,.05);font-size:12px;font-weight:700;color:var(--lime);letter-spacing:2px;text-transform:uppercase;margin-bottom:26px;position:relative;z-index:2}
+.guide-hero h1{font-size:clamp(38px,6vw,68px);font-weight:900;line-height:1.04;letter-spacing:-1.5px;margin-bottom:20px;position:relative;z-index:2}
+.guide-hero h1 .lime{color:var(--lime)}
+.guide-hero p{font-size:clamp(16px,2vw,19px);color:var(--gray1);max-width:600px;margin:0 auto;line-height:1.7;position:relative;z-index:2}
+.guide-toc{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:36px auto 0;max-width:760px;position:relative;z-index:2}
+.guide-toc a{font-size:13px;font-weight:600;color:var(--gray1);padding:7px 15px;border-radius:30px;border:1px solid var(--gray3);transition:.2s}
+.guide-toc a:hover{border-color:var(--lime);color:var(--lime)}
+
+/* STEPS */
+.guide-steps{max-width:1080px;margin:0 auto;padding:50px 6% 60px;display:flex;flex-direction:column;gap:96px}
+.guide-step{scroll-margin-top:90px}
+.gs-head{display:flex;gap:22px;align-items:flex-start;margin-bottom:34px;max-width:760px}
+.gs-num{font-size:clamp(44px,6vw,72px);font-weight:900;color:var(--lime);opacity:.22;line-height:.85;letter-spacing:-3px;flex:none}
+.gs-title h2{font-size:clamp(24px,3.2vw,36px);font-weight:900;letter-spacing:-1px;line-height:1.08;margin-bottom:12px}
+.gs-title p{color:var(--gray1);font-size:16px;line-height:1.75}
+.gs-title p .accent{color:var(--lime);font-weight:600}
+.gs-phones{display:flex;gap:26px;justify-content:center;flex-wrap:wrap;align-items:flex-start}
+.gp{width:238px;flex:none}
+.gp-screen{border-radius:30px;overflow:hidden;border:2px solid rgba(168,230,0,.14);box-shadow:0 24px 60px rgba(0,0,0,.5),0 0 40px rgba(168,230,0,.07);background:var(--card)}
+.gp-screen video,.gp-screen img{width:100%;display:block}
+.gp-cap{text-align:center;font-size:12.5px;color:var(--gray2);padding:12px 6px 0;letter-spacing:.3px;font-weight:500}
+.gp-cap b{color:var(--lime);font-weight:700}
+.gs-tip{margin-top:30px;max-width:760px;display:flex;gap:12px;align-items:flex-start;padding:16px 20px;border-radius:14px;background:rgba(168,230,0,.05);border:1px solid rgba(168,230,0,.12)}
+.gs-tip .dot{width:8px;height:8px;border-radius:50%;background:var(--lime);margin-top:8px;flex:none;box-shadow:0 0 12px var(--lime)}
+.gs-tip p{font-size:14.5px;color:var(--gray1);line-height:1.6}
+.gs-tip b{color:var(--white)}
+
+/* CTA */
+.guide-cta{text-align:center;padding:70px 6% 90px;position:relative;overflow:hidden;background:linear-gradient(180deg,var(--bg),var(--bg2))}
+.guide-cta::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:600px;height:400px;background:radial-gradient(circle,var(--lime-glow),transparent 70%);pointer-events:none}
+.guide-cta h2{font-size:clamp(28px,4vw,46px);font-weight:900;letter-spacing:-1px;margin-bottom:16px;position:relative;z-index:2}
+.guide-cta h2 .lime{color:var(--lime)}
+.guide-cta p{color:var(--gray1);font-size:17px;margin-bottom:30px;position:relative;z-index:2}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;padding:17px 38px;background:var(--lime);color:var(--bg);font-weight:800;font-size:16px;border-radius:14px;letter-spacing:.5px;transition:.3s;position:relative;z-index:2}
+.btn-primary:hover{background:var(--lime2);transform:translateY(-2px);box-shadow:0 8px 30px rgba(168,230,0,.25)}
+.guide-cta .sub{margin-top:14px;font-size:13px;color:var(--gray2);position:relative;z-index:2}
+
+/* FOOTER */
+footer{background:var(--bg2);padding:60px 6% 30px;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;border-top:1px solid rgba(168,230,0,.08)}
+.footer-brand .wm svg{height:26px;width:auto;color:var(--lime);display:block;margin-bottom:10px}
+.footer-brand .tagline{font-size:12px;font-weight:800;letter-spacing:2px;color:var(--lime);display:block;margin-bottom:14px}
+.footer-brand p{font-size:14px;color:var(--gray2);max-width:300px;line-height:1.6}
+.footer-col h4{font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--white);margin-bottom:16px}
+.footer-col a{display:block;font-size:14px;color:var(--gray2);margin-bottom:10px;transition:.2s}
+.footer-col a:hover{color:var(--lime)}
+.footer-bottom{grid-column:1/-1;border-top:1px solid var(--gray3);padding-top:24px;font-size:13px;color:var(--gray2);text-align:center}
+.footer-bottom a{color:var(--gray1)}.footer-bottom a:hover{color:var(--lime)}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s,transform .7s}
+.reveal.visible{opacity:1;transform:none}
+
+@media(max-width:860px){
+  .nav-links a:not(.nav-cta){display:none}
+  .gs-head{flex-direction:column;gap:6px}
+  .gs-num{font-size:48px}
+  footer{grid-template-columns:1fr 1fr}
+}
+@media(max-width:560px){
+  .gp{width:46%}
+  .gp{min-width:150px}
+}
+/* PRINT / PDF */
+@media print{
+  *{-webkit-print-color-adjust:exact !important;print-color-adjust:exact !important}
+  body{background:#080810 !important}
+  .nav,.guide-toc{display:none !important}
+  .reveal{opacity:1 !important;transform:none !important}
+  .gp{opacity:1 !important;transform:none !important;width:185px}
+  .guide-hero{padding-top:50px}
+  .guide-step{break-inside:avoid;page-break-inside:avoid;gap:20px}
+  .guide-steps{gap:50px;padding-top:20px}
+  .gs-phones{gap:14px}
+  .guide-cta{page-break-before:avoid}
+  footer{display:none !important}
+}
+</style>
+<!-- TikTok Pixel Code Start (2026-05-12) -->
+<script>
+!function (w, d, t) {
+  w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(
+var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script")
+;n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
+  ttq.load('D81K3OBC77U1Q23A9740');
+  ttq.page();
+}(window, document, 'ttq');
+</script>
+<!-- TikTok Pixel Code End -->
+</head>
+<body>
+
+<nav class="nav">
+  <a href="index.html" class="nav-logo" aria-label="NEXVYVE — NEXT IS YOU.">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 260" aria-hidden="true">
+      <defs>
+        <mask id="wmVCutsNav">
+          <rect width="100%" height="100%" fill="white"/>
+          <polygon points="666,90 734,90 700,177" fill="black"/>
+          <line x1="700" y1="177" x2="700" y2="232" stroke="black" stroke-width="3"/>
+          <line x1="700" y1="177" x2="684" y2="211" stroke="black" stroke-width="3"/>
+          <line x1="700" y1="177" x2="716" y2="211" stroke="black" stroke-width="3"/>
+        </mask>
+      </defs>
+      <g fill="currentColor" font-family="Inter, Helvetica, Arial, sans-serif" font-weight="600" font-size="160" letter-spacing="20">
+        <text x="623.5" y="210" text-anchor="end">NEX</text>
+        <text x="776.5" y="210" text-anchor="start">YVE</text>
+      </g>
+      <polygon points="643.5,95 756.5,95 700,232" fill="currentColor" mask="url(#wmVCutsNav)"/>
+    </svg>
+  </a>
+  <div class="nav-links">
+    <a href="index.html#funciones" data-es="Funciones" data-en="Features">Funciones</a>
+    <a href="index.html#como-registrarse" data-es="Empezar" data-en="Get started">Empezar</a>
+    <a href="guia.html" class="active" data-es="Guía diaria" data-en="Daily guide">Guía diaria</a>
+    <div class="lang-toggle">
+      <button class="lang-btn active" id="btn-es" onclick="setLang('es')">ES</button>
+      <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+    </div>
+    <a href="https://apps.apple.com/app/nexvyve/id6760936021" class="nav-cta" data-es="Descargar" data-en="Download">Descargar</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="guide-hero">
+  <div class="guide-eyebrow" data-es="Guía · Tu rutina diaria" data-en="Guide · Your daily routine">Guía · Tu rutina diaria</div>
+  <h1 data-es="Tu rutina diaria<br>en <span class='lime'>NEXVYVE</span>" data-en="Your daily routine<br>in <span class='lime'>NEXVYVE</span>">Tu rutina diaria<br>en <span class="lime">NEXVYVE</span></h1>
+  <p data-es="Todo lo que hacés cada día para sacarle el máximo: registrar comidas, suplementos y agua, ver tu progreso en vivo, pesarte, renovar tu análisis y subir en el ranking." data-en="Everything you do each day to get the most out of it: log meals, supplements and water, track your progress live, weigh in, refresh your analysis and climb the ranking.">Todo lo que hacés cada día para sacarle el máximo: registrar comidas, suplementos y agua, ver tu progreso en vivo, pesarte, renovar tu análisis y subir en el ranking.</p>
+  <nav class="guide-toc">
+    <a href="#alimentacion" data-es="🍽 Alimentación" data-en="🍽 Nutrition">🍽 Alimentación</a>
+    <a href="#suplementos" data-es="💊 Suplementos" data-en="💊 Supplements">💊 Suplementos</a>
+    <a href="#agua" data-es="💧 Agua" data-en="💧 Water">💧 Agua</a>
+    <a href="#progreso" data-es="📊 Progreso" data-en="📊 Progress">📊 Progreso</a>
+    <a href="#peso" data-es="⚖️ Peso" data-en="⚖️ Weight">⚖️ Peso</a>
+    <a href="#analisis" data-es="📸 Análisis" data-en="📸 Analysis">📸 Análisis</a>
+    <a href="#ranking" data-es="🏆 Ranking" data-en="🏆 Ranking">🏆 Ranking</a>
+  </nav>
+</header>
+
+<main class="guide-steps">
+
+  <!-- 01 ALIMENTACIÓN -->
+  <section class="guide-step reveal" id="alimentacion">
+    <div class="gs-head">
+      <span class="gs-num">01</span>
+      <div class="gs-title">
+        <h2 data-es="Registrá lo que comés, en segundos" data-en="Log what you eat, in seconds">Registrá lo que comés, en segundos</h2>
+        <p data-es="Cada comida cuenta. Tocá <span class='accent'>SCAN</span> y sacale una foto a tu plato, o <span class='accent'>ADD</span> para buscar el alimento. KAEL calcula calorías y macros al instante y los suma a tu día." data-en="Every meal counts. Tap <span class='accent'>SCAN</span> and snap a photo of your plate, or <span class='accent'>ADD</span> to search the food. KAEL calculates calories and macros instantly and adds them to your day.">Cada comida cuenta. Tocá <span class="accent">SCAN</span> y sacale una foto a tu plato, o <span class="accent">ADD</span> para buscar el alimento. KAEL calcula calorías y macros al instante y los suma a tu día.</p>
+      </div>
+    </div>
+    <div class="gs-phones">
+      <div class="gp"><div class="gp-screen"><img src="img/guia/nutricion-inicio.png" alt="SCAN y ADD"></div><div class="gp-cap" data-es="<b>SCAN</b> foto · <b>ADD</b> manual" data-en="<b>SCAN</b> photo · <b>ADD</b> manual"><b>SCAN</b> foto · <b>ADD</b> manual</div></div>
+      <div class="gp"><div class="gp-screen"><img src="img/guia/nutricion-comida.png" alt="Detalle de comida"></div><div class="gp-cap" data-es="Opciones sugeridas por comida" data-en="Suggested options per meal">Opciones sugeridas por comida</div></div>
+      <div class="gp"><div class="gp-screen"><img src="img/guia/nutricion-100.png" alt="Nutrición perfecta"></div><div class="gp-cap" data-es="100% = <b>¡Nutrición perfecta!</b>" data-en="100% = <b>Perfect nutrition!</b>">100% = <b>¡Nutrición perfecta!</b></div></div>
+    </div>
+    <div class="gs-tip"><span class="dot"></span><p data-es="<b>Tip:</b> completá las 5 comidas del día y KAEL te da +10 puntos. Tu cuerpo te lo agradece." data-en="<b>Tip:</b> complete all 5 meals of the day and KAEL gives you +10 points. Your body will thank you."><b>Tip:</b> completá las 5 comidas del día y KAEL te da +10 puntos. Tu cuerpo te lo agradece.</p></div>
+  </section>
+
+  <!-- 02 SUPLEMENTOS -->
+  <section class="guide-step reveal" id="suplementos">
+    <div class="gs-head">
+      <span class="gs-num">02</span>
+      <div class="gs-title">
+        <h2 data-es="Tus suplementos, bajo control" data-en="Your supplements, under control">Tus suplementos, bajo control</h2>
+        <p data-es="Tu stack organizado por momento del día: <span class='accent'>mañana, pre-entreno y noche</span>. Marcá cada toma con un toque y NEXVYVE lleva el registro por vos." data-en="Your stack organized by time of day: <span class='accent'>morning, pre-workout and night</span>. Mark each intake with a tap and NEXVYVE keeps track for you.">Tu stack organizado por momento del día: <span class="accent">mañana, pre-entreno y noche</span>. Marcá cada toma con un toque y NEXVYVE lleva el registro por vos.</p>
+      </div>
+    </div>
+    <div class="gs-phones">
+      <div class="gp"><div class="gp-screen"><img src="img/guia/suplementos-parcial.png" alt="Suplementos pendientes"></div><div class="gp-cap" data-es="Marcá cada toma del día" data-en="Mark each intake">Marcá cada toma del día</div></div>
+      <div class="gp"><div class="gp-screen"><img src="img/guia/suplementos-completo.png" alt="Suplementos completos"></div><div class="gp-cap" data-es="<b>5/5</b> completados ✓" data-en="<b>5/5</b> completed ✓"><b>5/5</b> completados ✓</div></div>
+    </div>
+  </section>
+
+  <!-- 03 AGUA -->
+  <section class="guide-step reveal" id="agua">
+    <div class="gs-head">
+      <span class="gs-num">03</span>
+      <div class="gs-title">
+        <h2 data-es="Hidratación que suma" data-en="Hydration that counts">Hidratación que suma</h2>
+        <p data-es="Marcá cada vaso de agua del día. Tu meta de hidratación se actualiza en vivo en tu pantalla de <span class='accent'>Inicio</span>, junto a tu entreno y tus macros." data-en="Mark each glass of water. Your hydration goal updates live on your <span class='accent'>Home</span> screen, next to your workout and macros.">Marcá cada vaso de agua del día. Tu meta de hidratación se actualiza en vivo en tu pantalla de <span class="accent">Inicio</span>, junto a tu entreno y tus macros.</p>
+      </div>
+    </div>
+    <div class="gs-phones">
+      <div class="gp"><div class="gp-screen"><img src="img/guia/home-0.png" alt="Agua al empezar el día"></div><div class="gp-cap" data-es="Empezás el día en <b>0/15</b>" data-en="You start the day at <b>0/15</b>">Empezás el día en <b>0/15</b></div></div>
+      <div class="gp"><div class="gp-screen"><img src="img/guia/home-100.png" alt="Agua completada"></div><div class="gp-cap" data-es="Meta cumplida: <b>16/15</b> ✓" data-en="Goal met: <b>16/15</b> ✓">Meta cumplida: <b>16/15</b> ✓</div></div>
+    </div>
+  </section>
+
+  <!-- 04 PROGRESO / % -->
+  <section class="guide-step reveal" id="progreso">
+    <div class="gs-head">
+      <span class="gs-num">04</span>
+      <div class="gs-title">
+        <h2 data-es="Mirá tu progreso del día, en vivo" data-en="Watch your daily progress, live">Mirá tu progreso del día, en vivo</h2>
+        <p data-es="Cada acción —entreno, comidas, agua— suma a tu <span class='accent'>% del día</span>. Y tu constancia se guarda automáticamente por día, semana y mes, para que veas tu evolución real con el tiempo." data-en="Every action —workout, meals, water— adds to your <span class='accent'>daily %</span>. And your consistency is saved automatically by day, week and month, so you see your real evolution over time.">Cada acción —entreno, comidas, agua— suma a tu <span class="accent">% del día</span>. Y tu constancia se guarda automáticamente por día, semana y mes, para que veas tu evolución real con el tiempo.</p>
+      </div>
+    </div>
+    <div class="gs-phones">
+      <div class="gp"><div class="gp-screen"><img src="img/guia/home-0.png" alt="0% al empezar"></div><div class="gp-cap" data-es="Arrancás en <b>0%</b>" data-en="You start at <b>0%</b>">Arrancás en <b>0%</b></div></div>
+      <div class="gp"><div class="gp-screen"><img src="img/guia/home-56.png" alt="56% a mitad de día"></div><div class="gp-cap" data-es="A mitad de día: <b>56%</b>" data-en="Mid-day: <b>56%</b>">A mitad de día: <b>56%</b></div></div>
+      <div class="gp"><div class="gp-screen"><img src="img/guia/home-100.png" alt="100% día completo"></div><div class="gp-cap" data-es="Día cerrado: <b>100%</b>" data-en="Day closed: <b>100%</b>">Día cerrado: <b>100%</b></div></div>
+    </div>
+    <div class="gs-tip"><span class="dot"></span><p data-es="<b>Tu historial es tuyo.</b> Día, semana y mes se guardan en la nube y se sincronizan en todos tus dispositivos. Nunca perdés tu progreso." data-en="<b>Your history is yours.</b> Day, week and month are saved to the cloud and synced across all your devices. You never lose your progress."><b>Tu historial es tuyo.</b> Día, semana y mes se guardan en la nube y se sincronizan en todos tus dispositivos. Nunca perdés tu progreso.</p></div>
+  </section>
+
+  <!-- 05 PESO -->
+  <section class="guide-step reveal" id="peso">
+    <div class="gs-head">
+      <span class="gs-num">05</span>
+      <div class="gs-title">
+        <h2 data-es="Pesate 3 veces por semana" data-en="Weigh in 3 times a week">Pesate 3 veces por semana</h2>
+        <p data-es="<span class='accent'>Lunes, miércoles y viernes</span>, en ayunas. Registrá tu peso con un toque desde tu Inicio. NEXVYVE lo guarda, lo sincroniza con <span class='accent'>Apple Health</span> y te muestra la tendencia real." data-en="<span class='accent'>Monday, Wednesday and Friday</span>, fasted. Log your weight with one tap from your Home. NEXVYVE saves it, syncs with <span class='accent'>Apple Health</span> and shows you the real trend."><span class="accent">Lunes, miércoles y viernes</span>, en ayunas. Registrá tu peso con un toque desde tu Inicio. NEXVYVE lo guarda, lo sincroniza con <span class="accent">Apple Health</span> y te muestra la tendencia real.</p>
+      </div>
+    </div>
+    <div class="gs-phones">
+      <div class="gp"><div class="gp-screen"><img src="img/guia/home-100.png" alt="Widget de medición de peso"></div><div class="gp-cap" data-es="Los días <b>L · M · V</b> son tus mediciones" data-en="<b>Mon · Wed · Fri</b> are your weigh-ins">Los días <b>L · M · V</b> son tus mediciones</div></div>
+    </div>
+    <div class="gs-tip"><span class="dot"></span><p data-es="<b>Tip:</b> pesate siempre a la misma hora y en las mismas condiciones (al despertar, después del baño). Así la tendencia es fiable." data-en="<b>Tip:</b> always weigh in at the same time and conditions (upon waking, after the bathroom). That way the trend is reliable."><b>Tip:</b> pesate siempre a la misma hora y en las mismas condiciones (al despertar, después del baño). Así la tendencia es fiable.</p></div>
+  </section>
+
+  <!-- 06 ANÁLISIS -->
+  <section class="guide-step reveal" id="analisis">
+    <div class="gs-head">
+      <span class="gs-num">06</span>
+      <div class="gs-title">
+        <h2 data-es="Renová tu análisis corporal" data-en="Refresh your body analysis">Renová tu análisis corporal</h2>
+        <p data-es="Tu cuerpo cambia. Cada <span class='accent'>3 a 4 semanas</span>, sacate una nueva foto y dejá que KAEL recalcule tu composición corporal. Con esos datos frescos, ajusta tu plan para que sigas avanzando." data-en="Your body changes. Every <span class='accent'>3 to 4 weeks</span>, take a new photo and let KAEL recalculate your body composition. With that fresh data, it adjusts your plan so you keep progressing.">Tu cuerpo cambia. Cada <span class="accent">3 a 4 semanas</span>, sacate una nueva foto y dejá que KAEL recalcule tu composición corporal. Con esos datos frescos, ajusta tu plan para que sigas avanzando.</p>
+      </div>
+    </div>
+    <div class="gs-phones">
+      <div class="gp"><div class="gp-screen"><img src="img/guia/analisis-foto.png" alt="Tomar foto para análisis"></div><div class="gp-cap" data-es="Una foto guiada" data-en="One guided photo">Una foto guiada</div></div>
+      <div class="gp"><div class="gp-screen"><img src="img/guia/analisis.png" alt="Resultados del análisis"></div><div class="gp-cap" data-es="KAEL recalcula tu composición" data-en="KAEL recalculates your composition">KAEL recalcula tu composición</div></div>
+    </div>
+  </section>
+
+  <!-- 07 RANKING -->
+  <section class="guide-step reveal" id="ranking">
+    <div class="gs-head">
+      <span class="gs-num">07</span>
+      <div class="gs-title">
+        <h2 data-es="Presumí tu progreso y subí en el ranking" data-en="Show off your progress and climb the ranking">Presumí tu progreso y subí en el ranking</h2>
+        <p data-es="Cada entreno te da un <span class='accent'>logro</span> y puntos. Al terminar, creá tu <span class='accent'>PRESUME</span> y compartilo —como historia de Instagram o en la comunidad NEXVYVE. Cuanto más constante, más alto subís entre los TOP inspiradores. <span class='accent'>NEXT IS YOU.</span>" data-en="Every workout earns you an <span class='accent'>achievement</span> and points. When you finish, create your <span class='accent'>PRESUME</span> and share it —as an Instagram story or in the NEXVYVE community. The more consistent you are, the higher you climb among the TOP inspirers. <span class='accent'>NEXT IS YOU.</span>">Cada entreno te da un <span class="accent">logro</span> y puntos. Al terminar, creá tu <span class="accent">PRESUME</span> y compartilo —como historia de Instagram o en la comunidad NEXVYVE. Cuanto más constante, más alto subís entre los TOP inspiradores. <span class="accent">NEXT IS YOU.</span></p>
+      </div>
+    </div>
+    <div class="gs-phones">
+      <div class="gp"><div class="gp-screen"><img src="img/guia/trofeo.png" alt="Logro desbloqueado"></div><div class="gp-cap" data-es="Cada entreno = un <b>logro</b>" data-en="Every workout = an <b>achievement</b>">Cada entreno = un <b>logro</b></div></div>
+      <div class="gp"><div class="gp-screen"><video src="img/clips/clip-presume.mp4" poster="img/clips/poster-presume.png" autoplay muted loop playsinline preload="metadata"></video></div><div class="gp-cap" data-es="<b>PRESUME</b>: historia o comunidad" data-en="<b>PRESUME</b>: story or community"><b>PRESUME</b>: historia o comunidad</div></div>
+      <div class="gp"><div class="gp-screen"><img src="img/guia/ranking.png" alt="Ranking de inspiradores"></div><div class="gp-cap" data-es="Subí entre los <b>TOP</b>" data-en="Climb among the <b>TOP</b>">Subí entre los <b>TOP</b></div></div>
+    </div>
+  </section>
+
+</main>
+
+<!-- CTA -->
+<section class="guide-cta">
+  <h2 data-es="Tu rutina diaria <span class='lime'>empieza hoy</span>." data-en="Your daily routine <span class='lime'>starts today</span>.">Tu rutina diaria <span class="lime">empieza hoy</span>.</h2>
+  <p data-es="Descargá NEXVYVE y poné en práctica todo lo de esta guía." data-en="Download NEXVYVE and put everything in this guide into practice.">Descargá NEXVYVE y poné en práctica todo lo de esta guía.</p>
+  <a href="https://apps.apple.com/app/nexvyve/id6760936021" class="btn-primary" data-es="Descargar NEXVYVE →" data-en="Download NEXVYVE →">Descargar NEXVYVE →</a>
+  <div class="sub" data-es="Gratis · 30 días de prueba · Sin tarjeta" data-en="Free · 30-day trial · No card">Gratis · 30 días de prueba · Sin tarjeta</div>
+</section>
+
+<footer>
+  <div class="footer-brand">
+    <span class="wm" aria-label="NEXVYVE">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 260" aria-hidden="true">
+        <defs>
+          <mask id="wmVCutsFoot">
+            <rect width="100%" height="100%" fill="white"/>
+            <polygon points="666,90 734,90 700,177" fill="black"/>
+            <line x1="700" y1="177" x2="700" y2="232" stroke="black" stroke-width="3"/>
+            <line x1="700" y1="177" x2="684" y2="211" stroke="black" stroke-width="3"/>
+            <line x1="700" y1="177" x2="716" y2="211" stroke="black" stroke-width="3"/>
+          </mask>
+        </defs>
+        <g fill="currentColor" font-family="Inter, Helvetica, Arial, sans-serif" font-weight="600" font-size="160" letter-spacing="20">
+          <text x="623.5" y="210" text-anchor="end">NEX</text>
+          <text x="776.5" y="210" text-anchor="start">YVE</text>
+        </g>
+        <polygon points="643.5,95 756.5,95 700,232" fill="currentColor" mask="url(#wmVCutsFoot)"/>
+      </svg>
+    </span>
+    <span class="tagline">NEXT IS YOU.</span>
+    <p data-es="Comunidad fitness potenciada por KAEL. Entrená, competí y ganá recompensas reales." data-en="Fitness community powered by KAEL. Train, compete and earn real rewards.">Comunidad fitness potenciada por KAEL. Entrená, competí y ganá recompensas reales.</p>
+  </div>
+  <div class="footer-col">
+    <h4 data-es="Producto" data-en="Product">Producto</h4>
+    <a href="index.html#funciones" data-es="Funciones" data-en="Features">Funciones</a>
+    <a href="index.html#como-registrarse" data-es="Empezar" data-en="Get started">Empezar</a>
+    <a href="guia.html" data-es="Guía diaria" data-en="Daily guide">Guía diaria</a>
+    <a href="https://apps.apple.com/app/nexvyve/id6760936021" data-es="Descargar" data-en="Download">Descargar</a>
+  </div>
+  <div class="footer-col">
+    <h4>Legal</h4>
+    <a href="privacy.html" data-es="Privacidad" data-en="Privacy">Privacidad</a>
+    <a href="support.html" data-es="Soporte" data-en="Support">Soporte</a>
+  </div>
+  <div class="footer-col">
+    <h4 data-es="Contacto" data-en="Contact">Contacto</h4>
+    <a href="mailto:info@nexvyve.com">info@nexvyve.com</a>
+    <a href="mailto:info@nexvyve.com">info@nexvyve.com</a>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 NEXVYVE.</span> <span data-es="Todos los derechos reservados." data-en="All rights reserved.">Todos los derechos reservados.</span>
+    &middot; <a href="privacy.html" data-es="Privacidad" data-en="Privacy">Privacidad</a>
+    &middot; <a href="support.html" data-es="Soporte" data-en="Support">Soporte</a>
+  </div>
+</footer>
+
+<script>
+function setLang(lang){
+  var be=document.getElementById('btn-es'),bn=document.getElementById('btn-en');
+  if(be)be.classList.toggle('active',lang==='es');
+  if(bn)bn.classList.toggle('active',lang==='en');
+  document.querySelectorAll('[data-es]').forEach(function(el){
+    var t=el.getAttribute('data-'+lang);
+    if(t) el.innerHTML=t;
+  });
+  document.documentElement.lang=lang;
+  try{localStorage.setItem('nv-lang',lang);}catch(e){}
+}
+window.addEventListener('DOMContentLoaded',function(){
+  var lang='es';
+  try{var s=localStorage.getItem('nv-lang');if(s&&s!=='null')lang=s;}catch(e){}
+  if(lang==='en') setLang('en');
+
+  // reveal on scroll
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}});},{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
+
+  // GSAP phone reveal
+  if(window.gsap && window.ScrollTrigger){
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.utils.toArray('.guide-step').forEach(function(step){
+      gsap.from(step.querySelectorAll('.gp'),{scrollTrigger:{trigger:step,start:'top 78%'},opacity:0,y:50,stagger:.12,duration:.7,ease:'power3.out'});
+    });
+    window.addEventListener('load',function(){ScrollTrigger.refresh();});
+  }
+
+  // force inline video autoplay
+  document.querySelectorAll('video[autoplay]').forEach(function(v){
+    var p=function(){var x=v.play();if(x&&x.catch)x.catch(function(){});};
+    if(v.readyState>=2)p();else v.addEventListener('loadeddata',p,{once:true});
+  });
+
+  // smooth scroll TOC
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click',function(e){var t=document.querySelector(this.getAttribute('href'));if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'});}});
+  });
+});
+</script>
+</body>
+</html>
