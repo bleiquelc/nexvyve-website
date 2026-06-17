@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://nexvyve.com/sitemap.xml
