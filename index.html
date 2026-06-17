@@ -312,6 +312,11 @@ footer{border-top:1px solid var(--gray3);padding:48px 5% 32px;display:flex;flex-
 .hero-word{display:inline-block;will-change:transform}
 .hero-word.lime{color:var(--lime)}
 .hero-word.lime{text-shadow:0 0 28px rgba(168,230,0,.45);animation:limePulse 5s ease-in-out infinite alternate}
+/* "CAMBIA": entra blanca y un wipe lima la cambia UNA vez (demuestra la promesa). Bilingüe-safe. */
+.hero-word.morphword{background:linear-gradient(90deg,#A8E600 50%,#fff 50%) right/200% 100% no-repeat;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:#fff}
+.hero-word.morphword.is-revealed{animation:wipeLima .6s cubic-bezier(.7,0,.15,1) forwards;filter:drop-shadow(0 0 22px rgba(168,230,0,.4))}
+@keyframes wipeLima{from{background-position:right}to{background-position:left}}
+@media(prefers-reduced-motion:reduce){.hero-word.morphword{background-position:left;animation:none}}
 @keyframes limePulse{
   0%{text-shadow:0 0 18px rgba(168,230,0,.28)}
   100%{text-shadow:0 0 32px rgba(168,230,0,.52)}
@@ -844,11 +849,11 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
   <div class="hero-content">
     <div class="hero-badge" data-es="COMUNIDAD FITNESS &middot; KAEL" data-en="FITNESS COMMUNITY &middot; KAEL">COMUNIDAD FITNESS &middot; KAEL</div>
     <h1 class="hero-title" id="heroTitle">
-      <span class="hero-line"><span class="hero-word" data-es="ENTRENÁ." data-en="TRAIN.">ENTRENÁ.</span></span>
-      <span class="hero-line"><span class="hero-word lime" data-es="CONECTÁ." data-en="CONNECT.">CONECTÁ.</span></span>
-      <span class="hero-line"><span class="hero-word" data-es="GANÁ REAL." data-en="WIN REAL.">GANÁ REAL.</span></span>
+      <span class="hero-line"><span class="hero-word" data-es="KAEL." data-en="KAEL.">KAEL.</span></span>
+      <span class="hero-line"><span class="hero-word morphword" data-es="CAMBIA" data-en="CHANGES">CAMBIA</span></span>
+      <span class="hero-line"><span class="hero-word" data-es="TU PLAN." data-en="YOUR PLAN.">TU PLAN.</span></span>
     </h1>
-    <p data-es="Más que una app de fitness: tu coach de IA crea tu plan de entrenamiento y nutrición personalizado, calcula calorías con una foto y compites en retos con recompensas reales." data-en="More than a fitness app: your AI coach builds your personalized training and nutrition plan, counts calories from a photo, and you compete in challenges with real rewards.">Más que una app de fitness: tu coach de IA crea tu plan de entrenamiento y nutrición personalizado, calcula calorías con una foto y compites en retos con recompensas reales.</p>
+    <p data-es="KAEL analiza tu cuerpo, arma tu plan de entrenamiento y nutrición, y lo ajusta cada 30 días. Foto al plato: calorías al instante. 30 días gratis, sin tarjeta." data-en="KAEL reads your body, builds your training and nutrition plan, and adjusts it every month. Snap your plate: instant calories. 30 days free, no card needed.">KAEL analiza tu cuerpo, arma tu plan de entrenamiento y nutrición, y lo ajusta cada 30 días. Foto al plato: calorías al instante. 30 días gratis, sin tarjeta.</p>
     <div class="hero-buttons">
       <a href="https://apps.apple.com/app/nexvyve/id6760936021" class="btn-primary" data-es="Empezar Gratis — 30 días" data-en="Start Free — 30 days">Empezar Gratis — 30 días</a>
       <a href="#funciones" class="btn-secondary" data-es="Ver funciones &darr;" data-en="See features &darr;">Ver funciones &darr;</a>
@@ -2172,6 +2177,18 @@ window.addEventListener('DOMContentLoaded',function(){
       stage.addEventListener('mouseleave',function(){ phone.style.transform='perspective(1100px) rotateY(0deg) rotateX(0deg)'; });
     },1750);
   })();
+})();
+</script>
+<!-- Wipe lima de "CAMBIA" tras la entrada del hero -->
+<script>
+(function(){
+  var mw=document.querySelector('.hero-word.morphword'); if(!mw) return;
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduce) return; // el CSS ya la deja lima directo
+  setTimeout(function(){ mw.classList.add('is-revealed'); }, 1650);
+  if(window.matchMedia&&window.matchMedia('(pointer:fine)').matches){
+    mw.addEventListener('mouseenter',function(){ mw.classList.remove('is-revealed'); void mw.offsetWidth; mw.classList.add('is-revealed'); });
+  }
 })();
 </script>
 </body>
