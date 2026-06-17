@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>NEXVYVE — Comunidad Fitness Inteligente</title>
-<meta name="description" content="Entrena con KAEL, compite en retos reales y gana recompensas. Tu coach personalizado, nutrición inteligente y comunidad fitness.">
-<meta property="og:title" content="NEXVYVE — Comunidad Fitness Inteligente">
+<title>NEXVYVE — Entrená. Conectá. Ganá real.</title>
+<meta name="description" content="Entrena con KAEL, compite en retos reales y gana recompensas. Tu coach personalizado, nutrición con KAEL y comunidad fitness.">
+<meta property="og:title" content="NEXVYVE — Entrená. Conectá. Ganá real.">
 <meta property="og:description" content="Entrena con KAEL, compite en retos reales y gana recompensas.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://nexvyve.com">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Inter+Tight:wght@500;600;700;800;900&family=Bebas+Neue&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@600;700&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.min.js" defer></script>
@@ -51,6 +51,7 @@ img{max-width:100%;display:block}
 .hero h1 span.lime{color:var(--lime)}
 .hero p{font-size:18px;color:var(--gray1);max-width:480px;margin-bottom:32px;line-height:1.7}
 .hero-buttons{display:flex;gap:14px;flex-wrap:wrap}
+.hero-sub-cta{margin-top:14px;font-size:13px;color:var(--gray1)}
 .btn-primary{display:inline-flex;align-items:center;gap:8px;padding:16px 32px;background:var(--lime);color:var(--bg);font-weight:800;font-size:15px;border-radius:14px;letter-spacing:.5px;transition:.3s;border:none;cursor:pointer}
 .btn-primary:hover{background:var(--lime2);transform:translateY(-2px);box-shadow:0 8px 30px rgba(168,230,0,.25)}
 .btn-secondary{display:inline-flex;align-items:center;gap:8px;padding:16px 32px;background:transparent;color:var(--white);font-weight:600;font-size:15px;border-radius:14px;border:1.5px solid var(--gray3);transition:.3s;cursor:pointer}
@@ -208,6 +209,7 @@ footer{border-top:1px solid var(--gray3);padding:48px 5% 32px;display:flex;flex-
   .feature-phone{flex:0 0 240px}
   .carousel .phone-frame{width:160px}
 }
+@media(max-width:768px){.carousel{flex-wrap:nowrap;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding-bottom:12px}.carousel-cell{scroll-snap-align:start;flex-shrink:0}}
 @media(max-width:480px){
   .hero-phones .phone-mockup{width:140px}
   .stats{gap:20px}
@@ -386,12 +388,392 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
       <button class="lang-btn active" id="btn-es" onclick="setLang('es')">ES</button>
       <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
     </div>
-    <a href="https://apps.apple.com/app/nexvyve/id6760936021" class="nav-cta" data-es="Descargar" data-en="Download">Descargar</a>
+    <a href="https://apps.apple.com/app/nexvyve/id6760936021" class="nav-cta" data-es="Probar Gratis" data-en="Try Free">Probar Gratis</a>
   </div>
 </nav>
 
+<!-- ===== REDISEÑO v4.0: sistema visual premium (mockups vivos fieles a la app) ===== -->
+<style id="nv-redesign">
+/* Stage del hero: teléfono protagonista + flotantes */
+.nv-stage{position:relative;width:300px;height:600px;z-index:1}
+.nv-depth{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+/* Marco de teléfono CSS puro (profundidad tipo KAEL) */
+.nv-phone{position:relative;width:280px;aspect-ratio:9/19.3;border-radius:44px;padding:9px;z-index:2;
+  background:linear-gradient(155deg,#15161d,#0a0c12 55%,#070910);
+  box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.10),0 2px 6px rgba(0,0,0,.5),0 30px 70px -18px rgba(0,0,0,.85),0 44px 120px -28px rgba(170,255,0,.16)}
+.nv-phone::after{content:'';position:absolute;inset:9px;border-radius:36px;pointer-events:none;z-index:9;background:linear-gradient(125deg,rgba(255,255,255,.09) 0%,transparent 27%)}
+.nv-notch{position:absolute;top:16px;left:50%;transform:translateX(-50%);width:33%;height:21px;background:#000;border-radius:14px;z-index:8}
+.nv-screen{position:relative;width:100%;height:100%;border-radius:36px;overflow:hidden;background:#080810;display:flex;flex-direction:column;font-family:'DM Sans',system-ui,sans-serif;color:#F0F0FF;text-align:left}
+/* Status bar mini */
+.nv-sb{display:flex;justify-content:space-between;align-items:center;padding:13px 20px 3px;font-size:11px;font-weight:700;font-family:'Inter Tight',system-ui}
+.nv-sb .dots{display:flex;gap:3px;align-items:center}.nv-sb .dots i{width:4px;height:4px;border-radius:50%;background:#AAFF00;display:inline-block;box-shadow:0 0 4px rgba(170,255,0,.6)}
+/* Header Home */
+.nv-hd{display:flex;align-items:center;justify-content:space-between;padding:6px 16px 10px;border-bottom:1px solid rgba(255,255,255,.05)}
+.nv-wm{font-family:'Inter Tight',system-ui;font-weight:900;font-size:16px;letter-spacing:.5px;color:#fff}
+.nv-wm b{color:#AAFF00;font-weight:900}
+.nv-hr{display:flex;align-items:center;gap:7px}
+.nv-sph{width:30px;height:30px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#2a2e44,#0e1020);border:1.5px solid #8080A0;display:flex;align-items:center;justify-content:center;font-size:13px}
+.nv-nm{line-height:1.05}.nv-nm .n{font-family:'Inter Tight';font-weight:800;font-size:13px;color:#fff}.nv-nm .lv{font-family:'Inter Tight';font-weight:700;font-size:9px;color:#8080A0;letter-spacing:.5px}
+.nv-dot{width:8px;height:8px;border-radius:50%;background:#AAFF00;box-shadow:0 0 7px rgba(170,255,0,.7)}
+.nv-vc{display:flex;align-items:center;gap:4px;background:rgba(255,215,0,.1);border:1px solid rgba(255,215,0,.3);border-radius:20px;padding:3px 9px;font-family:'Inter Tight';font-weight:800;font-size:12px;color:#FFD700}
+/* TARJETA VIVA (KaelW4Card): el borde es el anillo % del día */
+.nvw{position:relative;margin:11px 13px 0;background:#161622;border-radius:20px;padding:14px 14px 12px;--pct:0;--acc:#AAFF00;--accrgb:170,255,0;overflow:hidden}
+.nvw::before{content:'';position:absolute;inset:-1.5px;border-radius:21px;padding:1.5px;pointer-events:none;
+  background:conic-gradient(from 270deg,var(--acc) 0,var(--acc) calc(var(--pct)*1%),#30304A calc(var(--pct)*1%));
+  -webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude}
+.nvw::after{content:'';position:absolute;inset:0;border-radius:20px;pointer-events:none;background:radial-gradient(ellipse 80% 42% at 50% 0%,rgba(var(--accrgb),.07),transparent 70%)}
+.nvw-top{display:flex;align-items:center;gap:7px;margin-bottom:11px}
+.nvw-kael{font-family:'Bebas Neue';font-size:12px;letter-spacing:2.5px;color:var(--acc)}
+.nvw-badge{margin-left:auto;font-family:'Inter Tight';font-size:9px;font-weight:700;color:var(--acc);background:rgba(var(--accrgb),.13);border:1px solid rgba(var(--accrgb),.28);border-radius:20px;padding:3px 9px}
+/* Tira semanal de burbujas */
+.nvw-week{display:flex;gap:5px;justify-content:space-between;margin-bottom:12px}
+.nvw-day{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px}
+.nvw-ring{width:22px;height:22px}
+.nvw-dl{font-family:'Bebas Neue';font-size:9px;letter-spacing:.5px;color:#8080A0}
+.nvw-day.today .nvw-dl{color:var(--acc)}
+/* Hero visual + mensaje */
+.nvw-msg{font-size:12.5px;font-weight:600;line-height:1.34;color:#F0F0FF;margin-bottom:12px}
+.nvw-msg b{color:var(--acc)}
+/* CTA */
+.nvw-cta{display:flex;align-items:center;justify-content:center;gap:7px;width:100%;border-radius:13px;padding:11px;font-family:'Inter Tight';font-weight:800;font-size:13px;color:#0D1500;background:linear-gradient(135deg,var(--acc),#7ec900);box-shadow:0 4px 18px rgba(var(--accrgb),.4);border:none;letter-spacing:.3px}
+.nvw-pulse{animation:nvPulse 2.4s ease-in-out infinite}
+@keyframes nvPulse{0%,100%{box-shadow:0 4px 18px rgba(var(--accrgb),.35)}50%{box-shadow:0 4px 26px rgba(var(--accrgb),.6)}}
+/* Chips de hábito (relieve consola) */
+.nvw-chips{display:flex;gap:5px;margin-top:10px}
+.nvw-chip{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;border-radius:11px;padding:7px 4px;font-family:'DM Sans';font-weight:700;font-size:10px}
+.nvw-chip .ic{font-size:14px;line-height:1}
+.nvw-chip.w{color:#FF8E5C;background:rgba(255,142,92,.20);border:1px solid rgba(255,142,92,.5);box-shadow:0 3px 0 rgba(60,20,5,.48),0 5px 10px rgba(0,0,0,.3),inset 0 1px 0 rgba(255,255,255,.13)}
+.nvw-chip.m{color:#1FE3C0;background:rgba(0,212,170,.20);border:1px solid rgba(0,212,170,.5);box-shadow:0 3px 0 rgba(0,40,33,.48),0 5px 10px rgba(0,0,0,.3),inset 0 1px 0 rgba(255,255,255,.13)}
+.nvw-chip.a{color:#52C5FF;background:rgba(41,182,246,.20);border:1px solid rgba(41,182,246,.5);box-shadow:0 3px 0 rgba(2,30,48,.48),0 5px 10px rgba(0,0,0,.3),inset 0 1px 0 rgba(255,255,255,.13)}
+/* Elementos flotantes (1 patrón) */
+.nv-float{position:absolute;z-index:3;display:flex;align-items:center;gap:8px;padding:9px 12px;border-radius:14px;
+  background:rgba(17,17,34,.78);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  border:1px solid rgba(170,255,0,.22);box-shadow:0 14px 34px -10px rgba(0,0,0,.7),0 0 0 1px rgba(255,255,255,.03);
+  font-family:'Inter Tight',system-ui;animation:nvFloat var(--dur,7.5s) ease-in-out var(--delay,0s) infinite}
+.nv-float .fi{width:30px;height:30px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:16px;flex:none}
+.nv-float .ft{line-height:1.15}.nv-float .ft .k{font-size:9px;font-weight:700;letter-spacing:.5px;color:#8080A0;text-transform:uppercase}.nv-float .ft .v{font-size:14px;font-weight:800;color:#fff}
+@keyframes nvFloat{0%,100%{transform:translateY(0) rotate(var(--rot,0deg))}50%{transform:translateY(-9px) rotate(var(--rot,0deg))}}
+.nv-fl-1{top:6%;left:-8%;--dur:7.4s;--delay:.2s}
+.nv-fl-2{top:40%;right:-14%;--dur:8.6s;--delay:1.1s}
+.nv-fl-3{bottom:9%;left:-12%;--dur:8s;--delay:.6s}
+.nv-fl-4{bottom:30%;right:-10%;--dur:7.8s;--delay:1.6s}
+/* Glows de profundidad del hero */
+.hero .nv-glow{position:absolute;border-radius:50%;pointer-events:none;z-index:0;filter:blur(10px)}
+.hero .nv-glow.g1{width:520px;height:520px;right:-6%;top:6%;background:radial-gradient(circle,rgba(170,255,0,.10),transparent 62%);animation:nvBreath 9s ease-in-out infinite}
+.hero .nv-glow.g2{width:360px;height:360px;right:24%;bottom:2%;background:radial-gradient(circle,rgba(79,163,255,.07),transparent 65%);animation:nvBreath 12s ease-in-out infinite reverse}
+@keyframes nvBreath{0%,100%{opacity:.7;transform:scale(1)}50%{opacity:1;transform:scale(1.08)}}
+/* Responsive: 1 protagonista, flotantes secundarios fuera en móvil */
+@media(max-width:1100px){.nv-stage{margin:40px auto 0}.nv-fl-2{right:-2%}.nv-fl-4{right:-2%}}
+@media(max-width:680px){.nv-stage{width:260px;height:auto}.nv-phone{width:240px}.nv-fl-2,.nv-fl-4{display:none}.nv-fl-1{left:-2%}.nv-fl-3{left:-2%}}
+/* Iconos SVG estilo app (NO emojis de teclado) */
+.nvi{width:15px;height:15px;display:block;flex:none}
+.fi .nvi{width:18px;height:18px}.nv-sph .nvi{width:16px;height:16px}.nv-vc .nvi{width:13px;height:13px}
+/* Layout hero desktop: el par queda centrado; el teléfono NO pegado al borde derecho */
+@media(min-width:1101px){
+  .hero{justify-content:center;gap:5%}
+  .hero-content{flex:0 1 540px}
+  .hero-phones{position:relative!important;right:auto!important;top:auto!important;transform:none!important;margin:0;z-index:1}
+}
+/* Glows de profundidad MÁS presentes (visibles aun con reduced-motion) */
+.hero .nv-glow.g1{width:580px;height:580px;right:5%;top:-2%;background:radial-gradient(circle,rgba(170,255,0,.20),transparent 60%);filter:blur(6px)}
+.hero .nv-glow.g2{width:440px;height:440px;right:15%;bottom:-6%;background:radial-gradient(circle,rgba(79,163,255,.14),transparent 64%);filter:blur(6px)}
+.hero::before{background:radial-gradient(circle,rgba(168,230,0,.10) 0%,transparent 70%)!important}
+/* Accesibilidad: sin movimiento → todo estático y visible */
+@media(prefers-reduced-motion:reduce){.nv-float,.nvw-pulse,.hero .nv-glow,.nva-zone,.price-card.popular::before{animation:none!important}.nvm-scan{animation:none!important;top:50%}}
+
+/* ════ MOCKUPS VIVOS adicionales (reusan .nv-phone/.nv-screen/.nvi del sistema) ════ */
+/* Pantalla genérica con padding interno para mockups de feature/carrusel/onboarding */
+.nv-app{flex:1;display:flex;flex-direction:column;padding:13px 14px 14px;font-family:'DM Sans',system-ui,sans-serif;gap:9px;overflow:hidden}
+.nv-aphd{display:flex;align-items:center;justify-content:space-between;margin-bottom:1px}
+.nv-atitle{font-family:'Inter Tight',system-ui;font-weight:800;font-size:14px;color:#F0F0FF;letter-spacing:.2px}
+.nv-asub{font-family:'DM Sans';font-size:10px;color:#8080A0}
+.nv-pill{font-family:'Inter Tight';font-size:9px;font-weight:700;letter-spacing:.5px;border-radius:20px;padding:3px 9px;display:inline-flex;align-items:center;gap:4px}
+.nv-pill.lime{color:#AAFF00;background:rgba(170,255,0,.13);border:1px solid rgba(170,255,0,.3)}
+
+/* KAEL mini-chat (Feature 1) */
+.nvc{flex:1;display:flex;flex-direction:column;gap:9px;justify-content:flex-end}
+.nvc-row{display:flex;gap:7px;align-items:flex-end}
+.nvc-row.me{flex-direction:row-reverse}
+.nvc-av{width:24px;height:24px;flex:none;border-radius:8px;display:flex;align-items:center;justify-content:center;background:rgba(170,255,0,.12);border:1px solid rgba(170,255,0,.3)}
+.nvc-bub{max-width:74%;font-size:11.5px;line-height:1.36;padding:9px 11px;border-radius:14px;font-family:'DM Sans'}
+.nvc-bub.kael{background:#1C1C2E;color:#F0F0FF;border:1px solid rgba(170,255,0,.14);border-bottom-left-radius:5px}
+.nvc-bub.me{background:linear-gradient(135deg,#AAFF00,#7ec900);color:#0D1500;font-weight:600;border-bottom-right-radius:5px}
+.nvc-confirm{display:flex;align-items:center;gap:8px;background:rgba(0,212,170,.12);border:1px solid rgba(0,212,170,.4);border-radius:12px;padding:9px 11px;margin-top:2px}
+.nvc-confirm .ic{width:20px;height:20px;flex:none;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(0,212,170,.22);color:#1FE3C0}
+.nvc-confirm .tx{font-family:'DM Sans';font-size:10.5px;font-weight:600;color:#1FE3C0;line-height:1.3}
+.nvc-confirm .tx b{color:#7CF0DD}
+.nvc-input{display:flex;align-items:center;gap:8px;background:#13131F;border:1px solid rgba(255,255,255,.08);border-radius:13px;padding:9px 11px;margin-top:3px}
+.nvc-input .ph{flex:1;font-family:'DM Sans';font-size:10.5px;color:#5b5b78}
+.nvc-input .snd{width:26px;height:26px;flex:none;border-radius:9px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#AAFF00,#7ec900);color:#0D1500}
+
+/* Scan de comida (Feature 2) */
+.nvm-plate{position:relative;flex:none;width:100%;aspect-ratio:16/10;border-radius:16px;overflow:hidden;background:radial-gradient(circle at 50% 42%,#2a2118,#14110b 72%);border:1px solid rgba(255,255,255,.06)}
+.nvm-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.nvm-food{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:58%;aspect-ratio:1;border-radius:50%;background:
+  radial-gradient(circle at 38% 36%,#8FBF3A,#5e8a22 60%,transparent 62%) 0 0/55% 55% no-repeat,
+  radial-gradient(circle at 70% 64%,#E8B84B,#c9912f 58%,transparent 60%) 0 0/52% 52% no-repeat,
+  radial-gradient(circle at 60% 30%,#D6694A,#a9472e 56%,transparent 58%) 0 0/40% 40% no-repeat,
+  #1b1b24;box-shadow:inset 0 0 22px rgba(0,0,0,.55),0 6px 16px rgba(0,0,0,.4)}
+.nvm-scan{position:absolute;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#AAFF00,transparent);box-shadow:0 0 12px 2px rgba(170,255,0,.7);animation:nvmScan 2.6s ease-in-out infinite}
+.nvm-corner{position:absolute;width:18px;height:18px;border:2px solid rgba(170,255,0,.7)}
+.nvm-corner.tl{top:9px;left:9px;border-right:none;border-bottom:none;border-radius:4px 0 0 0}
+.nvm-corner.tr{top:9px;right:9px;border-left:none;border-bottom:none;border-radius:0 4px 0 0}
+.nvm-corner.bl{bottom:9px;left:9px;border-right:none;border-top:none;border-radius:0 0 0 4px}
+.nvm-corner.br{bottom:9px;right:9px;border-left:none;border-top:none;border-radius:0 0 4px 0}
+@keyframes nvmScan{0%{top:8%}50%{top:90%}100%{top:8%}}
+.nvm-kcal{display:flex;align-items:baseline;gap:6px;justify-content:center;margin-top:2px}
+.nvm-kcal .n{font-family:'Bebas Neue',sans-serif;font-size:34px;line-height:.9;color:#AAFF00;letter-spacing:1px}
+.nvm-kcal .u{font-family:'Inter Tight';font-size:11px;font-weight:700;color:#8080A0}
+.nvm-macros{display:flex;gap:7px}
+.nvm-mc{flex:1;border-radius:11px;padding:8px 4px;text-align:center;font-family:'Inter Tight'}
+.nvm-mc .k{font-size:8.5px;font-weight:800;letter-spacing:.5px}
+.nvm-mc .v{font-size:13px;font-weight:800;color:#F0F0FF;margin-top:1px}
+.nvm-mc.p{background:rgba(79,163,255,.14);border:1px solid rgba(79,163,255,.4)}.nvm-mc.p .k{color:#4FA3FF}
+.nvm-mc.c{background:rgba(255,184,0,.14);border:1px solid rgba(255,184,0,.4)}.nvm-mc.c .k{color:#FFB800}
+.nvm-mc.g{background:rgba(255,215,0,.14);border:1px solid rgba(255,215,0,.4)}.nvm-mc.g .k{color:#FFD700}
+.nvm-sub{display:flex;gap:7px;margin-top:1px}
+.nvm-btn{flex:1;text-align:center;border-radius:12px;padding:10px;font-family:'Inter Tight';font-weight:800;font-size:11px}
+.nvm-btn.fill{background:linear-gradient(135deg,#AAFF00,#7ec900);color:#0D1500;box-shadow:0 4px 14px rgba(170,255,0,.35)}
+.nvm-btn.out{background:transparent;color:#1FE3C0;border:1px solid rgba(0,212,170,.5)}
+
+/* Ranking por regalos (carrusel) */
+.nvr{flex:1;display:flex;flex-direction:column;gap:4px;overflow:hidden}
+.nvr-tabs{display:flex;gap:5px;margin-bottom:2px}
+.nvr-tab{font-family:'Inter Tight';font-size:9px;font-weight:800;letter-spacing:.5px;padding:4px 9px;border-radius:20px;color:#8080A0}
+.nvr-tab.on{color:#4FA3FF;background:rgba(79,163,255,.14);border:1px solid rgba(79,163,255,.35)}
+.nvr-cap{font-family:'Inter Tight';font-size:8.5px;font-weight:700;letter-spacing:.8px;color:#8080A0;text-transform:uppercase;margin:1px 0 2px}
+.nvr-row{display:flex;align-items:center;gap:8px;padding:5px 9px;border-radius:12px;background:#13131F;border:1px solid rgba(255,255,255,.05)}
+.nvr-row.me{background:rgba(170,255,0,.09);border:1px solid #AAFF00;box-shadow:0 0 14px rgba(170,255,0,.18)}
+.nvr-pos{width:18px;flex:none;text-align:center;font-family:'Bebas Neue';font-size:14px;color:#8080A0}
+.nvr-medal{width:18px;flex:none;display:flex;align-items:center;justify-content:center}
+.nvr-av{width:26px;height:26px;flex:none;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Inter Tight';font-weight:800;font-size:11px;color:#0D1500}
+.nvr-nm{flex:1;min-width:0}
+.nvr-nm .n{font-family:'Inter Tight';font-weight:700;font-size:11.5px;color:#F0F0FF;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.nvr-nm .s{font-family:'DM Sans';font-size:8.5px;color:#8080A0}
+.nvr-gift{display:flex;align-items:center;gap:4px;flex:none;font-family:'Inter Tight';font-weight:800;font-size:12px;color:#AAFF00}
+.nvr-row.me .nvr-gift{color:#AAFF00}
+.nvr-gift .nvi{filter:drop-shadow(0 0 4px rgba(170,255,0,.5))}
+
+/* Onboarding paso 1: nivel/perfil */
+.nvo-opt{display:flex;align-items:center;gap:10px;padding:11px 12px;border-radius:13px;background:#13131F;border:1px solid rgba(255,255,255,.06)}
+.nvo-opt.on{background:rgba(170,255,0,.09);border:1px solid #AAFF00}
+.nvo-opt .ic{width:30px;height:30px;flex:none;border-radius:9px;display:flex;align-items:center;justify-content:center;background:rgba(170,255,0,.12);color:#AAFF00}
+.nvo-opt .tx{flex:1}
+.nvo-opt .tx .t{font-family:'Inter Tight';font-weight:800;font-size:12px;color:#F0F0FF}
+.nvo-opt .tx .d{font-family:'DM Sans';font-size:9.5px;color:#8080A0}
+.nvo-opt .rd{width:18px;height:18px;flex:none;border-radius:50%;border:1.5px solid #30304A}
+.nvo-opt.on .rd{border-color:#AAFF00;background:#AAFF00;display:flex;align-items:center;justify-content:center;color:#0D1500}
+.nvo-prog{display:flex;gap:4px;margin-top:auto}
+.nvo-prog i{flex:1;height:4px;border-radius:3px;background:#30304A}
+.nvo-prog i.on{background:#AAFF00}
+
+/* Análisis corporal (paso 2) */
+.nva-fig{position:relative;flex:none;width:100%;aspect-ratio:1/1.05;border-radius:16px;overflow:hidden;background:radial-gradient(circle at 50% 35%,#181826,#0c0c14);border:1px solid rgba(255,255,255,.06);display:flex;align-items:center;justify-content:center}
+.nva-zone{position:absolute;border-radius:50%;background:radial-gradient(circle,rgba(170,255,0,.5),transparent 70%);filter:blur(2px);animation:nvaPulse 2.4s ease-in-out infinite}
+.nva-score{position:absolute;bottom:10px;left:10px;right:10px;display:flex;align-items:center;justify-content:space-between;background:rgba(8,8,16,.7);backdrop-filter:blur(8px);border:1px solid rgba(170,255,0,.3);border-radius:12px;padding:8px 11px}
+.nva-score .l{font-family:'DM Sans';font-size:9px;color:#8080A0}
+.nva-score .v{font-family:'Bebas Neue';font-size:22px;color:#AAFF00;line-height:.9}
+@keyframes nvaPulse{0%,100%{opacity:.5}50%{opacity:1}}
+.nva-tags{display:flex;flex-wrap:wrap;gap:6px}
+.nva-tag{font-family:'Inter Tight';font-size:9.5px;font-weight:700;color:#AAFF00;background:rgba(170,255,0,.1);border:1px solid rgba(170,255,0,.28);border-radius:20px;padding:4px 10px}
+
+/* Plan listo (paso 3) */
+.nvp-row{display:flex;align-items:center;gap:9px;padding:9px 11px;border-radius:12px;background:#13131F;border:1px solid rgba(255,255,255,.06)}
+.nvp-row .ic{width:28px;height:28px;flex:none;border-radius:9px;display:flex;align-items:center;justify-content:center}
+.nvp-row .tx{flex:1}
+.nvp-row .tx .t{font-family:'Inter Tight';font-weight:800;font-size:11.5px;color:#F0F0FF}
+.nvp-row .tx .d{font-family:'DM Sans';font-size:9.5px;color:#8080A0}
+.nvp-row .ck{color:#1FE3C0}
+.nvp-cta{margin-top:auto;text-align:center;border-radius:13px;padding:12px;font-family:'Inter Tight';font-weight:800;font-size:12.5px;color:#0D1500;background:linear-gradient(135deg,#AAFF00,#7ec900);box-shadow:0 4px 18px rgba(170,255,0,.4)}
+
+/* Glassy avatar tile generic chat icon color helper handled inline */
+
+/* ════ SECCIÓN DOLORES ════ */
+.pains{background:var(--bg)}
+.pains-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px;margin-top:48px;max-width:980px;margin-left:auto;margin-right:auto}
+.pain-card{background:var(--card);border:1px solid rgba(255,255,255,.06);border-radius:var(--radius);padding:24px;transition:.3s}
+.pain-card:hover{border-color:rgba(168,230,0,.2);transform:translateY(-4px)}
+.pain-bad{display:flex;align-items:center;gap:10px;font-size:15px;font-weight:700;color:#FF4466;margin-bottom:14px}
+.pain-bad .x{width:24px;height:24px;flex:none;border-radius:7px;display:flex;align-items:center;justify-content:center;background:rgba(255,68,102,.12);color:#FF4466}
+.pain-bad span{text-decoration:line-through;text-decoration-color:rgba(255,68,102,.6)}
+.pain-good{display:flex;align-items:flex-start;gap:10px;font-size:15px;font-weight:600;color:var(--lime);line-height:1.5}
+.pain-good .ic{width:24px;height:24px;flex:none;border-radius:7px;display:flex;align-items:center;justify-content:center;background:rgba(168,230,0,.12);color:var(--lime);margin-top:1px}
+.pains-cta{text-align:center;margin-top:48px}
+
+/* ════ SECCIÓN TESTIMONIOS ════ */
+.testi{background:var(--bg2)}
+.testi-head{text-align:center;max-width:620px;margin:0 auto}
+.testi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;margin:48px auto 0;max-width:1100px}
+.testi-card{position:relative;border-radius:18px;overflow:hidden;border:1px solid rgba(168,230,0,.18);box-shadow:0 18px 50px rgba(0,0,0,.5);background:var(--card);transition:.4s}
+.testi-card:hover{transform:translateY(-6px);border-color:rgba(168,230,0,.4);box-shadow:0 26px 70px rgba(0,0,0,.6),0 0 40px rgba(168,230,0,.08)}
+.testi-card img{width:100%;aspect-ratio:1080/1350;object-fit:cover;display:block}
+.testi-cap{position:absolute;left:0;right:0;bottom:0;padding:34px 14px 12px;background:linear-gradient(180deg,transparent,rgba(8,8,16,.86));font-family:'Inter Tight',system-ui;font-weight:800;font-size:14px;color:#fff;letter-spacing:.3px}
+.testi-cap .dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--lime);margin-right:7px;vertical-align:middle;box-shadow:0 0 7px rgba(168,230,0,.7)}
+@media(max-width:560px){.testi-grid{grid-template-columns:repeat(2,1fr);gap:12px}.testi-cap{font-size:12px;padding:28px 10px 10px}}
+
+/* nv-phone dentro de marcos del carrusel/features: que no herede el borde del .phone-frame viejo */
+.carousel .phone-frame:has(.nv-phone),.feature-phone .phone-frame:has(.nv-phone){border:none;box-shadow:none;background:transparent;overflow:visible;border-radius:0}
+.carousel .nv-phone{width:248px}
+.carousel-cell{display:flex;flex-direction:column;align-items:center}
+@media(max-width:768px){.carousel .nv-phone{width:188px}}
+/* nv-phone dentro del flow de onboarding: el marco lo da el propio .nv-phone */
+.flow-phone .pf:has(.nv-phone){border:none;box-shadow:none;width:auto;overflow:visible}
+.flow-phone .pf .nv-phone{width:268px}
+
+/* ════ ENRICHMENT v4.0 — densidad real de la app ════ */
+
+/* Chip Suplementos (4o chip, morado) */
+.nvw-chip.s{color:#C07BFF;background:rgba(192,123,255,.20);border:1px solid rgba(192,123,255,.5);box-shadow:0 3px 0 rgba(30,0,60,.48),0 5px 10px rgba(0,0,0,.3),inset 0 1px 0 rgba(255,255,255,.13)}
+@media(max-width:768px){.nvw-chips{margin-bottom:2px}.nvw{padding-bottom:10px}}
+
+/* TodayPill diferenciado: más ancho, glow, chevron */
+.nvw-day.today .nvw-rg{width:28px;height:28px;box-shadow:0 0 10px rgba(170,255,0,.55)}
+.nvw-day.today .nvw-rg>span{color:var(--acc);font-size:9.5px;font-weight:900}
+.nvw-day-chev{font-size:6px;color:var(--acc);margin-top:1px;font-family:'Inter Tight';font-weight:800;line-height:1}
+
+/* Streak pill dentro de la tarjeta */
+.nvw-streak{display:flex;align-items:center;gap:5px;background:rgba(255,142,92,.10);border:1px solid rgba(255,142,92,.25);border-radius:20px;padding:4px 9px;font-family:'Inter Tight';font-size:9px;font-weight:700;color:#FF8E5C;margin-top:7px;margin-bottom:4px;align-self:flex-start}
+.nvw-streak svg{filter:drop-shadow(0 0 3px rgba(255,142,92,.6))}
+
+/* Navbar inferior glass */
+.nv-navbar{position:absolute;bottom:0;left:0;right:0;height:52px;background:rgba(8,8,16,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-top:1px solid rgba(255,255,255,.07);display:flex;align-items:center;justify-content:space-around;padding:0 4px 4px;z-index:10}
+.nv-nb-item{display:flex;flex-direction:column;align-items:center;gap:2px;flex:1;cursor:pointer}
+.nv-nb-item .nb-ic{width:18px;height:18px;color:#8080A0}
+.nv-nb-item .nb-lb{font-family:'Inter Tight';font-size:7.5px;font-weight:700;color:#8080A0;letter-spacing:.3px}
+.nv-nb-item.on .nb-ic,.nv-nb-item.on .nb-lb{color:#AAFF00}
+.nv-nb-kael{width:34px;height:34px;border-radius:50%;background:rgba(170,255,0,.10);border:1.5px solid rgba(170,255,0,.5);display:flex;align-items:center;justify-content:center;box-shadow:0 0 10px rgba(170,255,0,.3);margin-bottom:2px}
+
+/* screen bottom padding when navbar present */
+.nv-screen.has-navbar{padding-bottom:52px}
+
+/* KAEL chat — dot online animado + typing dots + mensajes restantes */
+.nvc-online-dot{width:7px;height:7px;border-radius:50%;background:#34D35A;flex:none;box-shadow:0 0 5px rgba(52,211,90,.7);animation:nvOnlinePulse 2.2s ease-in-out infinite}
+@keyframes nvOnlinePulse{0%,100%{opacity:1}50%{opacity:.45}}
+.nvc-msg-count{font-family:'Inter Tight';font-size:8px;font-weight:700;color:#8080A0;margin-top:1px}
+.nvc-msg-count span{color:#AAFF00}
+.nvc-typing{display:flex;align-items:center;gap:6px}
+.nvc-typing-dots{display:flex;gap:3px;align-items:center;padding:8px 11px;background:#1C1C2E;border-radius:14px;border-bottom-left-radius:5px;border:1px solid rgba(170,255,0,.14)}
+.nvc-typing-dots i{width:5px;height:5px;border-radius:50%;background:#8080A0;animation:nvTypeDot .9s ease-in-out infinite}
+.nvc-typing-dots i:nth-child(2){animation-delay:.18s}
+.nvc-typing-dots i:nth-child(3){animation-delay:.36s}
+@keyframes nvTypeDot{0%,100%{opacity:.25;transform:translateY(0)}50%{opacity:1;transform:translateY(-3px)}}
+
+/* MealScan — meal assign pills + cancel btn */
+.nvm-assign{display:flex;gap:4px;flex-wrap:wrap;margin-top:4px}
+.nvm-assign-lbl{font-family:'DM Sans';font-size:8px;font-weight:700;color:#8080A0;width:100%;margin-bottom:1px}
+.nvm-apill{font-family:'Inter Tight';font-size:8px;font-weight:700;padding:3px 8px;border-radius:20px;color:#8080A0;background:#13131F;border:1px solid rgba(255,255,255,.08)}
+.nvm-apill.on{color:#AAFF00;background:rgba(170,255,0,.12);border-color:rgba(170,255,0,.35)}
+.nvm-cancel{text-align:center;font-family:'Inter Tight';font-size:9.5px;font-weight:700;color:#8080A0;margin-top:4px;text-decoration:underline;cursor:pointer}
+
+/* WorkoutPlayer — ULTIMA VEZ card + feedback pills + skip/+15s */
+.wp-lasttime{width:100%;background:rgba(0,0,0,.55);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(170,255,0,.4);border-radius:10px;padding:6px 10px;display:flex;align-items:center;justify-content:space-between}
+.wp-lasttime .lbl{font-size:8px;font-weight:800;letter-spacing:1px;color:#AAFF00}
+.wp-lasttime .val{font-size:10px;font-weight:800;color:#fff}
+.wp-lasttime .ago{font-size:8px;color:#8080A0}
+.wp-feedback{display:flex;gap:5px;width:100%;justify-content:center}
+.wp-fb{flex:1;text-align:center;border-radius:8px;padding:5px 2px;font-family:'Inter Tight';font-size:8.5px;font-weight:800;letter-spacing:.3px;border:none;cursor:pointer}
+.wp-fb.easy{background:rgba(59,212,162,.18);color:#3BD4A2;border:1px solid rgba(59,212,162,.4)}
+.wp-fb.good{background:rgba(170,255,0,.18);color:#AAFF00;border:1px solid rgba(170,255,0,.4)}
+.wp-fb.hard{background:rgba(255,184,0,.18);color:#FFB800;border:1px solid rgba(255,184,0,.4)}
+.wp-fb.fail{background:rgba(255,68,102,.18);color:#FF4466;border:1px solid rgba(255,68,102,.4)}
+.wp-skip-row{display:flex;gap:8px;width:100%;justify-content:center}
+.wp-skip-btn{flex:1;text-align:center;font-family:'Inter Tight';font-size:9px;font-weight:700;padding:4px 6px;border-radius:8px;border:none;background:transparent;cursor:pointer}
+.wp-skip-btn.skip{color:#8080A0}
+.wp-skip-btn.plus15{color:#AAFF00;border:1px solid rgba(170,255,0,.35)}
+
+/* Set pill (bottom-right video overlay) */
+.wp-setpill{position:absolute;bottom:6px;right:6px;background:rgba(8,10,18,.72);backdrop-filter:blur(6px);border:1px solid rgba(170,255,0,.4);border-radius:8px;padding:4px 7px;display:flex;align-items:center;gap:4px;font-family:'Inter Tight';font-size:8px;font-weight:800}
+.wp-setpill .dot{width:5px;height:5px;border-radius:50%;background:#AAFF00;animation:nvPulse 1.6s ease-in-out infinite}
+.wp-setpill span{color:#fff}
+
+/* Ranking — card FUNDADOR pinneada */
+.nvr-founder{background:linear-gradient(135deg,rgba(212,175,55,.10),rgba(170,255,0,.10));border:1px solid #D4AF37;border-radius:13px;padding:9px 11px;margin-bottom:4px;display:flex;align-items:center;gap:8px;box-shadow:0 0 18px rgba(212,175,55,.18)}
+.nvr-founder-badge{font-family:'Inter Tight';font-size:7px;font-weight:800;letter-spacing:1px;color:#D4AF37;background:rgba(212,175,55,.15);border:1px solid rgba(212,175,55,.4);border-radius:20px;padding:2px 7px;position:relative;overflow:hidden}
+.nvr-founder-badge::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(212,175,55,.35),transparent);background-size:200% 100%;animation:shimmer 2.4s linear infinite}
+.nvr-founder-av{width:26px;height:26px;flex:none;border-radius:50%;border:1.5px solid #D4AF37;display:flex;align-items:center;justify-content:center;font-family:'Inter Tight';font-weight:800;font-size:11px;color:#0D1500;background:radial-gradient(circle at 35% 30%,#FFE07A,#D4AF37)}
+.nvr-formula{font-family:'DM Sans';font-size:7px;color:#404060;text-align:center;margin-top:3px;line-height:1.4}
+
+/* Carrusel Nutrición — TDEE cyan + comidas del día */
+.nvn-meal-list{display:flex;flex-direction:column;gap:4px;margin-top:4px}
+.nvn-meal-row{display:flex;align-items:center;justify-content:space-between;padding:5px 8px;border-radius:9px;background:#13131F;border:1px solid rgba(255,255,255,.05)}
+.nvn-meal-row .ml{font-family:'Inter Tight';font-size:9.5px;font-weight:700}
+.nvn-meal-row .ml.done{color:#1FE3C0}
+.nvn-meal-row .ml.pend{color:#8080A0}
+.nvn-meal-row .mc{font-family:'DM Sans';font-size:8.5px;color:#8080A0}
+
+/* Carrusel Retos — participantes + barra progreso */
+.nvch-meta{font-family:'DM Sans';font-size:9px;color:#8080A0;margin-top:5px}
+.nvch-prog{height:5px;border-radius:4px;overflow:hidden;background:#1C1C2E;margin-top:5px}
+.nvch-prog-fill{height:100%;background:linear-gradient(90deg,#AAFF00,#7ec900);border-radius:4px}
+
+/* Onboarding paso 2 — scan line sobre figura anatómica + dot pulsante */
+.nva-scan-line{position:absolute;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#AAFF00,transparent);box-shadow:0 0 10px 2px rgba(170,255,0,.65);animation:nvmScan 2.8s ease-in-out infinite;pointer-events:none}
+.nva-live-dot{width:6px;height:6px;border-radius:50%;background:#34D35A;flex:none;box-shadow:0 0 5px rgba(52,211,90,.7);animation:nvOnlinePulse 1.8s ease-in-out infinite}
+.nva-analysis-label{display:flex;align-items:center;gap:4px;font-family:'Inter Tight';font-size:8px;font-weight:700;color:#8080A0;margin-bottom:4px}
+
+/* Onboarding paso 3 — botón pedir cambios */
+.nvp-request-btn{text-align:center;font-family:'Inter Tight';font-size:9.5px;font-weight:700;color:#8080A0;text-decoration:underline;margin-top:5px;cursor:pointer}
+.nvp-day1{display:flex;align-items:center;gap:8px;padding:7px 10px;border-radius:10px;background:rgba(170,255,0,.06);border:1px solid rgba(170,255,0,.18);margin-top:5px}
+.nvp-day1 .tx{font-family:'DM Sans';font-size:9px;color:#8080A0}
+.nvp-day1 .tx b{color:#AAFF00;font-size:9.5px}
+
+/* Onboarding paso 1 — KAEL guia header */
+.nvo-kael-guide{display:flex;align-items:center;gap:6px;padding:6px 10px;background:rgba(170,255,0,.06);border:1px solid rgba(170,255,0,.15);border-radius:10px;margin-bottom:8px}
+.nvo-kael-guide .gt{font-family:'DM Sans';font-size:9px;color:#8080A0}
+.nvo-kael-guide .gt b{color:#AAFF00}
+
+/* Future days in weekly strip: dot placeholder */
+.nvw-day.future .nvw-rg{opacity:.55}
+.nvw-future-dot{width:5px;height:5px;border-radius:50%;background:#30304A;margin-top:1px}
+
+/* Water chip: +1 button */
+.nvw-chip-water-btn{display:flex;align-items:center;gap:2px}
+.nvw-chip-water-btn .wa{font-size:9px}
+.nvw-chip-water-plus{font-size:10px;font-weight:900;color:#52C5FF;opacity:.8;line-height:1}
+
+@media(prefers-reduced-motion:reduce){
+  .nvc-online-dot,.nvc-typing-dots i,.nva-scan-line,.nvw-streak svg,.nvr-founder-badge::after{animation:none!important}
+  .nva-scan-line{top:50%!important}
+  .wp-setpill .dot{animation:none!important}
+  .nva-live-dot{animation:none!important}
+}
+</style>
+
+<!-- Sprite de iconos estilo app (line icons, currentColor) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="i-dumbbell" viewBox="0 0 24 24"><path d="M6.5 8v8M3.5 9.5v5M17.5 8v8M20.5 9.5v5M7 12h10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+<symbol id="i-meal" viewBox="0 0 24 24"><path d="M6 3v8M4 3v5a2 2 0 004 0V3M6 11v10M16.5 3c-1.4 0-2.5 2.2-2.5 5s1.1 4 2.5 4 2.5-1.2 2.5-4-1.1-5-2.5-5zM16.5 12v9" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="i-water" viewBox="0 0 24 24"><path d="M12 3s6 6.5 6 11a6 6 0 01-12 0c0-4.5 6-11 6-11z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+<symbol id="i-flame" viewBox="0 0 24 24"><path d="M12 3c1.2 3-2 4.2-2 7a2 2 0 004 0c0-.8.6-1.6.9-2 1 1 2.1 2.8 2.1 5a5 5 0 01-10 0c0-4 4-6 5-10z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+<symbol id="i-gift" viewBox="0 0 24 24"><path d="M4.5 11h15v8.5h-15zM3.5 7.5h17V11h-17zM12 7.5v12M12 7.5S10 3.5 7.8 4.6 9.2 7.5 12 7.5zM12 7.5s1.9-4 4.2-2.9S14.8 7.5 12 7.5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+<symbol id="i-macros" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 12V3.5M12 12l7.4 4.2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+<symbol id="i-scan" viewBox="0 0 24 24"><path d="M4 8.5V5.5a1.5 1.5 0 011.5-1.5H8M16 4h2.5A1.5 1.5 0 0120 5.5v3M20 15.5v3a1.5 1.5 0 01-1.5 1.5H16M8 20H5.5A1.5 1.5 0 014 18.5v-3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+<symbol id="i-medal" viewBox="0 0 24 24"><circle cx="12" cy="14.5" r="5.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8.5 3.5l3.5 5 3.5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+<symbol id="i-vcoin" viewBox="0 0 24 24"><path d="M12 3l8.5 6.2L12 21 3.5 9.2z" fill="currentColor"/></symbol>
+<symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 5.5h16a1 1 0 011 1V16a1 1 0 01-1 1H9l-5 4V6.5a1 1 0 011-1z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+<symbol id="i-body" viewBox="0 0 24 24"><circle cx="12" cy="4.5" r="2.2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M5 9h14M12 8.5v6m0 0l-3 6.5m3-6.5l3 6.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M3.5 9.5h17M8 3v4M16 3v4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+<symbol id="i-trophy" viewBox="0 0 24 24"><path d="M7 4h10v4a5 5 0 01-10 0V4zM7 5H4.5v1.5A3 3 0 007 9.4M17 5h2.5v1.5A3 3 0 0117 9.4M12 13v3.5M8.5 20.5h7M9.5 20.5l.6-4m4.4 4l-.6-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="i-level" viewBox="0 0 24 24"><path d="M12 3l2.6 5.5 6 .9-4.3 4.2 1 6L12 16.8 6.7 19.6l1-6L3.4 9.4l6-.9z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+<symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 6.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></symbol>
+<symbol id="i-camera" viewBox="0 0 24 24"><path d="M4 8h3l1.5-2.5h7L17 8h3a1 1 0 011 1v9a1 1 0 01-1 1H4a1 1 0 01-1-1V9a1 1 0 011-1z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="12" cy="13" r="3.2" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+<symbol id="i-send" viewBox="0 0 24 24"><path d="M21 3L3 11l7 2.5L13 21l8-18zM10 13.5L21 3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></symbol>
+<symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 7v5l3.5 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="i-supps" viewBox="0 0 24 24"><path d="M12 3c2.2 0 4 1.8 4 4v2H8V7c0-2.2 1.8-4 4-4zM8 9h8v8a4 4 0 01-8 0V9z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M10 13h4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+<symbol id="i-star" viewBox="0 0 24 24"><path d="M12 2.5l2.6 5.5 6 .9-4.3 4.2 1 6L12 16.5 6.7 19.1l1-6L3.4 9l6-.9z" fill="currentColor" stroke="none"/></symbol>
+<symbol id="i-nav-home" viewBox="0 0 24 24"><path d="M3 10.5L12 3l9 7.5V20a1 1 0 01-1 1h-5v-5h-6v5H4a1 1 0 01-1-1z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+<symbol id="i-nav-prog" viewBox="0 0 24 24"><rect x="4" y="4" width="6" height="6" rx="1.5" fill="none" stroke="currentColor" stroke-width="2"/><rect x="14" y="4" width="6" height="6" rx="1.5" fill="none" stroke="currentColor" stroke-width="2"/><rect x="4" y="14" width="6" height="6" rx="1.5" fill="none" stroke="currentColor" stroke-width="2"/><rect x="14" y="14" width="6" height="6" rx="1.5" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+<symbol id="i-nav-social" viewBox="0 0 24 24"><circle cx="8" cy="8" r="3" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="16" cy="8" r="3" fill="none" stroke="currentColor" stroke-width="2"/><path d="M2 21c0-3.3 2.7-6 6-6h8c3.3 0 6 2.7 6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+<symbol id="i-nav-profile" viewBox="0 0 24 24"><circle cx="12" cy="7" r="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+<symbol id="i-skip" viewBox="0 0 24 24"><path d="M5 12h14M15 7l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</defs></svg>
+
 <!-- HERO -->
 <section class="hero" id="inicio">
+  <canvas class="nv-depth" id="nvDepth" aria-hidden="true"></canvas>
+  <div class="nv-glow g1"></div><div class="nv-glow g2"></div>
   <div class="hero-content">
     <div class="hero-badge" data-es="COMUNIDAD FITNESS &middot; KAEL" data-en="FITNESS COMMUNITY &middot; KAEL">COMUNIDAD FITNESS &middot; KAEL</div>
     <h1 class="hero-title" id="heroTitle">
@@ -404,10 +786,70 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
       <a href="https://apps.apple.com/app/nexvyve/id6760936021" class="btn-primary" data-es="Empezar Gratis — 30 días" data-en="Start Free — 30 days">Empezar Gratis — 30 días</a>
       <a href="#funciones" class="btn-secondary" data-es="Ver funciones &darr;" data-en="See features &darr;">Ver funciones &darr;</a>
     </div>
+    <p class="hero-sub-cta" data-es="Sin tarjeta de crédito · Cancela cuando quieras" data-en="No credit card · Cancel anytime">Sin tarjeta de crédito · Cancela cuando quieras</p>
   </div>
   <div class="hero-phones">
-    <div class="phone-mockup"><img src="img/screen_home.png" alt="NEXVYVE Home" loading="lazy"></div>
-    <div class="phone-mockup"><img src="img/screen_retos.png" alt="NEXVYVE Retos" loading="lazy"></div>
+    <style>
+    .nvw-rg{width:21px;height:21px;border-radius:50%;padding:2.5px;background:conic-gradient(var(--acc) calc(var(--p,0)*1%),#2a2e44 0)}
+    .nvw-rg>span{display:flex;width:100%;height:100%;border-radius:50%;background:#161622;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:8px;color:#8080A0}
+    .nvw-day.today .nvw-rg{width:25px;height:25px;box-shadow:0 0 9px rgba(170,255,0,.5)}
+    .nvw-day.today .nvw-rg>span{color:var(--acc);font-size:9px}
+    .nvw-id{display:flex;align-items:center}
+    </style>
+    <div class="nv-stage">
+      <div class="nv-phone" id="nvPhone">
+        <div class="nv-notch"></div>
+        <div class="nv-screen">
+          <div class="nv-sb"><span>9:41</span><span class="dots"><i></i><i></i><i></i></span></div>
+          <div class="nv-hd">
+            <div class="nv-wm">NEX<b>V</b>YVE</div>
+            <div class="nv-hr">
+              <div class="nv-sph" style="color:#FFD700"><svg class="nvi"><use href="#i-medal"/></svg></div>
+              <div class="nv-nm"><div class="n">Bleiquel</div><div class="lv">ROOKIE</div></div>
+              <div class="nv-dot"></div>
+              <div class="nv-vc"><svg class="nvi"><use href="#i-vcoin"/></svg> 5</div>
+            </div>
+          </div>
+          <div class="nvw" id="nvwCard" style="--pct:0;--acc:#AAFF00;--accrgb:170,255,0">
+            <div class="nvw-top">
+              <span class="nvw-id"><svg width="22" height="22" viewBox="0 0 160 160" fill="none" aria-hidden="true"><path d="M80 22 L130 80 L80 138 L30 80 Z" stroke="#AAFF00" stroke-width="7" fill="rgba(170,255,0,.12)" stroke-linejoin="round"/><circle cx="80" cy="80" r="7" fill="#AAFF00"/></svg></span>
+              <span class="nvw-kael">KAEL</span>
+              <span class="nvw-badge" data-es="HOY" data-en="TODAY">HOY</span>
+            </div>
+            <div class="nvw-week">
+              <div class="nvw-day"><div class="nvw-rg" style="--p:100"><span>L</span></div><div class="nvw-dl">L</div></div>
+              <div class="nvw-day"><div class="nvw-rg" style="--p:100"><span>M</span></div><div class="nvw-dl">M</div></div>
+              <div class="nvw-day"><div class="nvw-rg" style="--p:100"><span>X</span></div><div class="nvw-dl">X</div></div>
+              <div class="nvw-day today"><div class="nvw-rg" id="nvwToday" style="--p:0"><span>J</span></div><div class="nvw-dl" style="color:#AAFF00">J</div><div class="nvw-day-chev">&#8250;</div></div>
+              <div class="nvw-day future"><div class="nvw-rg" style="--p:0;opacity:.4"><span>V</span></div><div class="nvw-future-dot"></div></div>
+              <div class="nvw-day future"><div class="nvw-rg" style="--p:0;opacity:.4"><span>S</span></div><div class="nvw-future-dot"></div></div>
+              <div class="nvw-day future"><div class="nvw-rg" style="--p:0;opacity:.4"><span>D</span></div><div class="nvw-future-dot"></div></div>
+            </div>
+            <div class="nvw-streak"><svg class="nvi" style="width:10px;height:10px;color:#FF8E5C"><use href="#i-flame"/></svg> <span data-es="12 días entrenando" data-en="12-day streak">12 días entrenando</span></div>
+            <div class="nvw-msg" data-es="Vas al <b>95%</b> del día. Una serie más y queda perfecto." data-en="You're at <b>95%</b> of today. One more set and it's perfect.">Vas al <b>95%</b> del día. Una serie más y queda perfecto.</div>
+            <button class="nvw-cta nvw-pulse" data-es="Seguir entreno →" data-en="Continue workout →">Seguir entreno →</button>
+            <div class="nvw-chips">
+              <div class="nvw-chip w"><span class="ic"><svg class="nvi"><use href="#i-dumbbell"/></svg></span><span data-es="Entreno ✓" data-en="Workout ✓">Entreno ✓</span></div>
+              <div class="nvw-chip m"><span class="ic"><svg class="nvi"><use href="#i-meal"/></svg></span><span data-es="Comida ✓" data-en="Meals ✓">Comida ✓</span></div>
+              <div class="nvw-chip a"><span class="ic"><svg class="nvi"><use href="#i-water"/></svg></span><span class="nvw-chip-water-btn"><span class="wa">6/8</span><span class="nvw-chip-water-plus">+</span></span></div>
+              <div class="nvw-chip s"><span class="ic"><svg class="nvi"><use href="#i-supps"/></svg></span><span data-es="Supps" data-en="Supps">Supps</span></div>
+            </div>
+          </div>
+          <!-- Navbar inferior -->
+          <div class="nv-navbar" aria-label="Navegación principal">
+            <div class="nv-nb-item on" aria-current="page"><svg class="nb-ic"><use href="#i-nav-home"/></svg><span class="nb-lb" data-es="HOY" data-en="TODAY">HOY</span></div>
+            <div class="nv-nb-item"><svg class="nb-ic"><use href="#i-nav-prog"/></svg><span class="nb-lb" data-es="PROGRAMA" data-en="PROGRAM">PROGRAMA</span></div>
+            <div class="nv-nb-item" style="margin-top:-4px"><div class="nv-nb-kael"><svg width="18" height="18" viewBox="0 0 160 160" fill="none" aria-hidden="true"><path d="M80 22 L130 80 L80 138 L30 80 Z" stroke="#AAFF00" stroke-width="8" fill="rgba(170,255,0,.12)" stroke-linejoin="round"/><circle cx="80" cy="80" r="8" fill="#AAFF00"/></svg></div><span class="nb-lb" style="color:#AAFF00" data-es="KAEL" data-en="KAEL">KAEL</span></div>
+            <div class="nv-nb-item"><svg class="nb-ic"><use href="#i-nav-social"/></svg><span class="nb-lb" data-es="SOCIAL" data-en="SOCIAL">SOCIAL</span></div>
+            <div class="nv-nb-item"><svg class="nb-ic"><use href="#i-nav-profile"/></svg><span class="nb-lb" data-es="PERFIL" data-en="PROFILE">PERFIL</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="nv-float nv-fl-1"><div class="fi" style="background:rgba(255,142,92,.16);color:#FF8E5C"><svg class="nvi"><use href="#i-flame"/></svg></div><div class="ft"><div class="k" data-es="Racha" data-en="Streak">Racha</div><div class="v">12 <span data-es="días" data-en="days">días</span></div></div></div>
+      <div class="nv-float nv-fl-2"><div class="fi" style="background:rgba(255,215,0,.16);color:#FFD700"><svg class="nvi"><use href="#i-gift"/></svg></div><div class="ft"><div class="k" data-es="Regalos" data-en="Gifts">Regalos</div><div class="v">+5</div></div></div>
+      <div class="nv-float nv-fl-3"><div class="fi" style="background:rgba(0,212,170,.16);color:#1FE3C0"><svg class="nvi"><use href="#i-macros"/></svg></div><div class="ft"><div class="k" data-es="Macros" data-en="Macros">Macros</div><div class="v">100%</div></div></div>
+      <div class="nv-float nv-fl-4"><div class="fi" style="background:rgba(79,163,255,.16);color:#4FA3FF"><svg class="nvi"><use href="#i-scan"/></svg></div><div class="ft"><div class="k" data-es="Análisis" data-en="Analysis">Análisis</div><div class="v">−2.1%</div></div></div>
+    </div>
   </div>
 </section>
 
@@ -418,6 +860,789 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
   <div class="stat"><div class="stat-num" data-es="30" data-en="30">30</div><div class="stat-label" data-es="Días gratis" data-en="Free days">Días gratis</div></div>
   <div class="stat"><div class="stat-num" data-es="$0" data-en="$0">$0</div><div class="stat-label" data-es="Para empezar" data-en="To start">Para empezar</div></div>
 </div>
+
+<!-- DOLORES — qué resuelve NEXVYVE -->
+<section class="pains" id="dolores">
+  <div style="text-align:center">
+    <div class="section-label reveal" data-es="Por qué NEXVYVE" data-en="Why NEXVYVE">Por qué NEXVYVE</div>
+    <h2 class="section-title reveal" data-es="Lo que te frenaba,<br>resuelto" data-en="What held you back,<br>solved">Lo que te frenaba,<br>resuelto</h2>
+    <p class="section-sub reveal" style="margin:8px auto 0" data-es="Cada cosa que hace que la gente abandone, NEXVYVE la convierte en algo simple." data-en="Everything that makes people quit, NEXVYVE turns into something simple.">Cada cosa que hace que la gente abandone, NEXVYVE la convierte en algo simple.</p>
+  </div>
+  <div class="pains-grid">
+    <div class="pain-card reveal">
+      <div class="pain-bad"><span class="x"><svg class="nvi"><use href="#i-x"/></svg></span><span data-es="Planes genéricos" data-en="Generic plans">Planes genéricos</span></div>
+      <div class="pain-good"><span class="ic"><svg class="nvi"><use href="#i-body"/></svg></span><span data-es="KAEL ajusta tu plan a TU cuerpo cada 30 días." data-en="KAEL adapts your plan to YOUR body every 30 days.">KAEL ajusta tu plan a TU cuerpo cada 30 días.</span></div>
+    </div>
+    <div class="pain-card reveal">
+      <div class="pain-bad"><span class="x"><svg class="nvi"><use href="#i-x"/></svg></span><span data-es="No sé si lo hago bien" data-en="Not sure I'm doing it right">No sé si lo hago bien</span></div>
+      <div class="pain-good"><span class="ic"><svg class="nvi"><use href="#i-dumbbell"/></svg></span><span data-es="Video real de cada ejercicio + KAEL te corrige." data-en="Real video for every exercise + KAEL corrects you.">Video real de cada ejercicio + KAEL te corrige.</span></div>
+    </div>
+    <div class="pain-card reveal">
+      <div class="pain-bad"><span class="x"><svg class="nvi"><use href="#i-x"/></svg></span><span data-es="Contar calorías a mano" data-en="Counting calories by hand">Contar calorías a mano</span></div>
+      <div class="pain-good"><span class="ic"><svg class="nvi"><use href="#i-scan"/></svg></span><span data-es="Foto al plato y listo: KAEL calcula calorías y macros." data-en="Photo your plate and done: KAEL calculates calories and macros.">Foto al plato y listo: KAEL calcula calorías y macros.</span></div>
+    </div>
+    <div class="pain-card reveal">
+      <div class="pain-bad"><span class="x"><svg class="nvi"><use href="#i-x"/></svg></span><span data-es="Empiezo y abandono" data-en="I start and quit">Empiezo y abandono</span></div>
+      <div class="pain-good"><span class="ic"><svg class="nvi"><use href="#i-gift"/></svg></span><span data-es="Comunidad y retos con premios reales que te sostienen." data-en="Community and challenges with real prizes that keep you going.">Comunidad y retos con premios reales que te sostienen.</span></div>
+    </div>
+  </div>
+  <div class="pains-cta reveal">
+    <a href="https://apps.apple.com/app/nexvyve/id6760936021" class="btn-primary" data-es="Empezar Gratis — 30 días" data-en="Start Free — 30 days">Empezar Gratis — 30 días</a>
+  </div>
+</section>
+
+
+<!-- FEATURE SHOWCASE -->
+<section class="features-showcase" id="funciones">
+  <div class="section-label reveal" data-es="Funciones" data-en="Features">Funciones</div>
+  <h2 class="section-title reveal" data-es="Todo lo que necesitas<br>en un solo lugar" data-en="Everything you need<br>in one place">Todo lo que necesitas<br>en un solo lugar</h2>
+  <p class="section-sub reveal" data-es="Seis pilares que trabajan por vos cada día, no solo para motivarte." data-en="Six pillars that work for you every day, not just to motivate you.">Seis pilares que trabajan por vos cada día, no solo para motivarte.</p>
+
+  <!-- Feature 1: KAEL-X — el coach cambia tu plan REAL desde el chat (mockup vivo) -->
+  <div class="feature-row reveal">
+    <div class="feature-text">
+      <div class="feature-icon" style="background:rgba(168,230,0,.1)"><img src="icons/icon-kael.svg" alt="KAEL" width="36" height="36"></div>
+      <div class="nv-pill lime" style="margin-bottom:14px" data-es="PREMIUM &middot; ELITE" data-en="PREMIUM &middot; ELITE">PREMIUM &middot; ELITE</div>
+      <h3 data-es="TU COACH CAMBIA TU PLAN<br>MIENTRAS HABLAS" data-en="YOUR COACH CHANGES YOUR PLAN<br>WHILE YOU TALK">TU COACH CAMBIA TU PLAN<br>MIENTRAS HABLAS</h3>
+      <p data-es="KAEL-X no solo responde: edita tu rutina y tu nutrición de verdad. Pedile cambiar un ejercicio o sumar calorías a una comida y lo aplica al instante, en tu propio plan. Disponible 24/7." data-en="KAEL-X doesn't just reply: it actually edits your routine and nutrition. Ask it to swap an exercise or add calories to a meal and it applies the change instantly, in your own plan. Available 24/7.">KAEL-X no solo responde: edita tu rutina y tu nutrición de verdad. Pedile cambiar un ejercicio o sumar calorías a una comida y lo aplica al instante, en tu propio plan. Disponible 24/7.</p>
+    </div>
+    <div class="feature-phone">
+      <div class="glow" style="background:var(--lime);top:20%;left:10%"></div>
+      <div class="phone-frame" style="border:none;box-shadow:none;width:auto;display:flex;justify-content:center">
+        <div class="nv-phone">
+          <div class="nv-notch"></div>
+          <div class="nv-screen">
+            <div class="nv-sb"><span>9:41</span><span class="dots"><i></i><i></i><i></i></span></div>
+            <div class="nv-app">
+              <div class="nv-aphd">
+                <div style="display:flex;align-items:center;gap:8px">
+                  <span class="nvc-av"><svg width="15" height="15" viewBox="0 0 160 160" fill="none" aria-hidden="true"><path d="M80 22 L130 80 L80 138 L30 80 Z" stroke="#AAFF00" stroke-width="9" fill="rgba(170,255,0,.12)" stroke-linejoin="round"/><circle cx="80" cy="80" r="9" fill="#AAFF00"/></svg></span>
+                  <div>
+                    <div style="display:flex;align-items:center;gap:5px"><div class="nv-atitle">KAEL</div><div class="nvc-online-dot" role="presentation"></div></div>
+                    <div class="nv-asub" data-es="En línea &middot; tu coach" data-en="Online &middot; your coach">En línea &middot; tu coach</div>
+                    <div class="nvc-msg-count" data-es="<span>28</span>/30 mensajes hoy" data-en="<span>28</span>/30 messages today"><span>28</span>/30 mensajes hoy</div>
+                  </div>
+                </div>
+                <span class="nv-pill lime" data-es="KAEL-X" data-en="KAEL-X">KAEL-X</span>
+              </div>
+              <div class="nvc">
+                <div class="nvc-row me"><div class="nvc-bub me" data-es="La sentadilla me molesta la rodilla hoy" data-en="Squats hurt my knee today">La sentadilla me molesta la rodilla hoy</div></div>
+                <div class="nvc-row">
+                  <span class="nvc-av"><svg width="15" height="15" viewBox="0 0 160 160" fill="none" aria-hidden="true"><path d="M80 22 L130 80 L80 138 L30 80 Z" stroke="#AAFF00" stroke-width="9" fill="rgba(170,255,0,.12)" stroke-linejoin="round"/><circle cx="80" cy="80" r="9" fill="#AAFF00"/></svg></span>
+                  <div class="nvc-bub kael" data-es="Sin problema. La cambio por prensa, mismo estímulo y cuida tu rodilla." data-en="No problem. I'll swap it for leg press, same stimulus and easier on your knee.">Sin problema. La cambio por prensa, mismo estímulo y cuida tu rodilla.</div>
+                </div>
+                <div class="nvc-confirm"><span class="ic"><svg class="nvi"><use href="#i-check"/></svg></span><span class="tx" data-es="Cambié tu <b>Sentadilla</b> por <b>Prensa de pierna</b>" data-en="Swapped your <b>Squat</b> for <b>Leg press</b>">Cambié tu <b>Sentadilla</b> por <b>Prensa de pierna</b></span></div>
+                <div class="nvc-confirm"><span class="ic"><svg class="nvi"><use href="#i-check"/></svg></span><span class="tx" data-es="Sumé <b>+200 kcal</b> a tu cena" data-en="Added <b>+200 kcal</b> to your dinner">Sumé <b>+200 kcal</b> a tu cena</span></div>
+                <div class="nvc-row nvc-typing">
+                  <span class="nvc-av"><svg width="15" height="15" viewBox="0 0 160 160" fill="none" aria-hidden="true"><path d="M80 22 L130 80 L80 138 L30 80 Z" stroke="#AAFF00" stroke-width="9" fill="rgba(170,255,0,.12)" stroke-linejoin="round"/><circle cx="80" cy="80" r="9" fill="#AAFF00"/></svg></span>
+                  <div class="nvc-typing-dots" aria-label="KAEL escribiendo"><i></i><i></i><i></i></div>
+                </div>
+                <div class="nvc-input"><span class="ph" data-es="Escribile a KAEL…" data-en="Message KAEL…">Escribile a KAEL…</span><span class="snd"><svg class="nvi"><use href="#i-send"/></svg></span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Feature 2: Nutrición + screenshot -->
+  <div class="feature-row reveal">
+    <div class="feature-text">
+      <div class="feature-icon" style="background:rgba(255,136,0,.1)"><img src="icons/icon-nutrition.svg" alt="Nutrición" width="36" height="36"></div>
+      <h3 data-es="TU NUTRICI&Oacute;N CON KAEL" data-en="YOUR NUTRITION WITH KAEL">TU NUTRICI&Oacute;N CON KAEL</h3>
+      <p data-es="Planes de comida con calorías y macros personalizados. Fotografiá tu plato y KAEL analiza las calorías al instante. Registrá desayuno, almuerzo, cena y snacks." data-en="Meal plans with personalized calories and macros. Photograph your plate and KAEL analyzes calories instantly. Log breakfast, lunch, dinner and snacks.">Planes de comida con calorías y macros personalizados. Fotografiá tu plato y KAEL analiza las calorías al instante. Registrá desayuno, almuerzo, cena y snacks.</p>
+    </div>
+    <div class="feature-phone">
+      <div class="glow" style="background:var(--orange);top:30%;right:10%"></div>
+      <div class="phone-frame" style="border:none;box-shadow:none;width:auto;display:flex;justify-content:center">
+        <div class="nv-phone">
+          <div class="nv-notch"></div>
+          <div class="nv-screen">
+            <div class="nv-sb"><span>9:41</span><span class="dots"><i></i><i></i><i></i></span></div>
+            <div class="nv-app">
+              <div class="nv-aphd">
+                <div><div class="nv-atitle" data-es="Escaneo de comida" data-en="Meal scan">Escaneo de comida</div><div class="nv-asub" data-es="3 escaneos restantes" data-en="3 scans left">3 escaneos restantes</div></div>
+                <span class="nv-pill lime"><svg class="nvi"><use href="#i-scan"/></svg></span>
+              </div>
+              <div class="nvm-plate">
+                <img class="nvm-photo" src="img/mockup-plate.jpg" alt="Plato escaneado por KAEL" loading="lazy">
+                <span class="nvm-corner tl"></span><span class="nvm-corner tr"></span><span class="nvm-corner bl"></span><span class="nvm-corner br"></span>
+                <div class="nvm-scan"></div>
+              </div>
+              <div class="nvm-kcal"><span class="n">540</span><span class="u" data-es="kcal detectadas" data-en="kcal detected">kcal detectadas</span></div>
+              <div class="nvm-macros">
+                <div class="nvm-mc p"><div class="k" data-es="PROTE" data-en="PROT">PROTE</div><div class="v" data-es="38g/<span style='color:#8080A0;font-size:10px'>120g</span>" data-en="38g/<span style='color:#8080A0;font-size:10px'>120g</span>">38g/<span style="color:#8080A0;font-size:10px">120g</span></div></div>
+                <div class="nvm-mc c"><div class="k" data-es="CARBS" data-en="CARBS">CARBS</div><div class="v" data-es="52g/<span style='color:#8080A0;font-size:10px'>200g</span>" data-en="52g/<span style='color:#8080A0;font-size:10px'>200g</span>">52g/<span style="color:#8080A0;font-size:10px">200g</span></div></div>
+                <div class="nvm-mc g"><div class="k" data-es="GRASA" data-en="FAT">GRASA</div><div class="v" data-es="18g/<span style='color:#8080A0;font-size:10px'>73g</span>" data-en="18g/<span style='color:#8080A0;font-size:10px'>73g</span>">18g/<span style="color:#8080A0;font-size:10px">73g</span></div></div>
+              </div>
+              <div class="nvm-assign">
+                <div class="nvm-assign-lbl" data-es="Asignar a:" data-en="Assign to:">Asignar a:</div>
+                <span class="nvm-apill" data-es="Desayuno" data-en="Breakfast">Desayuno</span>
+                <span class="nvm-apill on" data-es="Almuerzo" data-en="Lunch">Almuerzo</span>
+                <span class="nvm-apill" data-es="Cena" data-en="Dinner">Cena</span>
+                <span class="nvm-apill" data-es="Snack" data-en="Snack">Snack</span>
+              </div>
+              <div class="nvm-sub">
+                <div class="nvm-btn fill" data-es="Registrar comida" data-en="Log meal">Registrar comida</div>
+                <div class="nvm-btn out" data-es="Solo sumar kcal" data-en="Just add kcal">Solo sumar kcal</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Feature 3: Rutinas + screenshot -->
+  <div class="feature-row reveal">
+    <div class="feature-text">
+      <div class="feature-icon" style="background:rgba(168,85,247,.1)"><img src="icons/icon-train.svg" alt="Rutinas" width="36" height="36"></div>
+      <h3 data-es="RUTINAS PERSONALIZADAS" data-en="PERSONALIZED ROUTINES">RUTINAS PERSONALIZADAS</h3>
+      <p data-es="Programas de ejercicio creados por KAEL según tu nivel, lesiones, equipo disponible y objetivos. Se adaptan cada 30 días automáticamente." data-en="Exercise programs created by KAEL based on your level, injuries, available equipment and goals. They adapt every 30 days automatically.">Programas de ejercicio creados por KAEL según tu nivel, lesiones, equipo disponible y objetivos. Se adaptan cada 30 días automáticamente.</p>
+    </div>
+    <div class="feature-phone">
+      <div class="glow" style="background:var(--purple);top:20%;left:10%"></div>
+      <!-- Player de entreno EN VIVO (cronómetro + anillo + contador de series) -->
+      <div class="phone-frame">
+        <div class="wp-screen" role="img" aria-label="Pantalla de entreno de NEXVYVE con cronómetro y contador de series en vivo">
+          <div class="wp-top">
+            <span class="wp-day" data-es="DÍA 3 · PIERNAS" data-en="DAY 3 · LEGS">DÍA 3 · PIERNAS</span>
+            <span class="wp-prog" data-es="EN PROGRESO" data-en="IN PROGRESS">EN PROGRESO</span>
+          </div>
+          <div class="wp-video">
+            <video id="wpVideo" poster="https://storage.googleapis.com/nexvyve-prod.firebasestorage.app/exercises/Barbell_Squat/poster.jpg" muted loop playsinline preload="none" aria-label="Sentadilla con barra"></video>
+            <span class="wp-vlogo">NEX<b>V</b>YVE</span>
+            <div class="wp-vname"><span data-es="EJERCICIO" data-en="EXERCISE">EJERCICIO</span><span data-es="Sentadilla con barra" data-en="Barbell Squat">Sentadilla con barra</span></div>
+            <div class="wp-setpill" aria-label="Serie actual"><span class="dot"></span><span data-es="SET 2/4 · 12 reps" data-en="SET 2/4 · 12 reps">SET 2/4 · 12 reps</span></div>
+          </div>
+          <div class="wp-lasttime" aria-label="Último registro de este ejercicio">
+            <span class="lbl" data-es="ÚLTIMA VEZ" data-en="LAST TIME">ÚLTIMA VEZ</span>
+            <span class="val" style="color:#AAFF00">80 kg × 12</span>
+            <span class="ago" data-es="hace 7 días" data-en="7 days ago">hace 7 días</span>
+          </div>
+          <div class="wp-exmuscle" data-es="Cuádriceps · Glúteos" data-en="Quads · Glutes">Cuádriceps · Glúteos</div>
+          <div class="wp-ringwrap">
+            <svg class="wp-ring" viewBox="0 0 120 120" aria-hidden="true">
+              <circle cx="60" cy="60" r="50" fill="none" stroke="rgba(168,230,0,.13)" stroke-width="8"/>
+              <circle id="wpRing" cx="60" cy="60" r="50" fill="none" stroke="#AAFF00" stroke-width="8" stroke-linecap="round" transform="rotate(-90 60 60)" stroke-dasharray="314" stroke-dashoffset="220"/>
+            </svg>
+            <div class="wp-timer" id="wpTimer">0:45</div>
+            <div class="wp-phase" id="wpPhase" data-es="DESCANSO" data-en="REST">DESCANSO</div>
+          </div>
+          <div class="wp-feedback" role="group" aria-label="Feedback de serie">
+            <button class="wp-fb easy" data-es="FÁCIL" data-en="EASY">FÁCIL</button>
+            <button class="wp-fb good" data-es="BIEN" data-en="GOOD">BIEN</button>
+            <button class="wp-fb hard" data-es="DURO" data-en="HARD">DURO</button>
+            <button class="wp-fb fail" data-es="FALLÉ" data-en="FAILED">FALLÉ</button>
+          </div>
+          <div class="wp-dots" id="wpDots"><span></span><span class="on"></span><span></span><span></span></div>
+          <div class="wp-series"><span class="wp-snum" id="wpSeries" data-es="Serie 2 / 4" data-en="Set 2 / 4">Serie 2 / 4</span><span class="wp-sreps" data-es="12 reps" data-en="12 reps">12 reps</span></div>
+          <button class="wp-btn" data-es="Serie completada ✓" data-en="Set done ✓">Serie completada ✓</button>
+          <div class="wp-skip-row">
+            <button class="wp-skip-btn skip" data-es="Saltar descanso" data-en="Skip rest">Saltar descanso</button>
+            <button class="wp-skip-btn plus15" data-es="+15s" data-en="+15s">+15s</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <style>
+  .wp-screen{aspect-ratio:9/19.5;background:#070a12;display:flex;flex-direction:column;align-items:center;padding:9% 8% 7%;gap:3%;font-family:var(--font)}
+  .wp-top{width:100%;display:flex;align-items:center;justify-content:space-between}
+  .wp-day{font-size:11px;font-weight:800;letter-spacing:1.5px;color:var(--lime)}
+  .wp-prog{font-size:9px;font-weight:700;letter-spacing:1px;color:var(--lime);border:1px solid rgba(168,230,0,.4);border-radius:30px;padding:3px 9px}
+  .wp-exname{margin-top:2%;font-size:21px;font-weight:800;color:#fff;text-align:center;line-height:1.1}
+  .wp-exmuscle{font-size:12px;color:var(--gray1)}
+  .wp-video{position:relative;width:100%;aspect-ratio:5/4;border-radius:14px;overflow:hidden;margin:3% 0 1%;background:#0c0e08;box-shadow:0 8px 22px rgba(0,0,0,.4)}
+  .wp-video video{width:100%;height:100%;object-fit:cover;transform:scale(1.32);transform-origin:50% 40%;display:block}
+  .wp-vlogo{position:absolute;top:7px;left:9px;font-family:'Inter Tight',sans-serif;font-weight:900;font-size:10px;color:#fff;letter-spacing:.3px;text-shadow:0 1px 4px rgba(0,0,0,.7)}
+  .wp-vlogo b{color:#AAFF00}
+  .wp-vname{position:absolute;top:6px;right:6px;max-width:62%;background:rgba(12,14,8,.62);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border:1px solid rgba(170,255,0,.4);border-radius:10px;padding:4px 8px;font-size:10px;font-weight:800;color:#fff;line-height:1.12;text-align:right}
+  .wp-vname span{display:block;font-size:7px;font-weight:700;letter-spacing:1px;color:#AAFF00;margin-bottom:1px}
+  .wp-ringwrap{width:48%;max-width:116px;margin:2% 0}
+  .wp-ringwrap{position:relative;width:60%;max-width:160px;aspect-ratio:1;display:flex;align-items:center;justify-content:center;margin:4% 0}
+  .wp-ring{width:100%;height:100%}
+  #wpRing{filter:drop-shadow(0 0 6px rgba(168,230,0,.55))}
+  .wp-timer{position:absolute;top:46%;left:50%;transform:translate(-50%,-50%);font-size:34px;font-weight:900;color:#fff;letter-spacing:-1px}
+  .wp-phase{position:absolute;top:66%;left:50%;transform:translateX(-50%);font-size:9px;font-weight:700;letter-spacing:2px;color:var(--gray1)}
+  .wp-dots{display:flex;gap:8px}
+  .wp-dots span{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.18);transition:.3s}
+  .wp-dots span.on{background:var(--lime);box-shadow:0 0 8px rgba(168,230,0,.6)}
+  .wp-series{display:flex;align-items:baseline;gap:10px}
+  .wp-snum{font-size:16px;font-weight:800;color:#fff}
+  .wp-sreps{font-size:12px;color:var(--gray1)}
+  .wp-btn{margin-top:auto;width:100%;background:var(--lime);color:var(--bg);font-weight:800;font-size:13px;border:none;border-radius:14px;padding:13px;letter-spacing:.5px}
+  @media(max-width:640px){.wp-exname{font-size:17px}.wp-timer{font-size:27px}}
+  </style>
+  <script>
+  (function(){
+    var ring=document.getElementById('wpRing'),tEl=document.getElementById('wpTimer'),
+        sEl=document.getElementById('wpSeries'),pEl=document.getElementById('wpPhase'),
+        dots=document.getElementById('wpDots');
+    if(!ring)return;
+    var C=314,SETS=4,WORK=45,REST=60,set=2,left=45,phase='rest',
+        reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function fmt(s){return Math.floor(s/60)+':'+String(s%60).padStart(2,'0');}
+    function paintDots(){if(!dots)return;[].forEach.call(dots.children,function(d,i){d.className=i<set?'on':'';});}
+    function draw(){var total=phase==='work'?WORK:REST,el=total-left;ring.style.strokeDashoffset=C*(1-el/total);tEl.textContent=fmt(left);
+      if(pEl){var es=phase==='work'?'ENTRENANDO':'DESCANSO',en=phase==='work'?'TRAINING':'REST';pEl.textContent=(document.documentElement.lang==='en'?en:es);pEl.setAttribute('data-es',es);pEl.setAttribute('data-en',en);}}
+    function tick(){draw();left--;if(left<0){if(phase==='rest'){phase='work';left=WORK;}else{phase='rest';left=REST;set=set<SETS?set+1:1;var sw=(document.documentElement.lang==='en'?'Set':'Serie');sEl.textContent=sw+' '+set+' / '+SETS;sEl.setAttribute('data-es','Serie '+set+' / '+SETS);sEl.setAttribute('data-en','Set '+set+' / '+SETS);paintDots();}}}
+    paintDots();draw();
+    if(!reduce)setInterval(tick,1000);
+  })();
+  // Video real de sentadilla: carga y reproduce solo al entrar en viewport (perf), pausa al salir.
+  (function(){
+    var v=document.getElementById('wpVideo'); if(!v||!('IntersectionObserver' in window)) return;
+    var SRC='https://storage.googleapis.com/nexvyve-prod.firebasestorage.app/exercises/Barbell_Squat/smooth.mp4';
+    new IntersectionObserver(function(es){es.forEach(function(e){
+      if(e.isIntersecting){ if(!v.getAttribute('src')){ v.setAttribute('src',SRC); } var p=v.play&&v.play(); if(p&&p.catch)p.catch(function(){}); }
+      else if(v.pause){ v.pause(); }
+    });},{threshold:.25}).observe(v);
+  })();
+  </script>
+
+  <!-- Feature 4: Retos + screenshot -->
+  <div class="feature-row reveal">
+    <div class="feature-text">
+      <div class="feature-icon" style="background:rgba(255,68,68,.1)"><img src="icons/icon-trophy.svg" alt="Retos" width="36" height="36"></div>
+      <h3 data-es="RETOS Y PREMIOS REALES" data-en="CHALLENGES &amp; REAL PRIZES">RETOS Y PREMIOS REALES</h3>
+      <p data-es="Compite en retos con amigos y la comunidad. Fotos selladas con fecha y hora. Gana premios reales: membresías, suplementos, gym pass y hasta viajes." data-en="Compete in challenges with friends and the community. Sealed photos with timestamp. Win real prizes: memberships, supplements, gym passes and even trips.">Compite en retos con amigos y la comunidad. Fotos selladas con fecha y hora. Gana premios reales: membresías, suplementos, gym pass y hasta viajes.</p>
+    </div>
+    <div class="feature-phone">
+      <div class="glow" style="background:var(--lime);top:30%;right:10%"></div>
+      <div class="phone-frame"><video src="img/clips/clip-trofeo.mp4" poster="img/clips/poster-trofeo.png" autoplay muted loop playsinline preload="metadata"></video></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIOS — prueba social real -->
+<section class="testi" id="testimonios">
+  <div class="testi-head">
+    <div class="section-label reveal" data-es="Comunidad" data-en="Community">Comunidad</div>
+    <h2 class="section-title reveal" data-es="Resultados reales" data-en="Real results">Resultados reales</h2>
+    <p class="section-sub reveal" style="margin:8px auto 0" data-es="Personas reales que entrenan con NEXVYVE y la comunidad NEXT IS YOU." data-en="Real people training with NEXVYVE and the NEXT IS YOU community.">Personas reales que entrenan con NEXVYVE y la comunidad NEXT IS YOU.</p>
+  </div>
+  <div class="testi-grid reveal">
+    <div class="testi-card"><img src="img/testimonios/david.jpg" alt="David — miembro NEXVYVE" loading="lazy"><div class="testi-cap"><span class="dot"></span>David</div></div>
+    <div class="testi-card"><img src="img/testimonios/lez.jpg" alt="Lez — miembro NEXVYVE" loading="lazy"><div class="testi-cap"><span class="dot"></span>Lez</div></div>
+    <div class="testi-card"><img src="img/testimonios/jeroni.jpg" alt="Jeroni — miembro NEXVYVE" loading="lazy"><div class="testi-cap"><span class="dot"></span>Jeroni</div></div>
+    <div class="testi-card"><img src="img/testimonios/jefferson.jpg" alt="Jefferson — miembro NEXVYVE" loading="lazy"><div class="testi-cap"><span class="dot"></span>Jefferson</div></div>
+    <div class="testi-card"><img src="img/testimonios/ander.jpg" alt="Ander — miembro NEXVYVE" loading="lazy"><div class="testi-cap"><span class="dot"></span>Ander</div></div>
+    <div class="testi-card"><img src="img/testimonios/henry-boscan.jpg" alt="Henry — miembro NEXVYVE" loading="lazy"><div class="testi-cap"><span class="dot"></span>Henry</div></div>
+    <div class="testi-card"><img src="img/testimonios/testimonio-1.jpg" alt="Miembro NEXVYVE" loading="lazy"><div class="testi-cap"><span class="dot"></span><span data-es="Miembro NEXVYVE" data-en="NEXVYVE member">Miembro NEXVYVE</span></div></div>
+  </div>
+</section>
+
+<!-- ONBOARDING FLOW — Cómo registrarse hasta obtener el plan (P1) -->
+<section class="onboarding-flow" id="como-registrarse">
+  <div class="of-head">
+    <div class="section-label reveal" data-es="Empezá hoy" data-en="Start today">Empezá hoy</div>
+    <h2 class="section-title reveal" data-es="De cero a tu plan<br>en 5 minutos" data-en="From zero to your plan<br>in 5 minutes">De cero a tu plan<br>en 5 minutos</h2>
+    <p class="section-sub reveal" data-es="Sin tarjeta. Sin cuestionarios eternos. KAEL te guía paso a paso desde el primer toque." data-en="No card. No endless forms. KAEL guides you step by step from the first tap.">Sin tarjeta. Sin cuestionarios eternos. KAEL te guía paso a paso desde el primer toque.</p>
+  </div>
+
+  <div class="step-flow">
+    <!-- Paso 1: Onboarding -->
+    <div class="flow-step reveal">
+      <div class="flow-text">
+        <div class="flow-num">01</div>
+        <div class="flow-time" data-es="~3 minutos" data-en="~3 minutes">~3 minutos</div>
+        <h3 data-es="Contale a KAEL quién sos" data-en="Tell KAEL who you are">Contale a KAEL quién sos</h3>
+        <p data-es="8 preguntas rápidas: tu nivel, objetivo, días de entreno, equipo y tus datos. <span class='accent'>Nada de cuestionarios eternos.</span>" data-en="8 quick questions: your level, goal, training days, equipment and your data. <span class='accent'>No endless forms.</span>">8 preguntas rápidas: tu nivel, objetivo, días de entreno, equipo y tus datos. <span class="accent">Nada de cuestionarios eternos.</span></p>
+      </div>
+      <div class="flow-phone">
+        <div class="pf">
+          <div class="nv-phone"><div class="nv-notch"></div><div class="nv-screen">
+            <div class="nv-sb"><span>9:41</span><span class="dots"><i></i><i></i><i></i></span></div>
+            <div class="nv-app">
+              <div class="nvo-kael-guide">
+                <svg width="14" height="14" viewBox="0 0 160 160" fill="none" aria-hidden="true"><path d="M80 22 L130 80 L80 138 L30 80 Z" stroke="#AAFF00" stroke-width="9" fill="rgba(170,255,0,.12)" stroke-linejoin="round"/><circle cx="80" cy="80" r="9" fill="#AAFF00"/></svg>
+                <span class="gt" data-es="<b>KAEL</b> te guía paso a paso" data-en="<b>KAEL</b> guides you step by step"><b>KAEL</b> te guía paso a paso</span>
+              </div>
+              <div class="nv-aphd"><div><div class="nv-atitle" data-es="¿Cuál es tu nivel?" data-en="What's your level?">¿Cuál es tu nivel?</div><div class="nv-asub" data-es="Paso 2 de 8" data-en="Step 2 of 8">Paso 2 de 8</div></div><span class="nv-pill lime"><svg class="nvi"><use href="#i-level"/></svg></span></div>
+              <div class="nvo-opt"><span class="ic"><svg class="nvi"><use href="#i-level"/></svg></span><span class="tx"><span class="t" data-es="Principiante" data-en="Beginner">Principiante</span><span class="d" data-es="Empiezo desde cero" data-en="Starting from zero">Empiezo desde cero</span></span><span class="rd"></span></div>
+              <div class="nvo-opt on"><span class="ic"><svg class="nvi"><use href="#i-dumbbell"/></svg></span><span class="tx"><span class="t" data-es="Intermedio" data-en="Intermediate">Intermedio</span><span class="d" data-es="Entreno hace meses" data-en="Training for months">Entreno hace meses</span></span><span class="rd"><svg class="nvi" style="width:11px;height:11px"><use href="#i-check"/></svg></span></div>
+              <div class="nvo-opt"><span class="ic"><svg class="nvi"><use href="#i-trophy"/></svg></span><span class="tx"><span class="t" data-es="Avanzado" data-en="Advanced">Avanzado</span><span class="d" data-es="Años de constancia" data-en="Years of consistency">Años de constancia</span></span><span class="rd"></span></div>
+              <div class="nvo-prog"><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+            </div>
+          </div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Paso 2: Análisis corporal -->
+    <div class="flow-step reveal">
+      <div class="flow-text">
+        <div class="flow-num">02</div>
+        <div class="flow-time" data-es="~15 segundos" data-en="~15 seconds">~15 segundos</div>
+        <h3 data-es="Una foto. Análisis al instante." data-en="One photo. Instant analysis.">Una foto. Análisis al instante.</h3>
+        <p data-es="KAEL analiza tu composición corporal: tipo de cuerpo, fortalezas y <span class='accent'>dónde enfocar tu energía.</span>" data-en="KAEL analyzes your body composition: body type, strengths and <span class='accent'>where to focus your energy.</span>">KAEL analiza tu composición corporal: tipo de cuerpo, fortalezas y <span class="accent">dónde enfocar tu energía.</span></p>
+      </div>
+      <div class="flow-phone">
+        <div class="pf">
+          <div class="nv-phone"><div class="nv-notch"></div><div class="nv-screen">
+            <div class="nv-sb"><span>9:41</span><span class="dots"><i></i><i></i><i></i></span></div>
+            <div class="nv-app">
+              <div class="nv-aphd"><div class="nv-atitle" data-es="Análisis corporal" data-en="Body analysis">Análisis corporal</div><span class="nv-pill lime"><svg class="nvi"><use href="#i-body"/></svg></span></div>
+              <div class="nva-analysis-label">
+                <div class="nva-live-dot"></div>
+                <span data-es="ANÁLISIS KAEL · 1 restante este mes" data-en="KAEL ANALYSIS · 1 left this month">ANÁLISIS KAEL · 1 restante este mes</span>
+              </div>
+              <div class="nva-fig">
+                <!-- Figura anatómica REAL — polígonos de react-body-highlighter (ANATOMY_FRONT) -->
+                <svg id="nvaBodyFig" viewBox="0 0 100 200" style="width:52%;height:auto" aria-hidden="true">
+                  <defs>
+                    <radialGradient id="bodyHaloOb" cx="50%" cy="42%" r="55%">
+                      <stop offset="0%" stop-color="#A855F7" stop-opacity="0.14"/>
+                      <stop offset="55%" stop-color="#29B6F6" stop-opacity="0.06"/>
+                      <stop offset="100%" stop-color="#29B6F6" stop-opacity="0"/>
+                    </radialGradient>
+                  </defs>
+                  <ellipse cx="50" cy="95" rx="46" ry="92" fill="url(#bodyHaloOb)"/>
+                  <!-- base polygons -->
+                  <polygon points="68.57 63.27 67.35 57.14 58.78 59.59 60 64.08 60.41 83.27 65.71 78.78 66.53 69.80" fill="rgba(244,247,251,0.18)" stroke="rgba(244,247,251,0.32)" stroke-width="0.45"/>
+                  <polygon points="33.88 78.37 33.06 71.84 31.02 63.27 32.24 57.14 40.82 59.18 39.18 63.27 39.18 83.67" fill="rgba(244,247,251,0.18)" stroke="rgba(244,247,251,0.32)" stroke-width="0.45"/>
+                  <polygon points="16.73 68.16 17.96 71.43 22.86 66.12 28.98 53.88 27.76 49.39 20.41 55.92" fill="rgba(244,247,251,0.18)" stroke="rgba(244,247,251,0.32)" stroke-width="0.45"/>
+                  <polygon points="71.43 49.39 70.20 54.69 76.33 66.12 81.63 71.84 82.86 68.98 78.78 55.51" fill="rgba(244,247,251,0.18)" stroke="rgba(244,247,251,0.32)" stroke-width="0.45"/>
+                  <polygon points="55.51 23.67 50.61 33.47 50.61 39.18 61.63 40 70.61 44.90 69.39 36.73 63.27 35.10 58.37 30.61" fill="rgba(244,247,251,0.18)" stroke="rgba(244,247,251,0.32)" stroke-width="0.45"/>
+                  <polygon points="28.98 44.90 30.20 37.14 36.33 35.10 41.22 30.20 44.49 24.49 48.98 33.88 48.57 39.18 37.96 39.59" fill="rgba(244,247,251,0.18)" stroke="rgba(244,247,251,0.32)" stroke-width="0.45"/>
+                  <polygon points="78.37 53.06 79.59 47.76 79.18 41.22 75.92 37.96 71.02 36.33 72.24 42.86 71.43 47.35" fill="rgba(244,247,251,0.18)" stroke="rgba(244,247,251,0.32)" stroke-width="0.45"/>
+                  <polygon points="28.16 47.35 21.22 53.06 20 47.76 20.41 40.82 24.49 37.14 28.57 37.14 26.94 43.27" fill="rgba(244,247,251,0.18)" stroke="rgba(244,247,251,0.32)" stroke-width="0.45"/>
+                  <polygon points="42.45 2.86 40 11.84 42.04 19.59 46.12 23.27 49.80 25.31 54.69 22.45 57.55 19.18 59.18 10.20 57.14 2.45 49.80 0" fill="rgba(244,247,251,0.18)" stroke="rgba(244,247,251,0.32)" stroke-width="0.45"/>
+                  <polygon points="52.65 110.20 54.29 124.90 60 110.20 62.04 100 64.90 94.29 60 92.65 56.73 104.49" fill="rgba(244,247,251,0.18)" stroke="rgba(244,247,251,0.32)" stroke-width="0.45"/>
+                  <polygon points="47.76 110.61 44.90 125.31 42.04 115.92 40.41 113.06 39.59 107.35 37.96 102.45 34.69 93.88 39.59 92.24 41.63 99.18 43.67 105.31" fill="rgba(244,247,251,0.18)" stroke="rgba(244,247,251,0.32)" stroke-width="0.45"/>
+                  <polygon points="33.88 140 34.69 143.27 35.51 147.35 36.33 151.02 35.10 156.73 29.80 156.73 27.35 152.65 27.35 147.35 30.20 144.08" fill="rgba(244,247,251,0.18)" stroke="rgba(244,247,251,0.32)" stroke-width="0.45"/>
+                  <polygon points="65.71 140 72.24 147.76 72.24 152.24 69.80 157.14 64.90 156.73 62.86 151.02" fill="rgba(244,247,251,0.18)" stroke="rgba(244,247,251,0.32)" stroke-width="0.45"/>
+                  <polygon points="71.43 160.41 73.47 153.47 76.73 161.22 79.59 167.76 78.37 187.76 79.59 195.51 74.69 195.51" fill="rgba(244,247,251,0.18)" stroke="rgba(244,247,251,0.32)" stroke-width="0.45"/>
+                  <polygon points="24.90 194.69 27.76 164.90 28.16 160.41 26.12 154.29 24.90 157.55 22.45 161.63 20.82 167.76 22.04 188.16 20.82 195.51" fill="rgba(244,247,251,0.18)" stroke="rgba(244,247,251,0.32)" stroke-width="0.45"/>
+                  <polygon points="72.65 195.10 69.80 159.18 65.31 158.37 64.08 162.45 64.08 165.31 65.71 177.14" fill="rgba(244,247,251,0.18)" stroke="rgba(244,247,251,0.32)" stroke-width="0.45"/>
+                  <polygon points="35.51 158.37 35.92 162.45 35.92 166.94 35.10 172.24 35.10 176.73 32.24 182.04 30.61 187.35 26.94 194.69 27.35 187.76 28.16 180.41 28.57 175.51 28.98 169.80 29.80 164.08 30.20 158.78" fill="rgba(244,247,251,0.18)" stroke="rgba(244,247,251,0.32)" stroke-width="0.45"/>
+                  <polygon points="6.12 88.57 10.20 75.10 14.69 70.20 16.33 74.29 19.18 73.47 4.49 97.55 0 100" fill="rgba(244,247,251,0.18)" stroke="rgba(244,247,251,0.32)" stroke-width="0.45"/>
+                  <polygon points="84.49 69.80 83.27 73.47 80 73.06 95.10 98.37 100 100.41 93.47 89.39 89.80 76.33" fill="rgba(244,247,251,0.18)" stroke="rgba(244,247,251,0.32)" stroke-width="0.45"/>
+                  <polygon points="77.55 72.24 77.55 77.55 80.41 84.08 85.31 89.80 92.24 101.22 94.69 99.59" fill="rgba(244,247,251,0.18)" stroke="rgba(244,247,251,0.32)" stroke-width="0.45"/>
+                  <polygon points="6.94 101.22 13.47 90.61 18.78 84.08 21.63 77.14 21.22 71.84 4.90 98.78" fill="rgba(244,247,251,0.18)" stroke="rgba(244,247,251,0.32)" stroke-width="0.45"/>
+                  <!-- chest — lima #AAFF00 -->
+                  <polygon points="51.84 41.63 51.02 55.10 57.96 57.96 67.76 55.51 70.61 47.35 62.04 41.63" fill="#AAFF00" stroke="#AAFF00" stroke-width="0.45" opacity="0.72">
+                    <animate attributeName="opacity" values="0.55;0.9;0.55" dur="2.8s" begin="0s" repeatCount="indefinite"/>
+                  </polygon>
+                  <polygon points="29.80 46.53 31.43 55.51 40.82 57.96 48.16 55.10 47.76 42.04 37.55 42.04" fill="#AAFF00" stroke="#AAFF00" stroke-width="0.45" opacity="0.72">
+                    <animate attributeName="opacity" values="0.55;0.9;0.55" dur="2.8s" begin="0s" repeatCount="indefinite"/>
+                  </polygon>
+                  <!-- abs — teal #00D4AA -->
+                  <polygon points="56.33 59.18 57.96 64.08 58.37 77.96 58.37 92.65 56.33 98.37 55.10 104.08 51.43 107.76 51.02 84.49 50.61 67.35 51.02 57.14" fill="#00D4AA" stroke="#00D4AA" stroke-width="0.45" opacity="0.65">
+                    <animate attributeName="opacity" values="0.5;0.85;0.5" dur="2.8s" begin="0.7s" repeatCount="indefinite"/>
+                  </polygon>
+                  <polygon points="43.67 58.78 48.57 57.14 48.98 67.35 48.57 84.49 48.16 107.35 44.49 103.67 40.82 91.43 40.82 78.37 41.22 64.49" fill="#00D4AA" stroke="#00D4AA" stroke-width="0.45" opacity="0.65">
+                    <animate attributeName="opacity" values="0.5;0.85;0.5" dur="2.8s" begin="0.7s" repeatCount="indefinite"/>
+                  </polygon>
+                  <!-- quads — violeta #A855F7 -->
+                  <polygon points="34.69 98.78 37.14 108.16 37.14 127.76 34.29 137.14 31.02 132.65 29.39 120 28.16 111.43 29.39 100.82 32.24 94.69" fill="#A855F7" stroke="#A855F7" stroke-width="0.45" opacity="0.7">
+                    <animate attributeName="opacity" values="0.5;0.88;0.5" dur="2.8s" begin="1.4s" repeatCount="indefinite"/>
+                  </polygon>
+                  <polygon points="63.27 105.71 64.49 100 66.94 94.69 70.20 101.22 71.02 111.84 68.16 133.06 65.31 137.55 62.45 128.57 62.04 111.43" fill="#A855F7" stroke="#A855F7" stroke-width="0.45" opacity="0.7">
+                    <animate attributeName="opacity" values="0.5;0.88;0.5" dur="2.8s" begin="1.4s" repeatCount="indefinite"/>
+                  </polygon>
+                  <polygon points="38.78 129.39 38.37 112.24 41.22 118.37 44.49 129.39 42.86 135.10 40 146.12 36.33 146.53 35.51 140" fill="#A855F7" stroke="#A855F7" stroke-width="0.45" opacity="0.7">
+                    <animate attributeName="opacity" values="0.5;0.88;0.5" dur="2.8s" begin="1.4s" repeatCount="indefinite"/>
+                  </polygon>
+                  <polygon points="59.59 145.71 55.51 128.98 60.82 113.88 61.22 130.20 64.08 139.59 62.86 146.53" fill="#A855F7" stroke="#A855F7" stroke-width="0.45" opacity="0.7">
+                    <animate attributeName="opacity" values="0.5;0.88;0.5" dur="2.8s" begin="1.4s" repeatCount="indefinite"/>
+                  </polygon>
+                </svg>
+                <!-- scan line sobre la figura -->
+                <div class="nva-scan-line" aria-hidden="true"></div>
+                <div class="nva-score">
+                  <span class="l" style="display:flex;align-items:center;gap:4px" data-es="Puntaje KAEL" data-en="KAEL score">Puntaje KAEL</span>
+                  <span class="v">82</span>
+                </div>
+              </div>
+              <div class="nva-tags"><span class="nva-tag" data-es="Mesomorfo" data-en="Mesomorph">Mesomorfo</span><span class="nva-tag" data-es="Foco: piernas" data-en="Focus: legs">Foco: piernas</span><span class="nva-tag" data-es="IMC 23.1" data-en="BMI 23.1">IMC 23.1</span></div>
+            </div>
+          </div></div>
+        </div>
+        <span class="arrow-tag" data-es="Tocá ✦ Hacer análisis" data-en="Tap ✦ Run analysis">Tocá ✦ Hacer análisis</span>
+      </div>
+    </div>
+
+    <!-- Paso 3: KAEL arma el plan -->
+    <div class="flow-step reveal">
+      <div class="flow-text">
+        <div class="flow-num">03</div>
+        <div class="flow-time" data-es="~30 segundos" data-en="~30 seconds">~30 segundos</div>
+        <h3 data-es="KAEL arma tu plan único" data-en="KAEL builds your unique plan">KAEL arma tu plan único</h3>
+        <p data-es="Entrenamiento + nutrición + macros, 100% adaptados a vos. <span class='accent'>Aceptá o pedí cambios</span> en el chat las veces que quieras." data-en="Training + nutrition + macros, 100% adapted to you. <span class='accent'>Accept or request changes</span> in the chat as many times as you want.">Entrenamiento + nutrición + macros, 100% adaptados a vos. <span class="accent">Aceptá o pedí cambios</span> en el chat las veces que quieras.</p>
+      </div>
+      <div class="flow-phone">
+        <div class="pf">
+          <div class="nv-phone"><div class="nv-notch"></div><div class="nv-screen">
+            <div class="nv-sb"><span>9:41</span><span class="dots"><i></i><i></i><i></i></span></div>
+            <div class="nv-app">
+              <div class="nv-aphd"><div><div class="nv-atitle" data-es="Tu plan está listo" data-en="Your plan is ready">Tu plan está listo</div><div class="nv-asub" data-es="Hecho por KAEL para vos" data-en="Made by KAEL for you">Hecho por KAEL para vos</div></div><span class="nv-pill lime"><svg class="nvi"><use href="#i-check"/></svg></span></div>
+              <div class="nvp-row"><span class="ic" style="background:rgba(170,255,0,.12);color:#AAFF00"><svg class="nvi"><use href="#i-dumbbell"/></svg></span><span class="tx"><span class="t" data-es="Entrenamiento" data-en="Training">Entrenamiento</span><span class="d" data-es="4 días · pierna, push, pull" data-en="4 days · legs, push, pull">4 días · pierna, push, pull</span></span><span class="ck"><svg class="nvi"><use href="#i-check"/></svg></span></div>
+              <div class="nvp-row"><span class="ic" style="background:rgba(0,212,170,.12);color:#1FE3C0"><svg class="nvi"><use href="#i-meal"/></svg></span><span class="tx"><span class="t" data-es="Nutrición" data-en="Nutrition">Nutrición</span><span class="d" data-es="2.200 kcal · P160g C220g G73g" data-en="2,200 kcal · P160g C220g F73g">2.200 kcal · P160g C220g G73g</span></span><span class="ck"><svg class="nvi"><use href="#i-check"/></svg></span></div>
+              <div class="nvp-row"><span class="ic" style="background:rgba(79,163,255,.12);color:#4FA3FF"><svg class="nvi"><use href="#i-macros"/></svg></span><span class="tx"><span class="t" data-es="Objetivo" data-en="Goal">Objetivo</span><span class="d" data-es="Ganar músculo · 12 sem" data-en="Build muscle · 12 wks">Ganar músculo · 12 sem</span></span><span class="ck"><svg class="nvi"><use href="#i-check"/></svg></span></div>
+              <div class="nvp-day1"><span class="ic" style="background:rgba(170,255,0,.08);color:#AAFF00;width:22px;height:22px;flex:none;border-radius:7px;display:flex;align-items:center;justify-content:center"><svg class="nvi" style="width:13px;height:13px"><use href="#i-dumbbell"/></svg></span><span class="tx" data-es="<b>Día 1:</b> Piernas · Sentadilla, Prensa..." data-en="<b>Day 1:</b> Legs · Squat, Leg press..."><b>Día 1:</b> Piernas · Sentadilla, Prensa...</span></div>
+              <div class="nvp-cta" data-es="Aceptar plan" data-en="Accept plan">Aceptar plan</div>
+              <div class="nvp-request-btn" data-es="Pedir cambios a KAEL" data-en="Request changes from KAEL">Pedir cambios a KAEL</div>
+            </div>
+          </div></div>
+        </div>
+        <span class="arrow-tag" data-es="Tocá ✦ Armar plan" data-en="Tap ✦ Build plan">Tocá ✦ Armar plan</span>
+      </div>
+    </div>
+
+    <!-- Paso 4: A usarlo día a día -->
+    <div class="flow-step reveal">
+      <div class="flow-text">
+        <div class="flow-num">04</div>
+        <div class="flow-time" data-es="Cada día" data-en="Every day">Cada día</div>
+        <h3 data-es="A vivirlo, cada día" data-en="Live it, every day">A vivirlo, cada día</h3>
+        <p data-es="Rutina, comidas, agua, KAEL 24/7 y la comunidad <span class='accent'>NEXT IS YOU.</span> Todo en un solo lugar." data-en="Routine, meals, water, KAEL 24/7 and the <span class='accent'>NEXT IS YOU.</span> community. All in one place.">Rutina, comidas, agua, KAEL 24/7 y la comunidad <span class="accent">NEXT IS YOU.</span> Todo en un solo lugar.</p>
+      </div>
+      <div class="flow-phone">
+        <div class="pf">
+          <div class="nv-phone"><div class="nv-notch"></div><div class="nv-screen">
+            <div class="nv-sb"><span>9:41</span><span class="dots"><i></i><i></i><i></i></span></div>
+            <div class="nv-hd">
+              <div class="nv-wm">NEX<b>V</b>YVE</div>
+              <div class="nv-hr"><div class="nv-sph" style="color:#FFD700"><svg class="nvi"><use href="#i-medal"/></svg></div><div class="nv-nm"><div class="n">Bleiquel</div><div class="lv">FIGHTER</div></div><div class="nv-dot"></div><div class="nv-vc"><svg class="nvi"><use href="#i-vcoin"/></svg> 12</div></div>
+            </div>
+            <div class="nvw" style="--pct:95;--acc:#AAFF00;--accrgb:170,255,0;flex:1">
+              <div class="nvw-top"><span class="nvw-id"><svg width="20" height="20" viewBox="0 0 160 160" fill="none" aria-hidden="true"><path d="M80 22 L130 80 L80 138 L30 80 Z" stroke="#AAFF00" stroke-width="7" fill="rgba(170,255,0,.12)" stroke-linejoin="round"/><circle cx="80" cy="80" r="7" fill="#AAFF00"/></svg></span><span class="nvw-kael">KAEL</span><span class="nvw-badge" data-es="HOY" data-en="TODAY">HOY</span></div>
+              <div class="nvw-week" style="--acc:#AAFF00">
+                <div class="nvw-day"><div class="nvw-rg" style="--p:100"><span>L</span></div><div class="nvw-dl">L</div></div>
+                <div class="nvw-day"><div class="nvw-rg" style="--p:100"><span>M</span></div><div class="nvw-dl">M</div></div>
+                <div class="nvw-day"><div class="nvw-rg" style="--p:100"><span>X</span></div><div class="nvw-dl">X</div></div>
+                <div class="nvw-day today"><div class="nvw-rg" style="--p:95"><span>J</span></div><div class="nvw-dl" style="color:#AAFF00">J</div><div class="nvw-day-chev">&#8250;</div></div>
+                <div class="nvw-day future"><div class="nvw-rg" style="--p:0;opacity:.4"><span>V</span></div><div class="nvw-future-dot"></div></div>
+                <div class="nvw-day future"><div class="nvw-rg" style="--p:0;opacity:.4"><span>S</span></div><div class="nvw-future-dot"></div></div>
+                <div class="nvw-day future"><div class="nvw-rg" style="--p:0;opacity:.4"><span>D</span></div><div class="nvw-future-dot"></div></div>
+              </div>
+              <div class="nvw-msg" data-es="Vas al <b>95%</b> del día. Una serie más y queda perfecto." data-en="You're at <b>95%</b> of today. One more set and it's perfect.">Vas al <b>95%</b> del día. Una serie más y queda perfecto.</div>
+              <button class="nvw-cta" data-es="Seguir entreno →" data-en="Continue workout →">Seguir entreno →</button>
+              <div class="nvw-chips">
+                <div class="nvw-chip w"><span class="ic"><svg class="nvi"><use href="#i-dumbbell"/></svg></span><span data-es="Entreno ✓" data-en="Workout ✓">Entreno ✓</span></div>
+                <div class="nvw-chip m"><span class="ic"><svg class="nvi"><use href="#i-meal"/></svg></span><span data-es="Comida ✓" data-en="Meals ✓">Comida ✓</span></div>
+                <div class="nvw-chip a"><span class="ic"><svg class="nvi"><use href="#i-water"/></svg></span><span>6/8</span></div>
+                <div class="nvw-chip s"><span class="ic"><svg class="nvi"><use href="#i-supps"/></svg></span><span data-es="Supps" data-en="Supps">Supps</span></div>
+              </div>
+            </div>
+            <!-- Navbar inferior — paso 4 muestra el ecosistema completo -->
+            <div class="nv-navbar" aria-label="Navegación principal">
+              <div class="nv-nb-item on" aria-current="page"><svg class="nb-ic"><use href="#i-nav-home"/></svg><span class="nb-lb" data-es="HOY" data-en="TODAY">HOY</span></div>
+              <div class="nv-nb-item"><svg class="nb-ic"><use href="#i-nav-prog"/></svg><span class="nb-lb" data-es="PROGRAMA" data-en="PROGRAM">PROGRAMA</span></div>
+              <div class="nv-nb-item" style="margin-top:-4px"><div class="nv-nb-kael"><svg width="18" height="18" viewBox="0 0 160 160" fill="none" aria-hidden="true"><path d="M80 22 L130 80 L80 138 L30 80 Z" stroke="#AAFF00" stroke-width="8" fill="rgba(170,255,0,.12)" stroke-linejoin="round"/><circle cx="80" cy="80" r="8" fill="#AAFF00"/></svg></div><span class="nb-lb" style="color:#AAFF00" data-es="KAEL" data-en="KAEL">KAEL</span></div>
+              <div class="nv-nb-item"><svg class="nb-ic"><use href="#i-nav-social"/></svg><span class="nb-lb" data-es="SOCIAL" data-en="SOCIAL">SOCIAL</span></div>
+              <div class="nv-nb-item"><svg class="nb-ic"><use href="#i-nav-profile"/></svg><span class="nb-lb" data-es="PERFIL" data-en="PROFILE">PERFIL</span></div>
+            </div>
+          </div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="of-stats">
+    <div class="of-stat reveal"><span class="of-num" data-count="5">5</span><span class="of-lbl" data-es="minutos para empezar" data-en="minutes to start">minutos para empezar</span></div>
+    <div class="of-stat reveal"><span class="of-num"><span data-count="100">100</span>%</span><span class="of-lbl" data-es="personalizado" data-en="personalized">personalizado</span></div>
+    <div class="of-stat reveal"><span class="of-num">24/7</span><span class="of-lbl" data-es="con KAEL" data-en="with KAEL">con KAEL</span></div>
+  </div>
+
+  <div class="of-cta">
+    <a href="https://apps.apple.com/app/nexvyve/id6760936021" class="btn-primary reveal" data-es="Empezar Gratis — 30 días" data-en="Start Free — 30 days">Empezar Gratis — 30 días</a>
+    <div class="cta-sub reveal" data-es="Sin tarjeta de crédito · Cancela cuando quieras" data-en="No credit card · Cancel anytime">Sin tarjeta de crédito · Cancela cuando quieras</div>
+  </div>
+</section>
+
+<!-- MORE FEATURES GRID -->
+<section>
+  <div class="features-grid">
+    <div class="fcard reveal">
+      <div class="fcard-icon" style="background:rgba(0,212,255,.1)"><img src="icons/icon-analysis.svg" alt="Análisis" width="32" height="32"></div>
+      <h3 data-es="Análisis Corporal" data-en="Body Analysis">Análisis Corporal</h3>
+      <p data-es="Tomá una foto y KAEL evalúa tu composición corporal, IMC, tipo de cuerpo y áreas de mejora con un puntaje personalizado." data-en="Take a photo and KAEL evaluates your body composition, BMI, body type and areas for improvement with a personalized score.">Tomá una foto y KAEL evalúa tu composición corporal, IMC, tipo de cuerpo y áreas de mejora con un puntaje personalizado.</p>
+    </div>
+    <div class="fcard reveal">
+      <div class="fcard-icon" style="background:rgba(168,230,0,.1)"><img src="icons/icon-vcoin.svg" alt="V-Coins" width="32" height="32"></div>
+      <h3 data-es="V-Coins y Tienda" data-en="V-Coins &amp; Store">V-Coins y Tienda</h3>
+      <p data-es="Ganá V-Coins por entrenar, referir amigos y completar retos. Canjeá por membresías, tarjetas regalo y experiencias exclusivas." data-en="Earn V-Coins by training, referring friends and completing challenges. Redeem for memberships, gift cards and exclusive experiences.">Ganá V-Coins por entrenar, referir amigos y completar retos. Canjeá por membresías, tarjetas regalo y experiencias exclusivas.</p>
+    </div>
+    <div class="fcard reveal">
+      <div class="fcard-icon" style="background:rgba(168,85,247,.1)"><img src="icons/icon-community.svg" alt="Ranking" width="32" height="32"></div>
+      <h3 data-es="Ranking Global" data-en="Global Ranking">Ranking Global</h3>
+      <p data-es="Competí con toda la comunidad en el ranking global. Subí de nivel, ganá insignias y mostrá tu constancia." data-en="Compete with the entire community in the global ranking. Level up, earn badges and prove you're the best.">Competí con toda la comunidad en el ranking global. Subí de nivel, ganá insignias y mostrá tu constancia.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing-section" id="precios">
+  <div style="text-align:center">
+    <div class="section-label reveal" data-es="Planes" data-en="Plans">Planes</div>
+    <h2 class="section-title reveal" data-es="Simple y transparente" data-en="Simple and transparent">Simple y transparente</h2>
+    <p class="section-sub reveal" style="margin:8px auto 0" data-es="Empezá gratis 30 días. Sin tarjeta. Sin compromisos." data-en="Start free for 30 days. No card. No commitments.">Empezá gratis 30 días. Sin tarjeta. Sin compromisos.</p>
+  </div>
+  <div class="pricing-grid">
+    <!-- Free -->
+    <div class="price-card reveal">
+      <div class="price-name" data-es="PRUEBA GRATIS" data-en="FREE TRIAL">PRUEBA GRATIS</div>
+      <div class="price-amount">$0 <span data-es="/mes" data-en="/mo">/mes</span></div>
+      <div class="price-period" data-es="30 días &middot; Sin tarjeta de crédito" data-en="30 days &middot; No credit card">30 días &middot; Sin tarjeta de crédito</div>
+      <ul class="price-features">
+        <li data-es="30 días completos" data-en="Full 30 days">30 días completos</li>
+        <li data-es="5 mensajes/día con KAEL" data-en="5 messages/day with KAEL">5 mensajes/día con KAEL</li>
+        <li data-es="3 días ilimitados al registrarte" data-en="3 unlimited days on signup">3 días ilimitados al registrarte</li>
+        <li data-es="Entrenamiento personalizado" data-en="Personalized training">Entrenamiento personalizado</li>
+        <li data-es="Plan de nutrición con macros" data-en="Nutrition plan with macros">Plan de nutrición con macros</li>
+        <li data-es="Análisis corporal inicial" data-en="Initial body analysis">Análisis corporal inicial</li>
+        <li data-es="Retos y comunidad" data-en="Challenges and community">Retos y comunidad</li>
+        <li data-es="V-Coins y recompensas" data-en="V-Coins and rewards">V-Coins y recompensas</li>
+      </ul>
+      <a href="https://apps.apple.com/app/nexvyve/id6760936021" class="price-btn outline" data-es="Empezar Gratis" data-en="Start Free">Empezar Gratis</a>
+    </div>
+    <!-- Premium -->
+    <div class="price-card popular reveal">
+      <div class="price-badge" data-es="M&Aacute;S POPULAR" data-en="MOST POPULAR">M&Aacute;S POPULAR</div>
+      <div class="price-name" data-es="PREMIUM" data-en="PREMIUM">PREMIUM</div>
+      <div class="price-amount">$9.99 <span data-es="/mes" data-en="/mo">/mes</span></div>
+      <div class="price-period" data-es="Tras los 30 días de prueba" data-en="After the 30-day trial">Tras los 30 días de prueba</div>
+      <ul class="price-features">
+        <li data-es="Todo lo del plan gratuito" data-en="Everything in the free plan">Todo lo del plan gratuito</li>
+        <li data-es="30 mensajes/día con KAEL" data-en="30 messages/day with KAEL">30 mensajes/día con KAEL</li>
+        <li data-es="2 análisis corporales/mes" data-en="2 body analyses/month">2 análisis corporales/mes</li>
+        <li data-es="+50 V-Coins mensuales" data-en="+50 monthly V-Coins">+50 V-Coins mensuales</li>
+        <li data-es="Escaneo de comidas con foto" data-en="Meal scanning with photo">Escaneo de comidas con foto</li>
+        <li data-es="Retos con premios reales" data-en="Challenges with real prizes">Retos con premios reales</li>
+      </ul>
+      <a href="https://apps.apple.com/app/nexvyve/id6760936021" class="price-btn fill" data-es="Empezar Ahora" data-en="Start Now">Empezar Ahora</a>
+    </div>
+    <!-- Annual -->
+    <div class="price-card reveal">
+      <div class="price-badge" style="background:var(--cyan);color:var(--bg)" data-es="AHORRA 33%" data-en="SAVE 33%">AHORRA 33%</div>
+      <div class="price-name" data-es="ANUAL" data-en="ANNUAL">ANUAL</div>
+      <div class="price-amount">$79.99 <span data-es="/año" data-en="/yr">/año</span></div>
+      <div class="price-period" data-es="Solo $6.67/mes &middot; Ahorras $39.89" data-en="Only $6.67/mo &middot; Save $39.89">Solo $6.67/mes &middot; Ahorras $39.89</div>
+      <ul class="price-features">
+        <li data-es="Todo lo de Premium" data-en="Everything in Premium">Todo lo de Premium</li>
+        <li data-es="40 mensajes/día con KAEL" data-en="40 messages/day with KAEL">40 mensajes/día con KAEL</li>
+        <li data-es="3 análisis corporales/mes" data-en="3 body analyses/month">3 análisis corporales/mes</li>
+        <li data-es="+75 V-Coins mensuales" data-en="+75 monthly V-Coins">+75 V-Coins mensuales</li>
+        <li data-es="Badge exclusivo anual" data-en="Exclusive annual badge">Badge exclusivo anual</li>
+        <li data-es="Soporte prioritario" data-en="Priority support">Soporte prioritario</li>
+      </ul>
+      <a href="https://apps.apple.com/app/nexvyve/id6760936021" class="price-btn fill" data-es="Mejor Oferta" data-en="Best Deal">Mejor Oferta</a>
+    </div>
+    <!-- Elite -->
+    <div class="price-card reveal">
+      <div class="price-badge" style="background:var(--purple)" data-es="M&Aacute;XIMO PODER" data-en="MAXIMUM POWER">M&Aacute;XIMO PODER</div>
+      <div class="price-name" data-es="ELITE" data-en="ELITE">ELITE</div>
+      <div class="price-amount">$24.99 <span data-es="/mes" data-en="/mo">/mes</span></div>
+      <div class="price-period" data-es="Acceso ilimitado total" data-en="Total unlimited access">Acceso ilimitado total</div>
+      <ul class="price-features">
+        <li data-es="Todo lo de Annual" data-en="Everything in Annual">Todo lo de Annual</li>
+        <li data-es="Mensajes ilimitados con KAEL" data-en="Unlimited messages with KAEL">Mensajes ilimitados con KAEL</li>
+        <li data-es="4 análisis corporales/mes" data-en="4 body analyses/month">4 análisis corporales/mes</li>
+        <li data-es="+150 V-Coins mensuales" data-en="+150 monthly V-Coins">+150 V-Coins mensuales</li>
+        <li data-es="Prioridad máxima de soporte" data-en="Maximum support priority">Prioridad máxima de soporte</li>
+        <li data-es="Badge: MÁXIMO PODER" data-en="Badge: MAXIMUM POWER">Badge: MÁXIMO PODER</li>
+      </ul>
+      <a href="https://apps.apple.com/app/nexvyve/id6760936021" class="price-btn" style="background:var(--purple);color:#fff" data-es="Activar ELITE" data-en="Activate ELITE">Activar ELITE</a>
+    </div>
+  </div>
+</section>
+
+<!-- APP SCREENSHOTS -->
+<section class="screenshots">
+  <div class="screenshots-title">
+    <div class="section-label reveal" data-es="La App" data-en="The App">La App</div>
+    <h2 class="section-title reveal" data-es="Diseñada para resultados" data-en="Designed for results">Diseñada para resultados</h2>
+  </div>
+  <div class="carousel reveal">
+    <!-- Dashboard / Tarjeta Viva -->
+    <div class="carousel-cell">
+      <div class="phone-frame">
+        <div class="nv-phone"><div class="nv-notch"></div><div class="nv-screen">
+          <div class="nv-sb"><span>9:41</span><span class="dots"><i></i><i></i><i></i></span></div>
+          <div class="nv-hd">
+            <div class="nv-wm">NEX<b>V</b>YVE</div>
+            <div class="nv-hr"><div class="nv-sph" style="color:#FFD700"><svg class="nvi"><use href="#i-medal"/></svg></div><div class="nv-nm"><div class="n">Bleiquel</div><div class="lv">ROOKIE</div></div><div class="nv-dot"></div><div class="nv-vc"><svg class="nvi"><use href="#i-vcoin"/></svg> 5</div></div>
+          </div>
+          <div class="nvw" style="--pct:78;--acc:#AAFF00;--accrgb:170,255,0">
+            <div class="nvw-top"><span class="nvw-id"><svg width="20" height="20" viewBox="0 0 160 160" fill="none" aria-hidden="true"><path d="M80 22 L130 80 L80 138 L30 80 Z" stroke="#AAFF00" stroke-width="7" fill="rgba(170,255,0,.12)" stroke-linejoin="round"/><circle cx="80" cy="80" r="7" fill="#AAFF00"/></svg></span><span class="nvw-kael">KAEL</span><span class="nvw-badge" data-es="HOY" data-en="TODAY">HOY</span></div>
+            <div class="nvw-week">
+              <div class="nvw-day"><div class="nvw-rg" style="--p:100"><span>L</span></div><div class="nvw-dl">L</div></div>
+              <div class="nvw-day"><div class="nvw-rg" style="--p:100"><span>M</span></div><div class="nvw-dl">M</div></div>
+              <div class="nvw-day"><div class="nvw-rg" style="--p:100"><span>X</span></div><div class="nvw-dl">X</div></div>
+              <div class="nvw-day today"><div class="nvw-rg" style="--p:78"><span>J</span></div><div class="nvw-dl" style="color:#AAFF00">J</div><div class="nvw-day-chev">&#8250;</div></div>
+              <div class="nvw-day future"><div class="nvw-rg" style="--p:0;opacity:.4"><span>V</span></div><div class="nvw-future-dot"></div></div>
+              <div class="nvw-day future"><div class="nvw-rg" style="--p:0;opacity:.4"><span>S</span></div><div class="nvw-future-dot"></div></div>
+              <div class="nvw-day future"><div class="nvw-rg" style="--p:0;opacity:.4"><span>D</span></div><div class="nvw-future-dot"></div></div>
+            </div>
+            <div class="nvw-msg" data-es="Vas al <b>78%</b> del día. Te falta el entreno de piernas." data-en="You're at <b>78%</b> of today. Legs workout left.">Vas al <b>78%</b> del día. Te falta el entreno de piernas.</div>
+            <button class="nvw-cta" data-es="Empezar entreno →" data-en="Start workout →">Empezar entreno →</button>
+            <div class="nvw-chips">
+              <div class="nvw-chip w"><span class="ic"><svg class="nvi"><use href="#i-dumbbell"/></svg></span><span data-es="Entreno" data-en="Workout">Entreno</span></div>
+              <div class="nvw-chip m"><span class="ic"><svg class="nvi"><use href="#i-meal"/></svg></span><span data-es="Comida" data-en="Meals">Comida</span></div>
+              <div class="nvw-chip a"><span class="ic"><svg class="nvi"><use href="#i-water"/></svg></span><span>6/8</span></div>
+              <div class="nvw-chip s"><span class="ic"><svg class="nvi"><use href="#i-supps"/></svg></span><span data-es="Supps" data-en="Supps">Supps</span></div>
+            </div>
+          </div>
+          <!-- mini-lista Tu dia — ancla fondo Dashboard -->
+          <div style="margin:8px 13px 0;display:flex;flex-direction:column;gap:4px">
+            <div style="font-family:'Inter Tight';font-size:7.5px;font-weight:700;letter-spacing:.8px;color:#8080A0;text-transform:uppercase;padding:0 2px" data-es="Tu día" data-en="Today">Tu día</div>
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:5px 8px;border-radius:9px;background:#13131F;border:1px solid rgba(255,255,255,.05)"><span style="font-family:'Inter Tight';font-size:9px;font-weight:700;color:#AAFF00" data-es="Piernas · pendiente" data-en="Legs · pending">Piernas · pendiente</span><svg class="nvi" style="color:#AAFF00;width:11px;height:11px"><use href="#i-dumbbell"/></svg></div>
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:5px 8px;border-radius:9px;background:#13131F;border:1px solid rgba(255,255,255,.05)"><span style="font-family:'Inter Tight';font-size:9px;font-weight:700;color:#1FE3C0" data-es="Cena · 720 kcal" data-en="Dinner · 720 kcal">Cena · 720 kcal</span><svg class="nvi" style="color:#1FE3C0;width:11px;height:11px"><use href="#i-meal"/></svg></div>
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:5px 8px;border-radius:9px;background:#13131F;border:1px solid rgba(255,255,255,.05)"><span style="font-family:'Inter Tight';font-size:9px;font-weight:700;color:#52C5FF" data-es="Agua · 6/8 vasos" data-en="Water · 6/8 glasses">Agua · 6/8 vasos</span><svg class="nvi" style="color:#52C5FF;width:11px;height:11px"><use href="#i-water"/></svg></div>
+          </div>
+          <!-- Navbar inferior Dashboard carrusel -->
+          <div class="nv-navbar" aria-label="Navegacion principal">
+            <div class="nv-nb-item on" aria-current="page"><svg class="nb-ic"><use href="#i-nav-home"/></svg><span class="nb-lb" data-es="HOY" data-en="TODAY">HOY</span></div>
+            <div class="nv-nb-item"><svg class="nb-ic"><use href="#i-nav-prog"/></svg><span class="nb-lb" data-es="PROGRAMA" data-en="PROGRAM">PROGRAMA</span></div>
+            <div class="nv-nb-item" style="margin-top:-4px"><div class="nv-nb-kael"><svg width="16" height="16" viewBox="0 0 160 160" fill="none" aria-hidden="true"><path d="M80 22 L130 80 L80 138 L30 80 Z" stroke="#AAFF00" stroke-width="8" fill="rgba(170,255,0,.12)" stroke-linejoin="round"/><circle cx="80" cy="80" r="8" fill="#AAFF00"/></svg></div><span class="nb-lb" style="color:#AAFF00" data-es="KAEL" data-en="KAEL">KAEL</span></div>
+            <div class="nv-nb-item"><svg class="nb-ic"><use href="#i-nav-social"/></svg><span class="nb-lb" data-es="SOCIAL" data-en="SOCIAL">SOCIAL</span></div>
+            <div class="nv-nb-item"><svg class="nb-ic"><use href="#i-nav-profile"/></svg><span class="nb-lb" data-es="PERFIL" data-en="PROFILE">PERFIL</span></div>
+          </div>
+        </div></div>
+      </div>
+      <div class="carousel-label" data-es="Dashboard" data-en="Dashboard">Dashboard</div>
+    </div>
+
+    <!-- Rutinas / Workout player -->
+    <div class="carousel-cell">
+      <div class="phone-frame">
+        <div class="nv-phone"><div class="nv-notch"></div><div class="nv-screen">
+          <div class="nv-sb"><span>9:41</span><span class="dots"><i></i><i></i><i></i></span></div>
+          <div class="nv-app">
+            <div class="nv-aphd"><div class="nv-atitle" data-es="DÍA 3 · PIERNAS" data-en="DAY 3 · LEGS">DÍA 3 · PIERNAS</div><span class="nv-pill lime" data-es="EN PROGRESO" data-en="IN PROGRESS">EN PROGRESO</span></div>
+            <div style="position:relative;width:100%;aspect-ratio:5/4;border-radius:14px;overflow:hidden;background:radial-gradient(circle at 50% 40%,#1a2410,#0c0e08);border:1px solid rgba(170,255,0,.14);display:flex;align-items:center;justify-content:center;color:rgba(170,255,0,.5)"><svg style="width:40px;height:40px"><use href="#i-dumbbell"/></svg><span style="position:absolute;top:7px;left:9px;font-family:'Inter Tight';font-weight:900;font-size:9px;color:#fff">NEX<b style="color:#AAFF00">V</b>YVE</span></div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:6px;margin-top:2px">
+              <div style="position:relative;width:96px;height:96px;display:flex;align-items:center;justify-content:center">
+                <svg viewBox="0 0 120 120" style="width:100%;height:100%"><circle cx="60" cy="60" r="50" fill="none" stroke="rgba(170,255,0,.13)" stroke-width="8"/><circle cx="60" cy="60" r="50" fill="none" stroke="#AAFF00" stroke-width="8" stroke-linecap="round" transform="rotate(-90 60 60)" stroke-dasharray="314" stroke-dashoffset="118" style="filter:drop-shadow(0 0 6px rgba(170,255,0,.55))"/></svg>
+                <span style="position:absolute;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:24px;color:#fff">0:45</span>
+              </div>
+              <div style="font-family:'Inter Tight';font-weight:800;font-size:13px;color:#fff"><span data-es="Serie 2 / 4" data-en="Set 2 / 4">Serie 2 / 4</span> <span style="color:#8080A0;font-weight:600">· 12 reps</span></div>
+            </div>
+            <button class="nvp-cta" style="margin-top:auto" data-es="Serie completada ✓" data-en="Set done ✓">Serie completada ✓</button>
+          </div>
+        </div></div>
+      </div>
+      <div class="carousel-label" data-es="Rutinas" data-en="Routines">Rutinas</div>
+    </div>
+
+    <!-- Nutrición / contador -->
+    <div class="carousel-cell">
+      <div class="phone-frame">
+        <div class="nv-phone"><div class="nv-notch"></div><div class="nv-screen">
+          <div class="nv-sb"><span>9:41</span><span class="dots"><i></i><i></i><i></i></span></div>
+          <div class="nv-app">
+            <div class="nv-aphd"><div><div class="nv-atitle" data-es="Nutrición" data-en="Nutrition">Nutrición</div><div class="nv-asub" style="color:#00BCD4" data-es="Tu cuerpo quema ~2.450 kcal" data-en="Your body burns ~2,450 kcal">Tu cuerpo quema ~2.450 kcal</div></div></div>
+            <div style="text-align:center;margin:4px 0 2px"><span style="font-family:'Bebas Neue';font-size:40px;color:#AAFF00;letter-spacing:1px">1.480</span><div style="font-family:'Inter Tight';font-size:11px;font-weight:700;color:#8080A0" data-es="/ 2.200 kcal · 720 restantes" data-en="/ 2,200 kcal · 720 left">/ 2.200 kcal · 720 restantes</div></div>
+            <div style="height:9px;border-radius:6px;overflow:hidden;background:#1C1C2E"><div style="width:67%;height:100%;background:linear-gradient(90deg,#4CAF50,#8BC34A,#FFC107)"></div></div>
+            <div class="nvm-macros" style="margin-top:6px">
+              <div class="nvm-mc p"><div class="k">P</div><div class="v" data-es="112g/<span style='color:#8080A0;font-size:9px'>160g</span>" data-en="112g/<span style='color:#8080A0;font-size:9px'>160g</span>">112g/<span style="color:#8080A0;font-size:9px">160g</span></div></div>
+              <div class="nvm-mc c"><div class="k">C</div><div class="v" data-es="164g/<span style='color:#8080A0;font-size:9px'>220g</span>" data-en="164g/<span style='color:#8080A0;font-size:9px'>220g</span>">164g/<span style="color:#8080A0;font-size:9px">220g</span></div></div>
+              <div class="nvm-mc g"><div class="k" data-es="G" data-en="F">G</div><div class="v" data-es="48g/<span style='color:#8080A0;font-size:9px'>73g</span>" data-en="48g/<span style='color:#8080A0;font-size:9px'>73g</span>">48g/<span style="color:#8080A0;font-size:9px">73g</span></div></div>
+            </div>
+            <div class="nvn-meal-list">
+              <div class="nvr-cap" data-es="Comidas de hoy" data-en="Today's meals">Comidas de hoy</div>
+              <div class="nvn-meal-row"><span class="ml done" data-es="Desayuno ✓" data-en="Breakfast ✓">Desayuno ✓</span><span class="mc">520 kcal</span></div>
+              <div class="nvn-meal-row"><span class="ml pend" data-es="Almuerzo · activo" data-en="Lunch · active">Almuerzo · activo</span><span class="mc" style="color:#30304A">—</span></div>
+            </div>
+            <div class="nvm-sub" style="margin-top:auto">
+              <div class="nvm-btn fill"><svg class="nvi" style="display:inline-block;vertical-align:-2px"><use href="#i-camera"/></svg> <span data-es="SCAN (1/3)" data-en="SCAN (1/3)">SCAN (1/3)</span></div>
+              <div class="nvm-btn out" style="flex:0 0 44px"><svg class="nvi" style="display:inline-block"><use href="#i-plus"/></svg></div>
+            </div>
+          </div>
+        </div></div>
+      </div>
+      <div class="carousel-label" data-es="Nutrición" data-en="Nutrition">Nutrición</div>
+    </div>
+
+    <!-- Retos -->
+    <div class="carousel-cell">
+      <div class="phone-frame">
+        <div class="nv-phone"><div class="nv-notch"></div><div class="nv-screen">
+          <div class="nv-sb"><span>9:41</span><span class="dots"><i></i><i></i><i></i></span></div>
+          <div class="nv-app">
+            <div class="nv-aphd"><div class="nv-atitle" data-es="Retos" data-en="Challenges">Retos</div><span class="nv-pill lime" data-es="INSCRITO" data-en="JOINED">INSCRITO</span></div>
+            <div style="position:relative;border-radius:14px;overflow:hidden;background:linear-gradient(135deg,rgba(255,68,102,.14),rgba(168,85,247,.12));border:1px solid rgba(255,68,102,.3);padding:13px 13px 14px">
+              <div style="display:flex;align-items:center;gap:8px"><span style="width:30px;height:30px;border-radius:9px;display:flex;align-items:center;justify-content:center;background:rgba(255,68,102,.18);color:#FF6B8A"><svg class="nvi" style="width:18px;height:18px"><use href="#i-trophy"/></svg></span><span style="font-family:'Inter Tight';font-weight:800;font-size:13px;color:#F0F0FF" data-es="Reto 30 días" data-en="30-day Challenge">Reto 30 días</span></div>
+              <div class="nvch-meta" data-es="127 participantes · 14 días restantes" data-en="127 participants · 14 days left">127 participantes · 14 días restantes</div>
+              <div class="nvch-prog"><div class="nvch-prog-fill" style="width:47%"></div></div>
+              <div style="font-family:'DM Sans';font-size:10px;color:#8080A0;margin-top:6px" data-es="Foto sellada con fecha y hora" data-en="Photo sealed with timestamp">Foto sellada con fecha y hora</div>
+              <div style="display:flex;align-items:baseline;gap:6px;margin-top:8px"><span style="font-family:'Bebas Neue';font-size:26px;color:#AAFF00">$250</span><span style="font-family:'Inter Tight';font-size:10px;font-weight:700;color:#8080A0" data-es="en premios reales" data-en="in real prizes">en premios reales</span></div>
+            </div>
+            <div class="nvp-cta" style="margin-top:auto" data-es="Ver mi progreso →" data-en="See my progress →">Ver mi progreso →</div>
+          </div>
+        </div></div>
+      </div>
+      <div class="carousel-label" data-es="Retos" data-en="Challenges">Retos</div>
+    </div>
+
+    <!-- Ranking POR REGALOS -->
+    <div class="carousel-cell">
+      <div class="phone-frame">
+        <div class="nv-phone"><div class="nv-notch"></div><div class="nv-screen" style="background:#000">
+          <div class="nv-sb"><span>9:41</span><span class="dots"><i></i><i></i><i></i></span></div>
+          <div class="nv-app" style="font-family:'Inter Tight',system-ui">
+            <div class="nvr-tabs"><span class="nvr-tab" data-es="FEED" data-en="FEED">FEED</span><span class="nvr-tab" data-es="RETOS" data-en="CHALLENGES">RETOS</span><span class="nvr-tab on" data-es="RANKING" data-en="RANKING">RANKING</span></div>
+            <div class="nvr-cap" data-es="Top inspiradores · 7 días" data-en="Top inspirers · 7 days">Top inspiradores · 7 días</div>
+            <!-- Card FUNDADOR pinneada -->
+            <div class="nvr-founder">
+              <span class="nvr-founder-av">B</span>
+              <span class="nvr-nm"><span class="n" style="color:#FFD700">Bleiquel</span><span class="s" data-es="NEXVYVE · Zurich" data-en="NEXVYVE · Zurich">NEXVYVE · Zurich</span></span>
+              <span class="nvr-founder-badge" data-es="FUNDADOR" data-en="FOUNDER">FUNDADOR</span>
+            </div>
+            <div class="nvr">
+              <div class="nvr-row"><span class="nvr-medal" style="color:#FFD700"><svg class="nvi"><use href="#i-medal"/></svg></span><span class="nvr-av" style="background:radial-gradient(circle at 35% 30%,#FFE07A,#FFB800)">M</span><span class="nvr-nm"><span class="n">María</span><span class="s" data-es="48 posts · 12 entrenos" data-en="48 posts · 12 workouts">48 posts · 12 entrenos</span></span><span class="nvr-gift"><svg class="nvi"><use href="#i-gift"/></svg> 92</span></div>
+              <div class="nvr-row"><span class="nvr-medal" style="color:#C0C8D8"><svg class="nvi"><use href="#i-medal"/></svg></span><span class="nvr-av" style="background:radial-gradient(circle at 35% 30%,#7CC4FF,#4FA3FF)">J</span><span class="nvr-nm"><span class="n">Jefferson</span><span class="s" data-es="40 posts · 9 entrenos" data-en="40 posts · 9 workouts">40 posts · 9 entrenos</span></span><span class="nvr-gift"><svg class="nvi"><use href="#i-gift"/></svg> 71</span></div>
+              <div class="nvr-row"><span class="nvr-medal" style="color:#D89060"><svg class="nvi"><use href="#i-medal"/></svg></span><span class="nvr-av" style="background:radial-gradient(circle at 35% 30%,#9DF0DC,#1FE3C0)">A</span><span class="nvr-nm"><span class="n">Ander</span><span class="s" data-es="33 posts · 8 entrenos" data-en="33 posts · 8 workouts">33 posts · 8 entrenos</span></span><span class="nvr-gift"><svg class="nvi"><use href="#i-gift"/></svg> 58</span></div>
+              <div class="nvr-row me"><span class="nvr-pos">4</span><span class="nvr-av" style="background:radial-gradient(circle at 35% 30%,#C8FF6A,#AAFF00)">B</span><span class="nvr-nm"><span class="n" data-es="Vos · tú" data-en="You">Vos · tú</span><span class="s" data-es="29 posts · 7 entrenos" data-en="29 posts · 7 workouts">29 posts · 7 entrenos</span></span><span class="nvr-gift"><svg class="nvi"><use href="#i-gift"/></svg> 44</span></div>
+            </div>
+            <div class="nvr-formula" data-es="Pts: Regalos x10 · Posts x1 · Entrenos x0.5" data-en="Pts: Gifts x10 · Posts x1 · Workouts x0.5">Pts: Regalos x10 · Posts x1 · Entrenos x0.5</div>
+          </div>
+        </div></div>
+      </div>
+      <div class="carousel-label" data-es="Ranking" data-en="Ranking">Ranking</div>
+    </div>
+
+    <!-- Comunidad: video se mantiene -->
+    <div class="carousel-cell">
+      <div class="phone-frame"><video src="img/clips/clip-burbujas.mp4" poster="img/clips/poster-burbujas.png" autoplay muted loop playsinline preload="metadata"></video></div>
+      <div class="carousel-label" data-es="Comunidad" data-en="Community">Comunidad</div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="como" style="background:var(--bg2)">
+  <div style="text-align:center">
+    <div class="section-label reveal" data-es="Proceso" data-en="Process">Proceso</div>
+    <h2 class="section-title reveal" data-es="Cómo funciona" data-en="How it works">Cómo funciona</h2>
+  </div>
+  <div class="steps">
+    <div class="step reveal">
+      <div class="step-num">01</div>
+      <h3 data-es="Crea tu perfil" data-en="Create your profile">Crea tu perfil</h3>
+      <p data-es="Contale a KAEL tu objetivo, nivel y preferencias y armá tu plan personalizado en segundos." data-en="Tell us your goal, level and preferences. KAEL creates your personalized plan in seconds.">Contale a KAEL tu objetivo, nivel y preferencias y armá tu plan personalizado en segundos.</p>
+    </div>
+    <div class="step reveal">
+      <div class="step-num">02</div>
+      <h3 data-es="Entrena y registra" data-en="Train and track">Entrena y registra</h3>
+      <p data-es="Seguí tu programa, registrá pesos, fotografiá comidas y hablá con KAEL cuando quieras." data-en="Follow your program, log weights, photograph meals and talk to KAEL whenever you want.">Seguí tu programa, registrá pesos, fotografiá comidas y hablá con KAEL cuando quieras.</p>
+    </div>
+    <div class="step reveal">
+      <div class="step-num">03</div>
+      <h3 data-es="Compite y gana" data-en="Compete and win">Compite y gana</h3>
+      <p data-es="Unite a retos con amigos, mostrá tu progreso con fotos selladas y ganá V-Coins." data-en="Join challenges with friends, prove your progress with sealed photos and earn V-Coins.">Unite a retos con amigos, mostrá tu progreso con fotos selladas y ganá V-Coins.</p>
+    </div>
+    <div class="step reveal">
+      <div class="step-num">04</div>
+      <h3 data-es="Canjea premios" data-en="Redeem prizes">Canjea premios</h3>
+      <p data-es="Usá tus V-Coins para productos, descuentos y beneficios exclusivos en la tienda NEXVYVE." data-en="Use your V-Coins for products, discounts and exclusive benefits in the NEXVYVE store.">Usá tus V-Coins para productos, descuentos y beneficios exclusivos en la tienda NEXVYVE.</p>
+    </div>
+  </div>
+</section>
 
 <!-- KAEL ANDROID — puente a la versión Android (KAEL by NEXVYVE web/PWA) -->
 <style>
@@ -467,361 +1692,7 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
   </div>
 </div>
 <script>(function(){try{if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches){var s=document.getElementById('kaDiamond');if(s&&s.pauseAnimations)s.pauseAnimations();}}catch(e){}})();</script>
-
-<!-- FEATURE SHOWCASE -->
-<section class="features-showcase" id="funciones">
-  <div class="section-label reveal" data-es="Funciones" data-en="Features">Funciones</div>
-  <h2 class="section-title reveal" data-es="Todo lo que necesitas<br>en un solo lugar" data-en="Everything you need<br>in one place">Todo lo que necesitas<br>en un solo lugar</h2>
-  <p class="section-sub reveal" data-es="Seis pilares que trabajan por vos cada día, no solo para motivarte." data-en="Six pillars that work for you every day, not just to motivate you.">Seis pilares que trabajan por vos cada día, no solo para motivarte.</p>
-
-  <!-- Feature 1: KAEL + Home screenshot -->
-  <div class="feature-row reveal">
-    <div class="feature-text">
-      <div class="feature-icon" style="background:rgba(168,230,0,.1)"><img src="icons/icon-kael.svg" alt="KAEL" width="36" height="36"></div>
-      <h3 data-es="KAEL &mdash; TU COACH" data-en="KAEL &mdash; YOUR COACH">KAEL &mdash; TU COACH</h3>
-      <p data-es="Tu entrenador personal inteligente. Hablá con KAEL, analizá comidas con foto y recibí planes 100% adaptados a tu cuerpo y objetivos. Disponible 24/7." data-en="Your smart personal trainer. Talk to KAEL, analyze meals with photos and get plans 100% adapted to your body and goals. Available 24/7.">Tu entrenador personal inteligente. Hablá con KAEL, analizá comidas con foto y recibí planes 100% adaptados a tu cuerpo y objetivos. Disponible 24/7.</p>
-    </div>
-    <div class="feature-phone">
-      <div class="glow" style="background:var(--lime);top:20%;left:10%"></div>
-      <div class="phone-frame"><img src="img/screen_home.png" alt="NEXVYVE Dashboard" loading="lazy"></div>
-    </div>
-  </div>
-
-  <!-- Feature 2: Nutrición + screenshot -->
-  <div class="feature-row reveal">
-    <div class="feature-text">
-      <div class="feature-icon" style="background:rgba(255,136,0,.1)"><img src="icons/icon-nutrition.svg" alt="Nutrición" width="36" height="36"></div>
-      <h3 data-es="NUTRICI&Oacute;N INTELIGENTE" data-en="SMART NUTRITION">NUTRICI&Oacute;N INTELIGENTE</h3>
-      <p data-es="Planes de comida con calorías y macros personalizados. Fotografiá tu plato y KAEL analiza las calorías al instante. Registrá desayuno, almuerzo, cena y snacks." data-en="Meal plans with personalized calories and macros. Photograph your plate and KAEL analyzes calories instantly. Log breakfast, lunch, dinner and snacks.">Planes de comida con calorías y macros personalizados. Fotografiá tu plato y KAEL analiza las calorías al instante. Registrá desayuno, almuerzo, cena y snacks.</p>
-    </div>
-    <div class="feature-phone">
-      <div class="glow" style="background:var(--orange);top:30%;right:10%"></div>
-      <div class="phone-frame"><img src="img/screen_nutricion.png" alt="NEXVYVE Nutrición" loading="lazy"></div>
-    </div>
-  </div>
-
-  <!-- Feature 3: Rutinas + screenshot -->
-  <div class="feature-row reveal">
-    <div class="feature-text">
-      <div class="feature-icon" style="background:rgba(168,85,247,.1)"><img src="icons/icon-train.svg" alt="Rutinas" width="36" height="36"></div>
-      <h3 data-es="RUTINAS PERSONALIZADAS" data-en="PERSONALIZED ROUTINES">RUTINAS PERSONALIZADAS</h3>
-      <p data-es="Programas de ejercicio creados por KAEL según tu nivel, lesiones, equipo disponible y objetivos. Se adaptan cada 30 días automáticamente." data-en="Exercise programs created by KAEL based on your level, injuries, available equipment and goals. They adapt every 30 days automatically.">Programas de ejercicio creados por KAEL según tu nivel, lesiones, equipo disponible y objetivos. Se adaptan cada 30 días automáticamente.</p>
-    </div>
-    <div class="feature-phone">
-      <div class="glow" style="background:var(--purple);top:20%;left:10%"></div>
-      <!-- Player de entreno EN VIVO (cronómetro + anillo + contador de series) -->
-      <div class="phone-frame">
-        <div class="wp-screen" role="img" aria-label="Pantalla de entreno de NEXVYVE con cronómetro y contador de series en vivo">
-          <div class="wp-top">
-            <span class="wp-day" data-es="DÍA 3 · PIERNAS" data-en="DAY 3 · LEGS">DÍA 3 · PIERNAS</span>
-            <span class="wp-prog" data-es="EN PROGRESO" data-en="IN PROGRESS">EN PROGRESO</span>
-          </div>
-          <div class="wp-exname">Sentadilla con barra</div>
-          <div class="wp-exmuscle" data-es="Cuádriceps · Glúteos" data-en="Quads · Glutes">Cuádriceps · Glúteos</div>
-          <div class="wp-ringwrap">
-            <svg class="wp-ring" viewBox="0 0 120 120" aria-hidden="true">
-              <circle cx="60" cy="60" r="50" fill="none" stroke="rgba(168,230,0,.13)" stroke-width="8"/>
-              <circle id="wpRing" cx="60" cy="60" r="50" fill="none" stroke="#A8E600" stroke-width="8" stroke-linecap="round" transform="rotate(-90 60 60)" stroke-dasharray="314" stroke-dashoffset="220"/>
-            </svg>
-            <div class="wp-timer" id="wpTimer">0:45</div>
-            <div class="wp-phase" id="wpPhase" data-es="DESCANSO" data-en="REST">DESCANSO</div>
-          </div>
-          <div class="wp-dots" id="wpDots"><span></span><span class="on"></span><span></span><span></span></div>
-          <div class="wp-series"><span class="wp-snum" id="wpSeries">Serie 2 / 4</span><span class="wp-sreps" data-es="12 reps" data-en="12 reps">12 reps</span></div>
-          <button class="wp-btn" data-es="Serie completada ✓" data-en="Set done ✓">Serie completada ✓</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <style>
-  .wp-screen{aspect-ratio:9/19.5;background:#070a12;display:flex;flex-direction:column;align-items:center;padding:9% 8% 7%;gap:3%;font-family:var(--font)}
-  .wp-top{width:100%;display:flex;align-items:center;justify-content:space-between}
-  .wp-day{font-size:11px;font-weight:800;letter-spacing:1.5px;color:var(--lime)}
-  .wp-prog{font-size:9px;font-weight:700;letter-spacing:1px;color:var(--lime);border:1px solid rgba(168,230,0,.4);border-radius:30px;padding:3px 9px}
-  .wp-exname{margin-top:2%;font-size:21px;font-weight:800;color:#fff;text-align:center;line-height:1.1}
-  .wp-exmuscle{font-size:12px;color:var(--gray1)}
-  .wp-ringwrap{position:relative;width:60%;max-width:160px;aspect-ratio:1;display:flex;align-items:center;justify-content:center;margin:4% 0}
-  .wp-ring{width:100%;height:100%}
-  #wpRing{filter:drop-shadow(0 0 6px rgba(168,230,0,.55))}
-  .wp-timer{position:absolute;top:46%;left:50%;transform:translate(-50%,-50%);font-size:34px;font-weight:900;color:#fff;letter-spacing:-1px}
-  .wp-phase{position:absolute;top:66%;left:50%;transform:translateX(-50%);font-size:9px;font-weight:700;letter-spacing:2px;color:var(--gray1)}
-  .wp-dots{display:flex;gap:8px}
-  .wp-dots span{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.18);transition:.3s}
-  .wp-dots span.on{background:var(--lime);box-shadow:0 0 8px rgba(168,230,0,.6)}
-  .wp-series{display:flex;align-items:baseline;gap:10px}
-  .wp-snum{font-size:16px;font-weight:800;color:#fff}
-  .wp-sreps{font-size:12px;color:var(--gray1)}
-  .wp-btn{margin-top:auto;width:100%;background:var(--lime);color:var(--bg);font-weight:800;font-size:13px;border:none;border-radius:14px;padding:13px;letter-spacing:.5px}
-  @media(max-width:640px){.wp-exname{font-size:17px}.wp-timer{font-size:27px}}
-  </style>
-  <script>
-  (function(){
-    var ring=document.getElementById('wpRing'),tEl=document.getElementById('wpTimer'),
-        sEl=document.getElementById('wpSeries'),pEl=document.getElementById('wpPhase'),
-        dots=document.getElementById('wpDots');
-    if(!ring)return;
-    var C=314,SETS=4,WORK=45,REST=60,set=2,left=45,phase='rest',
-        reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    function fmt(s){return Math.floor(s/60)+':'+String(s%60).padStart(2,'0');}
-    function paintDots(){if(!dots)return;[].forEach.call(dots.children,function(d,i){d.className=i<set?'on':'';});}
-    function draw(){var total=phase==='work'?WORK:REST,el=total-left;ring.style.strokeDashoffset=C*(1-el/total);tEl.textContent=fmt(left);
-      if(pEl){var es=phase==='work'?'ENTRENANDO':'DESCANSO',en=phase==='work'?'TRAINING':'REST';pEl.textContent=(document.documentElement.lang==='en'?en:es);pEl.setAttribute('data-es',es);pEl.setAttribute('data-en',en);}}
-    function tick(){draw();left--;if(left<0){if(phase==='rest'){phase='work';left=WORK;}else{phase='rest';left=REST;set=set<SETS?set+1:1;sEl.textContent='Serie '+set+' / '+SETS;paintDots();}}}
-    paintDots();draw();
-    if(!reduce)setInterval(tick,1000);
-  })();
-  </script>
-
-  <!-- Feature 4: Retos + screenshot -->
-  <div class="feature-row reveal">
-    <div class="feature-text">
-      <div class="feature-icon" style="background:rgba(255,68,68,.1)"><img src="icons/icon-trophy.svg" alt="Retos" width="36" height="36"></div>
-      <h3 data-es="RETOS Y PREMIOS REALES" data-en="CHALLENGES &amp; REAL PRIZES">RETOS Y PREMIOS REALES</h3>
-      <p data-es="Compite en retos con amigos y la comunidad. Fotos selladas con fecha y hora. Gana premios reales: membresías, suplementos, gym pass y hasta viajes." data-en="Compete in challenges with friends and the community. Sealed photos with timestamp. Win real prizes: memberships, supplements, gym passes and even trips.">Compite en retos con amigos y la comunidad. Fotos selladas con fecha y hora. Gana premios reales: membresías, suplementos, gym pass y hasta viajes.</p>
-    </div>
-    <div class="feature-phone">
-      <div class="glow" style="background:var(--lime);top:30%;right:10%"></div>
-      <div class="phone-frame"><video src="img/clips/clip-trofeo.mp4" poster="img/clips/poster-trofeo.png" autoplay muted loop playsinline preload="metadata"></video></div>
-    </div>
-  </div>
-</section>
-
-<!-- ONBOARDING FLOW — Cómo registrarse hasta obtener el plan (P1) -->
-<section class="onboarding-flow" id="como-registrarse">
-  <div class="of-head">
-    <div class="section-label reveal" data-es="Empezá hoy" data-en="Start today">Empezá hoy</div>
-    <h2 class="section-title reveal" data-es="De cero a tu plan<br>en 5 minutos" data-en="From zero to your plan<br>in 5 minutes">De cero a tu plan<br>en 5 minutos</h2>
-    <p class="section-sub reveal" data-es="Sin tarjeta. Sin cuestionarios eternos. KAEL te guía paso a paso desde el primer toque." data-en="No card. No endless forms. KAEL guides you step by step from the first tap.">Sin tarjeta. Sin cuestionarios eternos. KAEL te guía paso a paso desde el primer toque.</p>
-  </div>
-
-  <div class="step-flow">
-    <!-- Paso 1: Onboarding -->
-    <div class="flow-step reveal">
-      <div class="flow-text">
-        <div class="flow-num">01</div>
-        <div class="flow-time" data-es="~3 minutos" data-en="~3 minutes">~3 minutos</div>
-        <h3 data-es="Contale a KAEL quién sos" data-en="Tell KAEL who you are">Contale a KAEL quién sos</h3>
-        <p data-es="8 preguntas rápidas: tu nivel, objetivo, días de entreno, equipo y tus datos. <span class='accent'>Nada de cuestionarios eternos.</span>" data-en="8 quick questions: your level, goal, training days, equipment and your data. <span class='accent'>No endless forms.</span>">8 preguntas rápidas: tu nivel, objetivo, días de entreno, equipo y tus datos. <span class="accent">Nada de cuestionarios eternos.</span></p>
-      </div>
-      <div class="flow-phone">
-        <div class="pf"><img src="img/screenshots/step0-onboarding-level.jpg" alt="Onboarding NEXVYVE" loading="lazy"></div>
-      </div>
-    </div>
-
-    <!-- Paso 2: Análisis corporal -->
-    <div class="flow-step reveal">
-      <div class="flow-text">
-        <div class="flow-num">02</div>
-        <div class="flow-time" data-es="~15 segundos" data-en="~15 seconds">~15 segundos</div>
-        <h3 data-es="Una foto. Análisis al instante." data-en="One photo. Instant analysis.">Una foto. Análisis al instante.</h3>
-        <p data-es="KAEL analiza tu composición corporal: tipo de cuerpo, fortalezas y <span class='accent'>dónde enfocar tu energía.</span>" data-en="KAEL analyzes your body composition: body type, strengths and <span class='accent'>where to focus your energy.</span>">KAEL analiza tu composición corporal: tipo de cuerpo, fortalezas y <span class="accent">dónde enfocar tu energía.</span></p>
-      </div>
-      <div class="flow-phone">
-        <div class="pf"><img src="img/screenshots/analysis-results-main.png" alt="Análisis corporal IA" loading="lazy"></div>
-        <span class="arrow-tag" data-es="Tocá ✦ Hacer análisis" data-en="Tap ✦ Run analysis">Tocá ✦ Hacer análisis</span>
-      </div>
-    </div>
-
-    <!-- Paso 3: KAEL arma el plan -->
-    <div class="flow-step reveal">
-      <div class="flow-text">
-        <div class="flow-num">03</div>
-        <div class="flow-time" data-es="~30 segundos" data-en="~30 seconds">~30 segundos</div>
-        <h3 data-es="KAEL arma tu plan único" data-en="KAEL builds your unique plan">KAEL arma tu plan único</h3>
-        <p data-es="Entrenamiento + nutrición + macros, 100% adaptados a vos. <span class='accent'>Aceptá o pedí cambios</span> en el chat las veces que quieras." data-en="Training + nutrition + macros, 100% adapted to you. <span class='accent'>Accept or request changes</span> in the chat as many times as you want.">Entrenamiento + nutrición + macros, 100% adaptados a vos. <span class="accent">Aceptá o pedí cambios</span> en el chat las veces que quieras.</p>
-      </div>
-      <div class="flow-phone">
-        <div class="pf"><img src="img/screenshots/plan-ready-accept.png" alt="KAEL arma tu plan" loading="lazy"></div>
-        <span class="arrow-tag" data-es="Tocá ✦ Armar plan" data-en="Tap ✦ Build plan">Tocá ✦ Armar plan</span>
-      </div>
-    </div>
-
-    <!-- Paso 4: A usarlo día a día -->
-    <div class="flow-step reveal">
-      <div class="flow-text">
-        <div class="flow-num">04</div>
-        <div class="flow-time" data-es="Cada día" data-en="Every day">Cada día</div>
-        <h3 data-es="A vivirlo, cada día" data-en="Live it, every day">A vivirlo, cada día</h3>
-        <p data-es="Rutina, comidas, agua, KAEL 24/7 y la comunidad <span class='accent'>NEXT IS YOU.</span> Todo en un solo lugar." data-en="Routine, meals, water, KAEL 24/7 and the <span class='accent'>NEXT IS YOU.</span> community. All in one place.">Rutina, comidas, agua, KAEL 24/7 y la comunidad <span class="accent">NEXT IS YOU.</span> Todo en un solo lugar.</p>
-      </div>
-      <div class="flow-phone">
-        <div class="pf"><img src="img/screenshots/home-dashboard-active.png" alt="Dashboard NEXVYVE día a día" loading="lazy"></div>
-      </div>
-    </div>
-  </div>
-
-  <div class="of-stats">
-    <div class="of-stat reveal"><span class="of-num" data-count="5">5</span><span class="of-lbl" data-es="minutos para empezar" data-en="minutes to start">minutos para empezar</span></div>
-    <div class="of-stat reveal"><span class="of-num"><span data-count="100">100</span>%</span><span class="of-lbl" data-es="personalizado" data-en="personalized">personalizado</span></div>
-    <div class="of-stat reveal"><span class="of-num">24/7</span><span class="of-lbl" data-es="con KAEL" data-en="with KAEL">con KAEL</span></div>
-  </div>
-
-  <div class="of-cta">
-    <a href="https://apps.apple.com/app/nexvyve/id6760936021" class="btn-primary reveal" data-es="Empezar Gratis — 30 días" data-en="Start Free — 30 days">Empezar Gratis — 30 días</a>
-    <div class="cta-sub reveal" data-es="Sin tarjeta de crédito · Cancela cuando quieras" data-en="No credit card · Cancel anytime">Sin tarjeta de crédito · Cancela cuando quieras</div>
-  </div>
-</section>
-
-<!-- MORE FEATURES GRID -->
-<section>
-  <div class="features-grid">
-    <div class="fcard reveal">
-      <div class="fcard-icon" style="background:rgba(0,212,255,.1)"><img src="icons/icon-analysis.svg" alt="Análisis" width="32" height="32"></div>
-      <h3 data-es="Análisis Corporal" data-en="Body Analysis">Análisis Corporal</h3>
-      <p data-es="Tomá una foto y KAEL evalúa tu composición corporal, IMC, tipo de cuerpo y áreas de mejora con un puntaje personalizado." data-en="Take a photo and KAEL evaluates your body composition, BMI, body type and areas for improvement with a personalized score.">Tomá una foto y KAEL evalúa tu composición corporal, IMC, tipo de cuerpo y áreas de mejora con un puntaje personalizado.</p>
-    </div>
-    <div class="fcard reveal">
-      <div class="fcard-icon" style="background:rgba(168,230,0,.1)"><img src="icons/icon-vcoin.svg" alt="V-Coins" width="32" height="32"></div>
-      <h3 data-es="V-Coins y Tienda" data-en="V-Coins &amp; Store">V-Coins y Tienda</h3>
-      <p data-es="Ganá V-Coins por entrenar, referir amigos y completar retos. Canjeá por membresías, tarjetas regalo y experiencias exclusivas." data-en="Earn V-Coins by training, referring friends and completing challenges. Redeem for memberships, gift cards and exclusive experiences.">Ganá V-Coins por entrenar, referir amigos y completar retos. Canjeá por membresías, tarjetas regalo y experiencias exclusivas.</p>
-    </div>
-    <div class="fcard reveal">
-      <div class="fcard-icon" style="background:rgba(168,85,247,.1)"><img src="icons/icon-community.svg" alt="Ranking" width="32" height="32"></div>
-      <h3 data-es="Ranking Global" data-en="Global Ranking">Ranking Global</h3>
-      <p data-es="Competí con toda la comunidad en el ranking global. Subí de nivel, ganá insignias y mostrá tu constancia." data-en="Compete with the entire community in the global ranking. Level up, earn badges and prove you're the best.">Competí con toda la comunidad en el ranking global. Subí de nivel, ganá insignias y mostrá tu constancia.</p>
-    </div>
-  </div>
-</section>
-
-<!-- APP SCREENSHOTS -->
-<section class="screenshots">
-  <div class="screenshots-title">
-    <div class="section-label reveal" data-es="La App" data-en="The App">La App</div>
-    <h2 class="section-title reveal" data-es="Diseñada para resultados" data-en="Designed for results">Diseñada para resultados</h2>
-  </div>
-  <div class="carousel reveal">
-    <div>
-      <div class="phone-frame"><img src="img/screen_home.png" alt="Home" loading="lazy"></div>
-      <div class="carousel-label" data-es="Dashboard" data-en="Dashboard">Dashboard</div>
-    </div>
-    <div>
-      <div class="phone-frame"><img src="img/screen_rutina.png" alt="Rutinas" loading="lazy"></div>
-      <div class="carousel-label" data-es="Rutinas" data-en="Routines">Rutinas</div>
-    </div>
-    <div>
-      <div class="phone-frame"><img src="img/screen_nutricion.png" alt="Nutrición" loading="lazy"></div>
-      <div class="carousel-label" data-es="Nutrición" data-en="Nutrition">Nutrición</div>
-    </div>
-    <div>
-      <div class="phone-frame"><img src="img/screen_retos.png" alt="Retos" loading="lazy"></div>
-      <div class="carousel-label" data-es="Retos" data-en="Challenges">Retos</div>
-    </div>
-    <div>
-      <div class="phone-frame"><img src="img/screen_ranking.png" alt="Ranking" loading="lazy"></div>
-      <div class="carousel-label" data-es="Ranking" data-en="Ranking">Ranking</div>
-    </div>
-    <div>
-      <div class="phone-frame"><video src="img/clips/clip-burbujas.mp4" poster="img/clips/poster-burbujas.png" autoplay muted loop playsinline preload="metadata"></video></div>
-      <div class="carousel-label" data-es="Comunidad" data-en="Community">Comunidad</div>
-    </div>
-  </div>
-</section>
-
-<!-- HOW IT WORKS -->
-<section id="como" style="background:var(--bg2)">
-  <div style="text-align:center">
-    <div class="section-label reveal" data-es="Proceso" data-en="Process">Proceso</div>
-    <h2 class="section-title reveal" data-es="Cómo funciona" data-en="How it works">Cómo funciona</h2>
-  </div>
-  <div class="steps">
-    <div class="step reveal">
-      <div class="step-num">01</div>
-      <h3 data-es="Crea tu perfil" data-en="Create your profile">Crea tu perfil</h3>
-      <p data-es="Contale a KAEL tu objetivo, nivel y preferencias y armá tu plan personalizado en segundos." data-en="Tell us your goal, level and preferences. KAEL creates your personalized plan in seconds.">Contale a KAEL tu objetivo, nivel y preferencias y armá tu plan personalizado en segundos.</p>
-    </div>
-    <div class="step reveal">
-      <div class="step-num">02</div>
-      <h3 data-es="Entrena y registra" data-en="Train and track">Entrena y registra</h3>
-      <p data-es="Seguí tu programa, registrá pesos, fotografiá comidas y hablá con KAEL cuando quieras." data-en="Follow your program, log weights, photograph meals and talk to KAEL whenever you want.">Seguí tu programa, registrá pesos, fotografiá comidas y hablá con KAEL cuando quieras.</p>
-    </div>
-    <div class="step reveal">
-      <div class="step-num">03</div>
-      <h3 data-es="Compite y gana" data-en="Compete and win">Compite y gana</h3>
-      <p data-es="Unite a retos con amigos, mostrá tu progreso con fotos selladas y ganá V-Coins." data-en="Join challenges with friends, prove your progress with sealed photos and earn V-Coins.">Unite a retos con amigos, mostrá tu progreso con fotos selladas y ganá V-Coins.</p>
-    </div>
-    <div class="step reveal">
-      <div class="step-num">04</div>
-      <h3 data-es="Canjea premios" data-en="Redeem prizes">Canjea premios</h3>
-      <p data-es="Usá tus V-Coins para productos, descuentos y beneficios exclusivos en la tienda NEXVYVE." data-en="Use your V-Coins for products, discounts and exclusive benefits in the NEXVYVE store.">Usá tus V-Coins para productos, descuentos y beneficios exclusivos en la tienda NEXVYVE.</p>
-    </div>
-  </div>
-</section>
-
-<!-- PRICING -->
-<section class="pricing-section" id="precios">
-  <div style="text-align:center">
-    <div class="section-label reveal" data-es="Planes" data-en="Plans">Planes</div>
-    <h2 class="section-title reveal" data-es="Simple y transparente" data-en="Simple and transparent">Simple y transparente</h2>
-    <p class="section-sub reveal" style="margin:8px auto 0" data-es="Empezá gratis 30 días. Sin tarjeta. Sin compromisos." data-en="Start free for 30 days. No card. No commitments.">Empezá gratis 30 días. Sin tarjeta. Sin compromisos.</p>
-  </div>
-  <div class="pricing-grid">
-    <!-- Free -->
-    <div class="price-card reveal">
-      <div class="price-name" data-es="PRUEBA GRATIS" data-en="FREE TRIAL">PRUEBA GRATIS</div>
-      <div class="price-amount">$0 <span data-es="/mes" data-en="/mo">/mes</span></div>
-      <div class="price-period" data-es="30 días &middot; Sin tarjeta de crédito" data-en="30 days &middot; No credit card">30 días &middot; Sin tarjeta de crédito</div>
-      <ul class="price-features">
-        <li data-es="30 días completos" data-en="Full 30 days">30 días completos</li>
-        <li data-es="5 mensajes/día con KAEL" data-en="5 messages/day with KAEL">5 mensajes/día con KAEL</li>
-        <li data-es="3 días ilimitados al registrarte" data-en="3 unlimited days on signup">3 días ilimitados al registrarte</li>
-        <li data-es="Entrenamiento personalizado" data-en="Personalized training">Entrenamiento personalizado</li>
-        <li data-es="Plan de nutrición con macros" data-en="Nutrition plan with macros">Plan de nutrición con macros</li>
-        <li data-es="Análisis corporal inicial" data-en="Initial body analysis">Análisis corporal inicial</li>
-        <li data-es="Retos y comunidad" data-en="Challenges and community">Retos y comunidad</li>
-        <li data-es="V-Coins y recompensas" data-en="V-Coins and rewards">V-Coins y recompensas</li>
-      </ul>
-      <a href="https://apps.apple.com/app/nexvyve/id6760936021" class="price-btn outline" data-es="Empezar Gratis" data-en="Start Free">Empezar Gratis</a>
-    </div>
-    <!-- Premium -->
-    <div class="price-card popular reveal">
-      <div class="price-badge" data-es="M&Aacute;S POPULAR" data-en="MOST POPULAR">M&Aacute;S POPULAR</div>
-      <div class="price-name">PREMIUM</div>
-      <div class="price-amount">$9.99 <span data-es="/mes" data-en="/mo">/mes</span></div>
-      <div class="price-period" data-es="Tras los 30 días de prueba" data-en="After the 30-day trial">Tras los 30 días de prueba</div>
-      <ul class="price-features">
-        <li data-es="Todo lo del plan gratuito" data-en="Everything in the free plan">Todo lo del plan gratuito</li>
-        <li data-es="30 mensajes/día con KAEL" data-en="30 messages/day with KAEL">30 mensajes/día con KAEL</li>
-        <li data-es="2 análisis corporales/mes" data-en="2 body analyses/month">2 análisis corporales/mes</li>
-        <li data-es="+50 V-Coins mensuales" data-en="+50 monthly V-Coins">+50 V-Coins mensuales</li>
-        <li data-es="Escaneo de comidas con foto" data-en="Meal scanning with photo">Escaneo de comidas con foto</li>
-        <li data-es="Retos con premios reales" data-en="Challenges with real prizes">Retos con premios reales</li>
-      </ul>
-      <a href="https://apps.apple.com/app/nexvyve/id6760936021" class="price-btn fill" data-es="Empezar Ahora" data-en="Start Now">Empezar Ahora</a>
-    </div>
-    <!-- Annual -->
-    <div class="price-card reveal">
-      <div class="price-badge" style="background:var(--cyan);color:var(--bg)" data-es="AHORRA 33%" data-en="SAVE 33%">AHORRA 33%</div>
-      <div class="price-name" data-es="ANUAL" data-en="ANNUAL">ANUAL</div>
-      <div class="price-amount">$79.99 <span data-es="/año" data-en="/yr">/año</span></div>
-      <div class="price-period" data-es="Solo $6.67/mes &middot; Ahorras $39.89" data-en="Only $6.67/mo &middot; Save $39.89">Solo $6.67/mes &middot; Ahorras $39.89</div>
-      <ul class="price-features">
-        <li data-es="Todo lo de Premium" data-en="Everything in Premium">Todo lo de Premium</li>
-        <li data-es="40 mensajes/día con KAEL" data-en="40 messages/day with KAEL">40 mensajes/día con KAEL</li>
-        <li data-es="3 análisis corporales/mes" data-en="3 body analyses/month">3 análisis corporales/mes</li>
-        <li data-es="+75 V-Coins mensuales" data-en="+75 monthly V-Coins">+75 V-Coins mensuales</li>
-        <li data-es="Badge exclusivo anual" data-en="Exclusive annual badge">Badge exclusivo anual</li>
-        <li data-es="Soporte prioritario" data-en="Priority support">Soporte prioritario</li>
-      </ul>
-      <a href="https://apps.apple.com/app/nexvyve/id6760936021" class="price-btn fill" data-es="Mejor Oferta" data-en="Best Deal">Mejor Oferta</a>
-    </div>
-    <!-- Elite -->
-    <div class="price-card reveal">
-      <div class="price-badge" style="background:var(--purple)" data-es="M&Aacute;XIMO PODER" data-en="MAXIMUM POWER">M&Aacute;XIMO PODER</div>
-      <div class="price-name">ELITE</div>
-      <div class="price-amount">$24.99 <span data-es="/mes" data-en="/mo">/mes</span></div>
-      <div class="price-period" data-es="Acceso ilimitado total" data-en="Total unlimited access">Acceso ilimitado total</div>
-      <ul class="price-features">
-        <li data-es="Todo lo de Annual" data-en="Everything in Annual">Todo lo de Annual</li>
-        <li data-es="Mensajes ilimitados con KAEL" data-en="Unlimited messages with KAEL">Mensajes ilimitados con KAEL</li>
-        <li data-es="4 análisis corporales/mes" data-en="4 body analyses/month">4 análisis corporales/mes</li>
-        <li data-es="+150 V-Coins mensuales" data-en="+150 monthly V-Coins">+150 V-Coins mensuales</li>
-        <li data-es="Prioridad máxima de soporte" data-en="Maximum support priority">Prioridad máxima de soporte</li>
-        <li data-es="Badge: MÁXIMO PODER" data-en="Badge: MAXIMUM POWER">Badge: MÁXIMO PODER</li>
-      </ul>
-      <a href="https://apps.apple.com/app/nexvyve/id6760936021" class="price-btn outline" data-es="Activar ELITE" data-en="Activate ELITE">Activar ELITE</a>
-    </div>
-  </div>
-</section>
+<script>(function(){try{if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches){var f=document.getElementById('nvaBodyFig');if(f&&f.pauseAnimations)f.pauseAnimations();}}catch(e){}})();</script>
 
 <!-- CTA -->
 <section class="cta-section">
@@ -866,13 +1737,12 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
     <a href="https://apps.apple.com/app/nexvyve/id6760936021" data-es="Descargar" data-en="Download">Descargar</a>
   </div>
   <div class="footer-col">
-    <h4>Legal</h4>
+    <h4 data-es="Legal" data-en="Legal">Legal</h4>
     <a href="privacy.html" data-es="Privacidad" data-en="Privacy">Privacidad</a>
     <a href="support.html" data-es="Soporte" data-en="Support">Soporte</a>
   </div>
   <div class="footer-col">
     <h4 data-es="Contacto" data-en="Contact">Contacto</h4>
-    <a href="mailto:info@nexvyve.com">info@nexvyve.com</a>
     <a href="mailto:info@nexvyve.com">info@nexvyve.com</a>
   </div>
   <div class="footer-bottom">
@@ -884,6 +1754,7 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
 
 <script>
 function setLang(lang){
+  document.documentElement.lang=lang;
   document.getElementById('btn-es').classList.toggle('active',lang==='es');
   document.getElementById('btn-en').classList.toggle('active',lang==='en');
   document.querySelectorAll('[data-es]').forEach(function(el){
@@ -923,37 +1794,8 @@ window.addEventListener('DOMContentLoaded',function(){
       entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('visible');});
     },{threshold:0.1}).observe(r);
   });
-  // Hero title — SVG light trace that outlines all letters
-  var heroTitle = document.getElementById('heroTitle');
-  if(heroTitle){
-    setTimeout(function(){
-      var rect = heroTitle.getBoundingClientRect();
-      var svg = document.createElementNS('http://www.w3.org/2000/svg','svg');
-      svg.setAttribute('class','hero-title-svg');
-      svg.setAttribute('viewBox','0 0 '+rect.width+' '+rect.height);
-      svg.style.width = rect.width+'px';
-      svg.style.height = rect.height+'px';
-      // Get computed font
-      var cs = getComputedStyle(heroTitle);
-      var fontSize = parseFloat(cs.fontSize);
-      var lines = heroTitle.innerText.split('\n').filter(function(l){return l.trim();});
-      var lineH = rect.height / lines.length;
-      lines.forEach(function(line,i){
-        var txt = document.createElementNS('http://www.w3.org/2000/svg','text');
-        txt.setAttribute('x','0');
-        txt.setAttribute('y', (i * lineH) + fontSize * 0.85);
-        txt.setAttribute('font-size', fontSize+'px');
-        txt.setAttribute('font-weight','900');
-        txt.setAttribute('font-family', cs.fontFamily);
-        txt.setAttribute('letter-spacing', cs.letterSpacing);
-        txt.textContent = line.trim();
-        svg.appendChild(txt);
-      });
-      heroTitle.style.position = 'relative';
-      heroTitle.appendChild(svg);
-      setTimeout(function(){ heroTitle.classList.add('traced'); }, 100);
-    }, 800);
-  }
+  // Hero title — trazo de líneas SVG ELIMINADO (founder 2026-06-16: "se ve barato").
+  // El título entra solo con el mask-reveal premium de GSAP (yPercent + rotateX).
   // Icon light border trace on scroll
   var iconDelay = 0;
   document.querySelectorAll('.feature-icon, .fcard-icon, .step-num').forEach(function(icon){
@@ -1044,12 +1886,11 @@ window.addEventListener('DOMContentLoaded',function(){
 
     // 3. Subtle parallax on phones (hero mockups + feature phones) — scrub with section scroll.
     if(!prefersReducedMotion){
-      gsap.utils.toArray('.hero-phones .phone-mockup img').forEach(function(img){
-        gsap.fromTo(img,{y:30},{y:-30,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:1}});
-      });
-      gsap.utils.toArray('.feature-phone .phone-frame img').forEach(function(img){
-        var row=img.closest('.feature-row')||img;
-        gsap.fromTo(img,{y:30},{y:-30,ease:'none',scrollTrigger:{trigger:row,start:'top bottom',end:'bottom top',scrub:1}});
+      // Parallax sutil de los teléfonos de features (mockups vivos suben/bajan con el scroll de su fila).
+      gsap.utils.toArray('.feature-phone').forEach(function(fp){
+        var node=fp.querySelector('.nv-phone,.wp-screen,video'); if(!node) return;
+        var row=fp.closest('.feature-row')||fp;
+        gsap.fromTo(node,{y:26},{y:-26,ease:'none',scrollTrigger:{trigger:row,start:'top bottom',end:'bottom top',scrub:1}});
       });
     }
 
@@ -1103,6 +1944,76 @@ window.addEventListener('DOMContentLoaded',function(){
     if(v.readyState>=2) tryPlay(); else v.addEventListener('loadeddata',tryPlay,{once:true});
   });
 });
+</script>
+<!-- ===== REDISEÑO v4.0: entrada cinematográfica + Tarjeta Viva + profundidad ===== -->
+<script>
+(function(){
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var lowEnd = (navigator.deviceMemory && navigator.deviceMemory<=2) || (navigator.hardwareConcurrency && navigator.hardwareConcurrency<=3) || (navigator.connection && navigator.connection.saveData);
+
+  // 1) Entrada cinematográfica: el teléfono emerge + flotantes con back.out
+  try{
+    if(window.gsap && !reduce){
+      gsap.from('#nvPhone',{y:64,scale:.92,opacity:0,duration:1.4,ease:'power4.out',delay:.15,clearProps:'transform,opacity'});
+      gsap.from('.nv-float',{scale:.4,opacity:0,duration:.6,stagger:.12,ease:'back.out(2)',delay:.9,clearProps:'transform,opacity'});
+    }
+  }catch(e){}
+
+  // 2) Anillo del día (borde de la Tarjeta Viva) se llena 0 → 95%
+  (function(){
+    var card=document.getElementById('nvwCard'), today=document.getElementById('nvwToday'), target=95;
+    if(!card) return;
+    function setv(v){ card.style.setProperty('--pct', v+''); if(today) today.style.setProperty('--p', v+''); }
+    if(reduce){ setv(target); return; }
+    var start=null, dur=1500, done=false;
+    setTimeout(function(){
+      requestAnimationFrame(function step(ts){
+        if(done) return;
+        if(!start) start=ts;
+        var t=Math.min((ts-start)/dur,1), e=1-Math.pow(1-t,3);
+        setv((target*e).toFixed(1));
+        if(t<1) requestAnimationFrame(step); else done=true;
+      });
+    },1100);
+    // Garantía: si el rAF está pausado (pestaña en background, scroll durante carga), fija el estado final igual.
+    setTimeout(function(){ if(!done){ done=true; setv(target); } }, 1100+dur+500);
+  })();
+
+  // 3) Campo de partículas lima (profundidad/look tech). Off en reduced-motion / gama baja → quedan los glows CSS.
+  var cv=document.getElementById('nvDepth');
+  if(cv && cv.getContext && !reduce && !lowEnd){
+    var ctx=cv.getContext('2d'), W=0,H=0,DPR=Math.min(window.devicePixelRatio||1,2), parts=[], mx=0,my=0, raf=null;
+    function size(){ var r=cv.getBoundingClientRect(); W=cv.width=Math.max(1,r.width*DPR); H=cv.height=Math.max(1,r.height*DPR); }
+    function build(){ var n=Math.max(40,Math.min(Math.round((W/DPR)/11),80)); parts=[]; for(var i=0;i<n;i++){ parts.push({x:Math.random()*W,y:Math.random()*H,z:Math.random()*1+.35,r:Math.random()*1.8+.7,vx:(Math.random()-.5)*.12,vy:(Math.random()-.5)*.12}); } }
+    function draw(){ ctx.clearRect(0,0,W,H); ctx.shadowColor='rgba(170,255,0,.55)'; ctx.shadowBlur=6*DPR;
+      for(var i=0;i<parts.length;i++){ var p=parts[i]; p.x+=p.vx*p.z+mx*p.z*.5; p.y+=p.vy*p.z+my*p.z*.5;
+        if(p.x<0)p.x=W; if(p.x>W)p.x=0; if(p.y<0)p.y=H; if(p.y>H)p.y=0;
+        ctx.beginPath(); ctx.arc(p.x,p.y,p.r*p.z*DPR,0,6.283); ctx.fillStyle='rgba(180,255,30,'+(0.10+p.z*0.22)+')'; ctx.fill(); }
+      ctx.shadowBlur=0;
+      raf=requestAnimationFrame(draw);
+    }
+    size(); build(); draw();
+    window.addEventListener('resize',function(){ size(); build(); });
+    window.addEventListener('mousemove',function(e){ mx=(e.clientX/window.innerWidth-.5)*.6; my=(e.clientY/window.innerHeight-.5)*.6; });
+    document.addEventListener('visibilitychange',function(){ if(document.hidden){ if(raf){cancelAnimationFrame(raf);raf=null;} } else if(!raf){ draw(); } });
+  }
+
+  // 4) Tilt 3D premium: el teléfono se inclina siguiendo el cursor (look tech). Solo puntero fino, respeta reduced-motion.
+  (function(){
+    var stage=document.querySelector('.nv-stage'), phone=document.getElementById('nvPhone');
+    if(!stage||!phone||reduce||!(window.matchMedia&&window.matchMedia('(pointer:fine)').matches)) return;
+    setTimeout(function(){
+      phone.style.transition='transform .3s cubic-bezier(.16,1,.3,1)'; phone.style.willChange='transform';
+      window.addEventListener('mousemove',function(e){
+        var r=stage.getBoundingClientRect();
+        var x=Math.max(-1.3,Math.min(1.3,(e.clientX-(r.left+r.width/2))/r.width));
+        var y=Math.max(-1.3,Math.min(1.3,(e.clientY-(r.top+r.height/2))/r.height));
+        phone.style.transform='perspective(1100px) rotateY('+(x*10)+'deg) rotateX('+(-y*8)+'deg)';
+      });
+      stage.addEventListener('mouseleave',function(){ phone.style.transform='perspective(1100px) rotateY(0deg) rotateX(0deg)'; });
+    },1750);
+  })();
+})();
 </script>
 </body>
 </html>

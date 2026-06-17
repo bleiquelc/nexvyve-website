@@ -1,0 +1,10 @@
+img/testimonios/_src/
+img/testimonios/_contact-sheet.png
+img/testimonios/_build_cards.py
+img/testimonios/mockup-plate-src.png
+img/_old_marzo/
+*.bak-*
+.DS_Store
+.claude/
+V4-UI-SPECS.md
+REVISAR-MAÑANA-*.md
